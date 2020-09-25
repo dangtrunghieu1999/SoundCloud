@@ -3,27 +3,75 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		8EC805BBEF5316A9FD1E7FD5 /* Pods_SoundCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63F110FA1BCA958983F5DADA /* Pods_SoundCloud.framework */; };
+		CF45964E251B9C590062158D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45964D251B9C590062158D /* BaseViewController.swift */; };
+		CF459650251B9C7E0062158D /* BaseCollectionViewHeaderFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45964F251B9C7E0062158D /* BaseCollectionViewHeaderFooterCell.swift */; };
+		CF459652251B9CAD0062158D /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF459651251B9CAD0062158D /* BaseCollectionViewCell.swift */; };
+		CF459654251B9CD60062158D /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF459653251B9CD60062158D /* BaseTableViewCell.swift */; };
+		CF459656251B9CF00062158D /* BaseTableViewHeaderFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF459655251B9CF00062158D /* BaseTableViewHeaderFooter.swift */; };
+		CF459658251B9D190062158D /* HomeCollectionViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF459657251B9D190062158D /* HomeCollectionViewHeaderCell.swift */; };
 		CF646059251B905D00C03F2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF646058251B905D00C03F2D /* AppDelegate.swift */; };
 		CF64605F251B905E00C03F2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF64605E251B905E00C03F2D /* Assets.xcassets */; };
 		CF646065251B905E00C03F2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF646063251B905E00C03F2D /* LaunchScreen.storyboard */; };
-		CF646089251B90DE00C03F2D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF646088251B90DE00C03F2D /* ViewController.swift */; };
+		CF646089251B90DE00C03F2D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF646088251B90DE00C03F2D /* HomeViewController.swift */; };
+		CF646090251B952D00C03F2D /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64608F251B952D00C03F2D /* UIColor+Extension.swift */; };
+		CF646092251B954600C03F2D /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF646091251B954600C03F2D /* UICollectionView+Extension.swift */; };
+		CF646094251B95AA00C03F2D /* Array+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF646093251B95AA00C03F2D /* Array+Extention.swift */; };
+		CF646096251B95C100C03F2D /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF646095251B95C100C03F2D /* UIFont+Extension.swift */; };
+		CF646098251B95CF00C03F2D /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF646097251B95CE00C03F2D /* UITableView+Extension.swift */; };
+		CF64609B251B972D00C03F2D /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64609A251B972D00C03F2D /* ImageManager.swift */; };
+		CF64609D251B974B00C03F2D /* TextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64609C251B974B00C03F2D /* TextManager.swift */; };
+		CF7222E8251B9E7D00F22E0F /* Dimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7222E7251B9E7D00F22E0F /* Dimensions.swift */; };
+		CF7222EA251BA06500F22E0F /* ArtistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7222E9251BA06500F22E0F /* ArtistCollectionViewCell.swift */; };
+		CF7222EC251BA06D00F22E0F /* MoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7222EB251BA06D00F22E0F /* MoodCollectionViewCell.swift */; };
+		CF7222EE251BA07700F22E0F /* HotNowCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7222ED251BA07700F22E0F /* HotNowCollectionViewCell.swift */; };
+		CF7222F0251BA09600F22E0F /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7222EF251BA09600F22E0F /* ItemCollectionViewCell.swift */; };
+		CF7222F2251BA0BF00F22E0F /* ArtistItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7222F1251BA0BF00F22E0F /* ArtistItemCollectionViewCell.swift */; };
+		CF7222F5251BA71000F22E0F /* PlayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7222F4251BA71000F22E0F /* PlayList.swift */; };
+		CFC8E542251D80F50080FC15 /* ZTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC8E541251D80F50080FC15 /* ZTabBarViewController.swift */; };
+		CFC8E544251D81270080FC15 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC8E543251D81270080FC15 /* MusicViewController.swift */; };
+		CFC8E546251D81380080FC15 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC8E545251D81380080FC15 /* SearchViewController.swift */; };
+		CFC8E548251D81470080FC15 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC8E547251D81470080FC15 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		63F110FA1BCA958983F5DADA /* Pods_SoundCloud.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoundCloud.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		736F2D829458E6B7C00B1936 /* Pods-SoundCloud.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundCloud.release.xcconfig"; path = "Target Support Files/Pods-SoundCloud/Pods-SoundCloud.release.xcconfig"; sourceTree = "<group>"; };
 		9D5D5A1992C2EB6C34E75A12 /* Pods-SoundCloud.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundCloud.debug.xcconfig"; path = "Target Support Files/Pods-SoundCloud/Pods-SoundCloud.debug.xcconfig"; sourceTree = "<group>"; };
+		CF45964D251B9C590062158D /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		CF45964F251B9C7E0062158D /* BaseCollectionViewHeaderFooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewHeaderFooterCell.swift; sourceTree = "<group>"; };
+		CF459651251B9CAD0062158D /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		CF459653251B9CD60062158D /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		CF459655251B9CF00062158D /* BaseTableViewHeaderFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewHeaderFooter.swift; sourceTree = "<group>"; };
+		CF459657251B9D190062158D /* HomeCollectionViewHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewHeaderCell.swift; sourceTree = "<group>"; };
 		CF646055251B905D00C03F2D /* SoundCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF646058251B905D00C03F2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF64605E251B905E00C03F2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF646064251B905E00C03F2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF646066251B905E00C03F2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CF646088251B90DE00C03F2D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CF646088251B90DE00C03F2D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		CF64608F251B952D00C03F2D /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		CF646091251B954600C03F2D /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		CF646093251B95AA00C03F2D /* Array+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extention.swift"; sourceTree = "<group>"; };
+		CF646095251B95C100C03F2D /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		CF646097251B95CE00C03F2D /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		CF64609A251B972D00C03F2D /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		CF64609C251B974B00C03F2D /* TextManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextManager.swift; sourceTree = "<group>"; };
+		CF7222E7251B9E7D00F22E0F /* Dimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimensions.swift; sourceTree = "<group>"; };
+		CF7222E9251BA06500F22E0F /* ArtistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCollectionViewCell.swift; sourceTree = "<group>"; };
+		CF7222EB251BA06D00F22E0F /* MoodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCollectionViewCell.swift; sourceTree = "<group>"; };
+		CF7222ED251BA07700F22E0F /* HotNowCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotNowCollectionViewCell.swift; sourceTree = "<group>"; };
+		CF7222EF251BA09600F22E0F /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		CF7222F1251BA0BF00F22E0F /* ArtistItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		CF7222F4251BA71000F22E0F /* PlayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayList.swift; sourceTree = "<group>"; };
+		CFC8E541251D80F50080FC15 /* ZTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ZTabBarViewController.swift; path = SoundCloud/ZTabBarViewController.swift; sourceTree = SOURCE_ROOT; };
+		CFC8E543251D81270080FC15 /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
+		CFC8E545251D81380080FC15 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		CFC8E547251D81470080FC15 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +92,6 @@
 				9D5D5A1992C2EB6C34E75A12 /* Pods-SoundCloud.debug.xcconfig */,
 				736F2D829458E6B7C00B1936 /* Pods-SoundCloud.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -54,6 +101,50 @@
 				63F110FA1BCA958983F5DADA /* Pods_SoundCloud.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF459648251B9C090062158D /* Artist */ = {
+			isa = PBXGroup;
+			children = (
+				CF7222E9251BA06500F22E0F /* ArtistCollectionViewCell.swift */,
+			);
+			path = Artist;
+			sourceTree = "<group>";
+		};
+		CF459649251B9C190062158D /* Mood */ = {
+			isa = PBXGroup;
+			children = (
+				CF7222EB251BA06D00F22E0F /* MoodCollectionViewCell.swift */,
+			);
+			path = Mood;
+			sourceTree = "<group>";
+		};
+		CF45964A251B9C1D0062158D /* HotNow */ = {
+			isa = PBXGroup;
+			children = (
+				CF7222ED251BA07700F22E0F /* HotNowCollectionViewCell.swift */,
+			);
+			path = HotNow;
+			sourceTree = "<group>";
+		};
+		CF45964B251B9C320062158D /* Bases */ = {
+			isa = PBXGroup;
+			children = (
+				CF45964C251B9C3F0062158D /* UIView */,
+			);
+			path = Bases;
+			sourceTree = "<group>";
+		};
+		CF45964C251B9C3F0062158D /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				CF45964D251B9C590062158D /* BaseViewController.swift */,
+				CF45964F251B9C7E0062158D /* BaseCollectionViewHeaderFooterCell.swift */,
+				CF459651251B9CAD0062158D /* BaseCollectionViewCell.swift */,
+				CF459653251B9CD60062158D /* BaseTableViewCell.swift */,
+				CF459655251B9CF00062158D /* BaseTableViewHeaderFooter.swift */,
+			);
+			path = UIView;
 			sourceTree = "<group>";
 		};
 		CF64604C251B905D00C03F2D = {
@@ -77,13 +168,145 @@
 		CF646057251B905D00C03F2D /* SoundCloud */ = {
 			isa = PBXGroup;
 			children = (
-				CF646058251B905D00C03F2D /* AppDelegate.swift */,
-				CF64605E251B905E00C03F2D /* Assets.xcassets */,
-				CF646063251B905E00C03F2D /* LaunchScreen.storyboard */,
+				CF64608A251B94D900C03F2D /* Supports */,
+				CF64608B251B94E500C03F2D /* StoryBoards */,
+				CF64608D251B950A00C03F2D /* Extensions */,
+				CF646099251B971400C03F2D /* Managers */,
+				CF7222E6251B9E6900F22E0F /* Commons */,
+				CF45964B251B9C320062158D /* Bases */,
+				CF64608C251B94FB00C03F2D /* Features */,
 				CF646066251B905E00C03F2D /* Info.plist */,
-				CF646088251B90DE00C03F2D /* ViewController.swift */,
 			);
 			path = SoundCloud;
+			sourceTree = "<group>";
+		};
+		CF64608A251B94D900C03F2D /* Supports */ = {
+			isa = PBXGroup;
+			children = (
+				CF646058251B905D00C03F2D /* AppDelegate.swift */,
+				CF64605E251B905E00C03F2D /* Assets.xcassets */,
+			);
+			path = Supports;
+			sourceTree = "<group>";
+		};
+		CF64608B251B94E500C03F2D /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				CF646063251B905E00C03F2D /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		CF64608C251B94FB00C03F2D /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				CF6460A3251B97AB00C03F2D /* PlayList */,
+				CF6460A2251B97A200C03F2D /* TabBar */,
+				CF6460A1251B979900C03F2D /* Profile */,
+				CF6460A0251B978F00C03F2D /* Search */,
+				CF64609F251B978700C03F2D /* Music */,
+				CF64609E251B977C00C03F2D /* Home */,
+				CFC8E541251D80F50080FC15 /* ZTabBarViewController.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		CF64608D251B950A00C03F2D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CF64608E251B951400C03F2D /* UIKit */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CF64608E251B951400C03F2D /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				CF64608F251B952D00C03F2D /* UIColor+Extension.swift */,
+				CF646091251B954600C03F2D /* UICollectionView+Extension.swift */,
+				CF646093251B95AA00C03F2D /* Array+Extention.swift */,
+				CF646095251B95C100C03F2D /* UIFont+Extension.swift */,
+				CF646097251B95CE00C03F2D /* UITableView+Extension.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		CF646099251B971400C03F2D /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				CF64609A251B972D00C03F2D /* ImageManager.swift */,
+				CF64609C251B974B00C03F2D /* TextManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		CF64609E251B977C00C03F2D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CF45964A251B9C1D0062158D /* HotNow */,
+				CF459649251B9C190062158D /* Mood */,
+				CF459648251B9C090062158D /* Artist */,
+				CF7222EF251BA09600F22E0F /* ItemCollectionViewCell.swift */,
+				CF7222F1251BA0BF00F22E0F /* ArtistItemCollectionViewCell.swift */,
+				CF459657251B9D190062158D /* HomeCollectionViewHeaderCell.swift */,
+				CF646088251B90DE00C03F2D /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		CF64609F251B978700C03F2D /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				CFC8E543251D81270080FC15 /* MusicViewController.swift */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
+		CF6460A0251B978F00C03F2D /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				CFC8E545251D81380080FC15 /* SearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		CF6460A1251B979900C03F2D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				CFC8E547251D81470080FC15 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		CF6460A2251B97A200C03F2D /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		CF6460A3251B97AB00C03F2D /* PlayList */ = {
+			isa = PBXGroup;
+			children = (
+				CF7222F3251BA70300F22E0F /* Model */,
+			);
+			path = PlayList;
+			sourceTree = "<group>";
+		};
+		CF7222E6251B9E6900F22E0F /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				CF7222E7251B9E7D00F22E0F /* Dimensions.swift */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		CF7222F3251BA70300F22E0F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CF7222F4251BA71000F22E0F /* PlayList.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,8 +423,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF646089251B90DE00C03F2D /* ViewController.swift in Sources */,
+				CF646096251B95C100C03F2D /* UIFont+Extension.swift in Sources */,
+				CF7222EC251BA06D00F22E0F /* MoodCollectionViewCell.swift in Sources */,
+				CF459652251B9CAD0062158D /* BaseCollectionViewCell.swift in Sources */,
+				CF7222F2251BA0BF00F22E0F /* ArtistItemCollectionViewCell.swift in Sources */,
+				CF646092251B954600C03F2D /* UICollectionView+Extension.swift in Sources */,
+				CF646098251B95CF00C03F2D /* UITableView+Extension.swift in Sources */,
+				CF7222F0251BA09600F22E0F /* ItemCollectionViewCell.swift in Sources */,
+				CF7222E8251B9E7D00F22E0F /* Dimensions.swift in Sources */,
+				CF64609B251B972D00C03F2D /* ImageManager.swift in Sources */,
+				CF459658251B9D190062158D /* HomeCollectionViewHeaderCell.swift in Sources */,
+				CFC8E548251D81470080FC15 /* ProfileViewController.swift in Sources */,
+				CF459650251B9C7E0062158D /* BaseCollectionViewHeaderFooterCell.swift in Sources */,
+				CF646094251B95AA00C03F2D /* Array+Extention.swift in Sources */,
+				CFC8E544251D81270080FC15 /* MusicViewController.swift in Sources */,
+				CF7222EA251BA06500F22E0F /* ArtistCollectionViewCell.swift in Sources */,
+				CFC8E542251D80F50080FC15 /* ZTabBarViewController.swift in Sources */,
+				CFC8E546251D81380080FC15 /* SearchViewController.swift in Sources */,
+				CF7222F5251BA71000F22E0F /* PlayList.swift in Sources */,
+				CF45964E251B9C590062158D /* BaseViewController.swift in Sources */,
+				CF459656251B9CF00062158D /* BaseTableViewHeaderFooter.swift in Sources */,
+				CF7222EE251BA07700F22E0F /* HotNowCollectionViewCell.swift in Sources */,
+				CF646090251B952D00C03F2D /* UIColor+Extension.swift in Sources */,
+				CF646089251B90DE00C03F2D /* HomeViewController.swift in Sources */,
 				CF646059251B905D00C03F2D /* AppDelegate.swift in Sources */,
+				CF459654251B9CD60062158D /* BaseTableViewCell.swift in Sources */,
+				CF64609D251B974B00C03F2D /* TextManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

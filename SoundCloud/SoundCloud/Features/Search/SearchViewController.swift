@@ -1,19 +1,18 @@
 //
-//  ViewController.swift
+//  SearchViewController.swift
 //  SoundCloud
 //
-//  Created by Dang Trung Hieu on 9/23/20.
+//  Created by Dang Trung Hieu on 9/25/20.
 //  Copyright © 2020 Dang Trung Hieu. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class SearchViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+
     }
     
-
 }
