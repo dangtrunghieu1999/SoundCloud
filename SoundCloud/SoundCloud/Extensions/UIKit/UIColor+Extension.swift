@@ -11,92 +11,100 @@ import UIKit
 extension UIColor {
     
     class var background: UIColor {
-           return UIColor(hex: "#FF6D26")
-       }
-       
-       class var lightBackground: UIColor {
-           return UIColor(hex: "#EFEFEF")
-       }
-       
-       class var primary: UIColor {
-           return UIColor(hex: "#006699")
-       }
-       
-       class var titleText: UIColor {
-           return UIColor(hex: "#1F1F1F")
-       }
-       
-       class var bodyText: UIColor {
-           return UIColor(hex: "#696969")
-       }
-       
-       class var lightBodyText: UIColor {
-           return UIColor(hex: "#787878")
-       }
-       
-       class var lightSeparator: UIColor {
-           return UIColor(hex: "#E9E9E9")
-       }
-       
-       class var separator: UIColor {
-           return UIColor(hex: "#D6D6D6")
-       }
-
-       class var ratingColor: UIColor {
-           return UIColor(hex: "#E9D700")
-       }
-       
-       class var accentColor: UIColor {
-           return UIColor(hex: "#FF6639")
-       }
-       
-       class var darkAccentColor: UIColor {
-           return UIColor(hex: "#DA0707")
-       }
-
-       class var tabbarTitle: UIColor {
-           return UIColor(hex: "#D4D0D0")
-       }
-       
-       class var lightDisable: UIColor {
-           return UIColor(hex: "#EAEAEA")
-       }
-       
-       class var disable: UIColor {
-           return UIColor(hex: "#D8D8D8")
-       }
-
-       class var tableBackground: UIColor {
-           return UIColor(hex: "#F4F4F4")
-       }
-       
-       class var buttonBackgroundActive: UIColor {
-           return UIColor(hex: "#1975a3")
-       }
-       
-       class var link: UIColor {
-           return UIColor(hex: "#1da9fe")
-       }
-       
-       class var darkBackgroundColor: UIColor {
-           return UIColor(hex: "#888888")
-       }
-       
-       class var placeholder: UIColor {
-           return UIColor.lightBodyText.withAlphaComponent(0.5)
-       }
-       
-       class var shimmerBGColor: UIColor {
-           return UIColor.lightGray.withAlphaComponent(0.35)
-       }
-       
-       class var scrollMenu: UIColor {
-           return UIColor(hex: "#F5F5F5")
-       }
-       
-       class var messageBackground: UIColor {
-           return UIColor(hex: "EFF1F3")
-       }
+        return UIColor(hex: "#FF6D26")
+    }
+    
+    class var lightBackground: UIColor {
+        return UIColor(hex: "#EFEFEF")
+    }
+    
+    class var primary: UIColor {
+        return UIColor(hex: "#006699")
+    }
+    
+    class var titleText: UIColor {
+        return UIColor(hex: "#1F1F1F")
+    }
+    
+    class var bodyText: UIColor {
+        return UIColor(hex: "#696969")
+    }
+    
+    class var lightBodyText: UIColor {
+        return UIColor(hex: "#787878")
+    }
+    
+    class var lightSeparator: UIColor {
+        return UIColor(hex: "#E9E9E9")
+    }
+    
+    class var separator: UIColor {
+        return UIColor(hex: "#D6D6D6")
+    }
+    
+    class var ratingColor: UIColor {
+        return UIColor(hex: "#E9D700")
+    }
+    
+    class var accentColor: UIColor {
+        return UIColor(hex: "#FF6639")
+    }
+    
+    class var darkAccentColor: UIColor {
+        return UIColor(hex: "#DA0707")
+    }
+    
+    class var tabbarTitle: UIColor {
+        return UIColor(hex: "#D4D0D0")
+    }
+    
+    class var lightDisable: UIColor {
+        return UIColor(hex: "#EAEAEA")
+    }
+    
+    class var disable: UIColor {
+        return UIColor(hex: "#D8D8D8")
+    }
+    
+    class var tableBackground: UIColor {
+        return UIColor(hex: "#F4F4F4")
+    }
+    
+    class var buttonBackgroundActive: UIColor {
+        return UIColor(hex: "#1975a3")
+    }
+    
+    class var link: UIColor {
+        return UIColor(hex: "#1da9fe")
+    }
+    
+    class var darkBackgroundColor: UIColor {
+        return UIColor(hex: "#888888")
+    }
+    
+    class var placeholder: UIColor {
+        return UIColor.lightBodyText.withAlphaComponent(0.5)
+    }
+    
+    class var shimmerBGColor: UIColor {
+        return UIColor.lightGray.withAlphaComponent(0.35)
+    }
+    
+    class var scrollMenu: UIColor {
+        return UIColor(hex: "#F5F5F5")
+    }
+    
+    class var messageBackground: UIColor {
+        return UIColor(hex: "EFF1F3")
+    }
+    
+    class var yellow: UIColor {
+        return UIColor(hex: "009688")
+    }
+    
+    class var orange: UIColor {
+        return UIColor(hex: "FF9800")
+    }
     
 }
 
