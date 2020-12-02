@@ -147,6 +147,15 @@
 			path = UIView;
 			sourceTree = "<group>";
 		};
+		CF606FAD257748030001101F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CF7222EF251BA09600F22E0F /* ItemCollectionViewCell.swift */,
+				CF7222F1251BA0BF00F22E0F /* ArtistItemCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		CF64604C251B905D00C03F2D = {
 			isa = PBXGroup;
 			children = (
@@ -242,11 +251,10 @@
 		CF64609E251B977C00C03F2D /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				CF606FAD257748030001101F /* Cell */,
 				CF45964A251B9C1D0062158D /* HotNow */,
 				CF459649251B9C190062158D /* Mood */,
 				CF459648251B9C090062158D /* Artist */,
-				CF7222EF251BA09600F22E0F /* ItemCollectionViewCell.swift */,
-				CF7222F1251BA0BF00F22E0F /* ArtistItemCollectionViewCell.swift */,
 				CF459657251B9D190062158D /* HomeCollectionViewHeaderCell.swift */,
 				CF646088251B90DE00C03F2D /* HomeViewController.swift */,
 			);
