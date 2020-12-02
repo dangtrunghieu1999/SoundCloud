@@ -201,7 +201,6 @@
 			isa = PBXGroup;
 			children = (
 				CF6460A3251B97AB00C03F2D /* PlayList */,
-				CF6460A2251B97A200C03F2D /* TabBar */,
 				CF6460A1251B979900C03F2D /* Profile */,
 				CF6460A0251B978F00C03F2D /* Search */,
 				CF64609F251B978700C03F2D /* Music */,
@@ -276,13 +275,6 @@
 				CFC8E547251D81470080FC15 /* ProfileViewController.swift */,
 			);
 			path = Profile;
-			sourceTree = "<group>";
-		};
-		CF6460A2251B97A200C03F2D /* TabBar */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TabBar;
 			sourceTree = "<group>";
 		};
 		CF6460A3251B97AB00C03F2D /* PlayList */ = {
