@@ -2,7 +2,7 @@
 //  HomeCollectionViewHeaderCell.swift
 //  SoundCloud
 //
-//  Created by Dang Trung Hieu on 9/23/20.
+//  Created by Dang Trung Hieu on 12/3/20.
 //  Copyright © 2020 Dang Trung Hieu. All rights reserved.
 //
 
@@ -56,7 +56,7 @@ class HomeCollectionViewHeaderCell: BaseCollectionViewHeaderFooterCell {
     private func layoutTitleLabel() {
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(Dimension.shared.mediumMargin)
             make.left.equalToSuperview().offset(Dimension.shared.largeMargin)
         }
     }

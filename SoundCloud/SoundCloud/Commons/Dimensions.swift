@@ -40,7 +40,7 @@ class Dimension {
     }
     
     var normalMargin: CGFloat {
-        return 15 * self.widthScale
+        return 16 * self.widthScale
     }
     
     var largeMargin: CGFloat {

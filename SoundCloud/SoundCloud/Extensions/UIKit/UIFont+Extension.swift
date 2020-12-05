@@ -10,7 +10,7 @@ import UIKit
 
 enum FontSize: CGFloat {
     case superHeadline  = 36.0
-    case headline       = 26.0
+    case headline       = 24.0
     case mediumLine     = 22.0
     
     case title          = 20.0

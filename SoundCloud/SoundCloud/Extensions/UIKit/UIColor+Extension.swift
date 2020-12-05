@@ -11,11 +11,11 @@ import UIKit
 extension UIColor {
     
     class var background: UIColor {
-        return UIColor(hex: "#FF6D26")
+        return UIColor(hex: "#262626")
     }
     
-    class var lightBackground: UIColor {
-        return UIColor(hex: "#EFEFEF")
+    class var mainBackground: UIColor {
+        return UIColor(hex: "#191919")
     }
     
     class var primary: UIColor {

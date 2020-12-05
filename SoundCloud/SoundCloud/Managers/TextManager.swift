@@ -10,9 +10,9 @@ import Foundation
 
 final class TextManager {
     
-    static let hotNow                           = "Hots now"
-    static let mood                             = "Mood"
-    static let popular_artist                   = "Popular artist"
+    static let timeline                             = "Good afternoon"
+    static let recently                             = "Recently player"
+    static let madeyou                              = "Made for You"
 
 }
 

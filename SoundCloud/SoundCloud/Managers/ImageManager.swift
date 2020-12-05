@@ -11,12 +11,12 @@ import UIKit
 final class ImageManager {
     
     
-    static let home_icon                        = UIImage(named: "home")
-    static let music                            = UIImage(named: "music")
+    static let home                             = UIImage(named: "home")
     static let search                           = UIImage(named: "search")
-    static let profile                          = UIImage(named: "profile")
-    static let icon_owner                       = UIImage(named: "icon_owner")
-
+    static let library                          = UIImage(named: "library")
+    static let back                             = UIImage(named: "back")
+    static let setting                          = UIImage(named: "setting")
+    
 
     
     

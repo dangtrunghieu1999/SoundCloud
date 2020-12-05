@@ -8,14 +8,14 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
     
-    // MARK: - Helper Type
+    // MARK:- Help Type
     
     enum HomeCategory: Int {
-        case hotNow             = 0
-        case mood               = 1
-        case popular            = 2
+        case timeline           = 0
+        case recently           = 1
+        case madeyou            = 2
         
         static func numberOfSections() -> Int {
             return 3
@@ -23,35 +23,22 @@ class HomeViewController: UIViewController {
         
         var title: String {
             switch self {
-            case .hotNow:
-                return TextManager.hotNow
-            case .mood:
-                return TextManager.mood
-            case .popular:
-                return TextManager.popular_artist
+            case .timeline:
+                return TextManager.timeline
+            case .recently:
+                return TextManager.recently
+            case .madeyou:
+                return TextManager.madeyou
             }
         }
         var color: UIColor {
-            switch self {
-            case .hotNow:
-                return UIColor.background
-            default:
-                return UIColor.titleText
-            }
+            return UIColor.white
         }
         
         var font: UIFont {
-            switch self {
-            case .hotNow:
-                return UIFont.systemFont(ofSize: FontSize.headline.rawValue)
-            default:
-                return UIFont.systemFont(ofSize: FontSize.mediumLine.rawValue)
-            }
+            return UIFont.systemFont(ofSize: FontSize.headline.rawValue, weight: .bold)
         }
     }
-    
-    // MARK: - Variables
-    
     
     // MARK: - UI Elements
     
@@ -60,30 +47,25 @@ class HomeViewController: UIViewController {
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = UIColor.clear
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.registerReusableCell(HotNowCollectionViewCell.self)
-        collectionView.registerReusableCell(MoodCollectionViewCell.self)
-        collectionView.registerReusableCell(ArtistCollectionViewCell.self)
+        collectionView.registerReusableCell(TimeLineCollectionViewCell.self)
+        collectionView.registerReusableCell(RecentlyPlayedCollectionViewCell.self)
+        collectionView.registerReusableCell(MadeForYouCollectionViewCell.self)
         collectionView.registerReusableSupplementaryView(HomeCollectionViewHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
         return collectionView
     }()
+    
     
     // MARK: - View LifeCycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setRightNavigationBar(ImageManager.setting)
         layoutHomeCollectionView()
-        
     }
-    
-    // MARK:- Helper Method
-    
-    // MARK: - UI Actions
-    
-    // MARK: - Public Method
     
     // MARK: - Layouts
     
@@ -98,26 +80,6 @@ class HomeViewController: UIViewController {
             make.left.right.bottom.equalToSuperview()
         }
     }
-    
-}
-
-// MARK: - UICollectionViewDelegateFlowLayout
-
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 30)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let homeType = HomeCategory(rawValue: indexPath.section)
-        if homeType == .popular {
-            return CGSize(width: collectionView.frame.width, height: 200)
-        } else {
-            return CGSize(width: collectionView.frame.width, height: 230)
-        }
-    }
-    
 }
 
 // MARK: - UICollectionViewDelegate
@@ -128,7 +90,7 @@ extension HomeViewController: UICollectionViewDelegate {
 
 // MARK: - UICollectionViewDataSource
 
-extension HomeViewController: UICollectionViewDataSource  {
+extension HomeViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return HomeCategory.numberOfSections()
@@ -139,23 +101,20 @@ extension HomeViewController: UICollectionViewDataSource  {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         guard let homeType = HomeCategory(rawValue: indexPath.section) else {
             return UICollectionViewCell()
         }
-        
         switch homeType {
-        case .hotNow:
-            let cell: HotNowCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        case .timeline:
+            let cell: TimeLineCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             return cell
-        case .mood:
-            let cell: MoodCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        case .recently:
+            let cell: RecentlyPlayedCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             return cell
-        case .popular:
-            let cell: ArtistCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        case .madeyou:
+            let cell: MadeForYouCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             return cell
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -166,5 +125,23 @@ extension HomeViewController: UICollectionViewDataSource  {
         header.titleColor = HomeCategory(rawValue: indexPath.section)?.color
         header.fontSize   = HomeCategory(rawValue: indexPath.section)?.font
         return header
+    }
+}
+
+// MARK: - UICollectionViewFlowLayout
+
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 50)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let homeType = HomeCategory(rawValue: indexPath.section)
+        if homeType == .timeline {
+            return CGSize(width: collectionView.frame.width, height: 220)
+        } else {
+            return CGSize(width: collectionView.frame.width, height: 200)
+        }
     }
 }

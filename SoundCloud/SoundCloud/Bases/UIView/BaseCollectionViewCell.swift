@@ -41,7 +41,7 @@ open class BaseCollectionViewCell: UICollectionViewCell, Reusable {
     // MARK: - Layouts
     
     private func setupDefault() {
-        backgroundColor = UIColor.white
+        backgroundColor = UIColor.mainBackground
     }
    
 }
