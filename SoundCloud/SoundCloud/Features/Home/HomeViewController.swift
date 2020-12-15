@@ -15,10 +15,9 @@ class HomeViewController: BaseViewController {
     enum HomeCategory: Int {
         case timeline           = 0
         case recently           = 1
-        case madeyou            = 2
         
         static func numberOfSections() -> Int {
-            return 3
+            return 2
         }
         
         var title: String {
@@ -27,8 +26,6 @@ class HomeViewController: BaseViewController {
                 return TextManager.timeline
             case .recently:
                 return TextManager.recently
-            case .madeyou:
-                return TextManager.madeyou
             }
         }
         var color: UIColor {
@@ -53,7 +50,6 @@ class HomeViewController: BaseViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.registerReusableCell(TimeLineCollectionViewCell.self)
         collectionView.registerReusableCell(RecentlyPlayedCollectionViewCell.self)
-        collectionView.registerReusableCell(MadeForYouCollectionViewCell.self)
         collectionView.registerReusableSupplementaryView(HomeCollectionViewHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
         return collectionView
     }()
@@ -97,7 +93,13 @@ extension HomeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        let homeType = HomeCategory(rawValue: section)
+        switch homeType {
+        case .timeline:
+            return 1
+        default:
+            return 5
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -110,9 +112,6 @@ extension HomeViewController: UICollectionViewDataSource {
             return cell
         case .recently:
             let cell: RecentlyPlayedCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            return cell
-        case .madeyou:
-            let cell: MadeForYouCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             return cell
         }
     }
