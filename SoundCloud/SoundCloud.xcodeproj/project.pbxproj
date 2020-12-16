@@ -24,6 +24,8 @@
 		CF64609B251B972D00C03F2D /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64609A251B972D00C03F2D /* ImageManager.swift */; };
 		CF64609D251B974B00C03F2D /* TextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64609C251B974B00C03F2D /* TextManager.swift */; };
 		CF7222E8251B9E7D00F22E0F /* Dimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7222E7251B9E7D00F22E0F /* Dimensions.swift */; };
+		CFBED1822589B63500F19CD7 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBED1812589B63500F19CD7 /* PaddingTextField.swift */; };
+		CFBED1862589C3E000F19CD7 /* SearchPlayerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBED1852589C3E000F19CD7 /* SearchPlayerCollectionViewCell.swift */; };
 		CFC8E542251D80F50080FC15 /* ZTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC8E541251D80F50080FC15 /* ZTabBarViewController.swift */; };
 		CFC8E546251D81380080FC15 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC8E545251D81380080FC15 /* SearchViewController.swift */; };
 		CFC8E548251D81470080FC15 /* YourLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC8E547251D81470080FC15 /* YourLibraryViewController.swift */; };
@@ -59,6 +61,8 @@
 		CF64609A251B972D00C03F2D /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		CF64609C251B974B00C03F2D /* TextManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextManager.swift; sourceTree = "<group>"; };
 		CF7222E7251B9E7D00F22E0F /* Dimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimensions.swift; sourceTree = "<group>"; };
+		CFBED1812589B63500F19CD7 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
+		CFBED1852589C3E000F19CD7 /* SearchPlayerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlayerCollectionViewCell.swift; sourceTree = "<group>"; };
 		CFC8E541251D80F50080FC15 /* ZTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ZTabBarViewController.swift; path = SoundCloud/ZTabBarViewController.swift; sourceTree = SOURCE_ROOT; };
 		CFC8E545251D81380080FC15 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		CFC8E547251D81470080FC15 /* YourLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourLibraryViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 		CF45964B251B9C320062158D /* Bases */ = {
 			isa = PBXGroup;
 			children = (
+				CFBED1802589B61A00F19CD7 /* Custom */,
 				CF45964C251B9C3F0062158D /* UIView */,
 			);
 			path = Bases;
@@ -228,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				CFC8E545251D81380080FC15 /* SearchViewController.swift */,
+				CFBED1852589C3E000F19CD7 /* SearchPlayerCollectionViewCell.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -246,6 +252,14 @@
 				CF7222E7251B9E7D00F22E0F /* Dimensions.swift */,
 			);
 			path = Commons;
+			sourceTree = "<group>";
+		};
+		CFBED1802589B61A00F19CD7 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				CFBED1812589B63500F19CD7 /* PaddingTextField.swift */,
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 		CFD9B58625789F9C009DABBD /* ViewCell */ = {
@@ -397,6 +411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF646096251B95C100C03F2D /* UIFont+Extension.swift in Sources */,
+				CFBED1822589B63500F19CD7 /* PaddingTextField.swift in Sources */,
 				CFDD31782578E83700BF919E /* TrackModel.swift in Sources */,
 				CFDD317B2578F62300BF919E /* SongPlayerCollectionViewCell.swift in Sources */,
 				CF459652251B9CAD0062158D /* BaseCollectionViewCell.swift in Sources */,
@@ -406,6 +421,7 @@
 				CF646098251B95CF00C03F2D /* UITableView+Extension.swift in Sources */,
 				CF7222E8251B9E7D00F22E0F /* Dimensions.swift in Sources */,
 				CF64609B251B972D00C03F2D /* ImageManager.swift in Sources */,
+				CFBED1862589C3E000F19CD7 /* SearchPlayerCollectionViewCell.swift in Sources */,
 				CFC8E548251D81470080FC15 /* YourLibraryViewController.swift in Sources */,
 				CF459650251B9C7E0062158D /* BaseCollectionViewHeaderFooterCell.swift in Sources */,
 				CFF42C5F257891DB000E3DC2 /* RecentlyPlayedCollectionViewCell.swift in Sources */,

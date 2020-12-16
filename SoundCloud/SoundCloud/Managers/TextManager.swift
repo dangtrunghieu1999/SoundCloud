@@ -13,6 +13,7 @@ final class TextManager {
     static let timeline                             = "Good afternoon"
     static let recently                             = "Recently player"
     static let madeyou                              = "Made for You"
+    static let songPlayerHoler                      = "Song player holder"
 
 }
 
