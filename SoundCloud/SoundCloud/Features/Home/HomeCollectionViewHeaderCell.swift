@@ -51,6 +51,10 @@ class HomeCollectionViewHeaderCell: BaseCollectionViewHeaderFooterCell {
     
     // MARK: - Public Method
     
+    public func configDataHeader(name: String?) {
+        self.titleLabel.text = name
+    }
+    
     // MARK: - Layouts
     
     private func layoutTitleLabel() {
