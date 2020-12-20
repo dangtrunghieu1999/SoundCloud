@@ -116,6 +116,5 @@ extension SearchViewController: UICollectionViewDataSource {
         cell.configCell(songImage: UIImage(named: imageModel[indexPath.row]))
         return cell
     }
-    
 }
 
