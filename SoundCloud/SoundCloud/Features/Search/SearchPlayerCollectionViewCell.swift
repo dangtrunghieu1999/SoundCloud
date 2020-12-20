@@ -38,9 +38,9 @@ class SearchPlayerCollectionViewCell: BaseCollectionViewCell {
     private func layoutSongSearchImageView() {
         addSubview(songSearchImageView)
         songSearchImageView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(Dimension.shared.largeMargin_25)
+            make.top.equalToSuperview()
             make.left.right.equalToSuperview()
-            make.height.equalTo(105)
+            make.bottom.equalToSuperview().offset(-Dimension.shared.normalMargin)
         }
     }
 }

@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Charts.png",
+      "filename" : "Rock.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Rock@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Rock@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

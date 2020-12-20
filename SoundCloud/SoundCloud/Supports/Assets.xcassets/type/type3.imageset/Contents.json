@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Comedy.png",
+      "filename" : "Study Jams.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Study Jams@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Study Jams@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

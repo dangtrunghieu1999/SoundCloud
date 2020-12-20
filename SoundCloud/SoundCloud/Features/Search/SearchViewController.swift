@@ -13,9 +13,8 @@ class SearchViewController: BaseViewController {
     
     // MARK: - Variables
     
-    fileprivate lazy var searchTitleModel: [String] = ["Dance","Hiphop","Edm"]
-    fileprivate lazy var imageModel: [String] = ["type1", "type2", "type3", "type4", "type5", "type6"]
-
+    fileprivate lazy var imageModel: [String] = ["type1", "type2", "type3", "type4", "type5", "type6", "type7", "type8", "type5", "type6", "type7", "type8"]
+    
     // MARK: - UI Elemenets
     
     private lazy var searchTextField: PaddingTextField = {
@@ -35,19 +34,17 @@ class SearchViewController: BaseViewController {
     
     fileprivate lazy var searchCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 16
+        layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 16
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.showsVerticalScrollIndicator = false
         collectionView.registerReusableCell(SearchPlayerCollectionViewCell.self)
-        collectionView.registerReusableSupplementaryView(HomeCollectionViewHeaderCell.self,
-                                                         forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
         collectionView.backgroundColor = .clear
         return collectionView
     }()
-
+    
     
     
     // MARK: - View LifeCycles
@@ -83,49 +80,42 @@ class SearchViewController: BaseViewController {
         searchCollectionView.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
             make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
-            make.bottom.equalToSuperview().offset(-Dimension.shared.largeMargin_50)
+            if #available(iOS 11, *) {
+                make.bottom.equalTo(view.snp_bottomMargin)
+            } else {
+                make.bottom.equalTo(bottomLayoutGuide.snp.top)
+            }
             make.top.equalTo(searchTextField.snp.bottom).offset(Dimension.shared.largeMargin)
         }
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
+
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (collectionView.frame.width - 16) / 2
-        return CGSize(width: width, height: 150)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 20)
+        return CGSize(width: width, height: 125)
     }
 }
 
+// MARK: - UICollectionViewDataSource
 
 extension SearchViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return imageModel.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: SearchPlayerCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.configCell(songImage: UIImage(named: imageModel[indexPath.section]))
+        cell.configCell(songImage: UIImage(named: imageModel[indexPath.row]))
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-
-        let header: HomeCollectionViewHeaderCell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
-                                                                                                   for: indexPath)
-            header.configDataHeader(name: searchTitleModel[indexPath.section])
-            header.titleColor = UIColor.white
-            header.fontSize = UIFont.systemFont(ofSize: FontSize.h2.rawValue, weight: .bold)
-        
-        return header
-    }
 }
 

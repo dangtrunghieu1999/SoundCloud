@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Artwork.png",
+      "filename" : "YouTubers.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "YouTubers@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "YouTubers@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

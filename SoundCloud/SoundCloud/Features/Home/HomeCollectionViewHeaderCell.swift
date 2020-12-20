@@ -50,18 +50,14 @@ class HomeCollectionViewHeaderCell: BaseCollectionViewHeaderFooterCell {
     // MARK: - UI Actions
     
     // MARK: - Public Method
-    
-    public func configDataHeader(name: String?) {
-        self.titleLabel.text = name
-    }
-    
+        
     // MARK: - Layouts
     
     private func layoutTitleLabel() {
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(Dimension.shared.mediumMargin)
-            make.left.equalToSuperview().offset(Dimension.shared.largeMargin)
+            make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
         }
     }
     
