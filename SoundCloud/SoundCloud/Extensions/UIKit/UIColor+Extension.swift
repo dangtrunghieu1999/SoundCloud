@@ -74,38 +74,9 @@ extension UIColor {
         return UIColor(hex: "#1975a3")
     }
     
-    class var link: UIColor {
-        return UIColor(hex: "#1da9fe")
+    class var spotifyGreen: UIColor {
+        return UIColor(hex: "#57B560")
     }
-    
-    class var darkBackgroundColor: UIColor {
-        return UIColor(hex: "#888888")
-    }
-    
-    class var placeholder: UIColor {
-        return UIColor.lightBodyText.withAlphaComponent(0.5)
-    }
-    
-    class var shimmerBGColor: UIColor {
-        return UIColor.lightGray.withAlphaComponent(0.35)
-    }
-    
-    class var scrollMenu: UIColor {
-        return UIColor(hex: "#F5F5F5")
-    }
-    
-    class var messageBackground: UIColor {
-        return UIColor(hex: "EFF1F3")
-    }
-    
-    class var yellow: UIColor {
-        return UIColor(hex: "009688")
-    }
-    
-    class var orange: UIColor {
-        return UIColor(hex: "FF9800")
-    }
-    
 }
 
 // MARK: - Support Method

@@ -10,6 +10,19 @@
 
 import UIKit
 
+class MusicViewController: BaseViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
+
+class PodcastViewController: BaseViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
+
+
 class YourLibraryViewController: BaseViewController {
 
     override func viewDidLoad() {
