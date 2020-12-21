@@ -12,11 +12,15 @@ class YourHomeViewController: BaseViewController {
     
     // MARK: - Variables
     
-    let menuBar = MenuBar()
     let music: [[Track]] = [playlists, artists, albums]
-    let colors: [UIColor] = [.systemRed, .systemBlue, .systemTeal]
     
     // MARK: - UI Elements
+    
+    fileprivate lazy var menuBar: MenuBar = {
+        let menuBar = MenuBar()
+        menuBar.delegate = self
+        return menuBar
+    }()
     
     fileprivate lazy var yourHomeCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -26,6 +30,8 @@ class YourHomeViewController: BaseViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.isPagingEnabled = true
+        collectionView.delegate = self
+        collectionView.dataSource = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.registerReusableCell(PlaylistCollectionViewCell.self)
         return collectionView
@@ -58,14 +64,29 @@ class YourHomeViewController: BaseViewController {
         view.addSubview(yourHomeCollectionView)
         yourHomeCollectionView.snp.makeConstraints { (make) in
             make.top.equalTo(menuBar.snp.bottom).offset(Dimension.shared.mediumMargin)
-            make.left.right.bottom.equalToSuperview()
+            make.left.right.equalToSuperview()
+            if #available(iOS 11, *) {
+                make.bottom.equalTo(view.snp_bottomMargin).offset(-Dimension.shared.normalMargin)
+            } else {
+                make.bottom.equalTo(bottomLayoutGuide.snp.top).offset(-Dimension.shared.normalMargin)
+            }
         }
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
+
 extension YourHomeViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: collectionView.frame.height)
+    }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        menuBar.scrollIndicator(to: scrollView.contentOffset)
+    }
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension YourHomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -74,8 +95,16 @@ extension YourHomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: PlaylistCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.backgroundColor = colors[indexPath.item]
         cell.tracks = music[indexPath.item]
         return cell
+    }
+}
+
+// MARK: - MenuBarDelegate
+
+extension YourHomeViewController: MenuBarDelegate {
+    func didSelectItemAt(index: Int) {
+        let indexPath = IndexPath(item: index, section: 0)
+        yourHomeCollectionView.scrollToItem(at: indexPath, at: [], animated: true)
     }
 }

@@ -23,13 +23,13 @@ class TrackCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
-    
     // MARK: - UI Elements
     
     fileprivate lazy var trackImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = 10
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -47,6 +47,7 @@ class TrackCollectionViewCell: BaseCollectionViewCell {
         label.font = UIFont.preferredFont(forTextStyle: .subheadline)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
+        label.textColor = .white
         label.alpha = 0.7
         return label
     }()
@@ -65,8 +66,9 @@ class TrackCollectionViewCell: BaseCollectionViewCell {
     private func layoutTrackImageView() {
         addSubview(trackImageView)
         trackImageView.snp.makeConstraints { (make) in
-            make.top.left.equalToSuperview()
+            make.top.equalToSuperview()
             make.width.height.equalTo(72)
+            make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
         }
     }
 

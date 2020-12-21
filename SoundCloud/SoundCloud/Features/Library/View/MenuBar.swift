@@ -248,6 +248,5 @@ func makeButton(withText text: String) -> UIButton {
     button.setTitle(text, for: .normal)
     button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
     button.titleLabel?.adjustsFontSizeToFitWidth = true
-    
     return button
 }

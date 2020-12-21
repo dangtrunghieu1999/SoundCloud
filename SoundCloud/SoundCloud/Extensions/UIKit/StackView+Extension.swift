@@ -26,7 +26,6 @@ func makeStackView(axis: NSLayoutConstraint.Axis) -> UIStackView {
     stack.translatesAutoresizingMaskIntoConstraints = false
     stack.axis = axis
     stack.spacing = 8.0
-
     return stack
 }
 

@@ -12,21 +12,39 @@ class PlaylistCollectionViewCell: BaseCollectionViewCell {
     
     var tracks: [Track]?
     
-    fileprivate lazy var yourHomeCollectionView: UICollectionView = {
+    // MARK: - UI Elements
+    
+    fileprivate lazy var playListCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 16
         layout.minimumInteritemSpacing = 0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
+        collectionView.delegate = self
+        collectionView.dataSource = self
         collectionView.registerReusableCell(TrackCollectionViewCell.self)
         return collectionView
     }()
     
+    // MARK: - View LifeCycles
+    
     override func initialize() {
         super.initialize()
+        layoutPlayListCollectionView()
+    }
+    
+    // MARK: - Layout
+    
+    private func layoutPlayListCollectionView() {
+        addSubview(playListCollectionView)
+        playListCollectionView.snp.makeConstraints { (make) in
+            make.top.left.right.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-Dimension.shared.largeMargin_90)
+        }
     }
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension PlaylistCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -41,13 +59,13 @@ extension PlaylistCollectionViewCell: UICollectionViewDataSource {
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
+
 extension PlaylistCollectionViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: frame.width, height: 80)
     }
 }
-
-
 
 struct Track {
     let imageName: String
