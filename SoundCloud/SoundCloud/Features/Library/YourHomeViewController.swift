@@ -66,23 +66,11 @@ class YourHomeViewController: BaseViewController {
             make.top.equalTo(menuBar.snp.bottom).offset(Dimension.shared.mediumMargin)
             make.left.right.equalToSuperview()
             if #available(iOS 11, *) {
-                make.bottom.equalTo(view.snp_bottomMargin).offset(-Dimension.shared.normalMargin)
+                make.bottom.equalTo(view.snp_bottomMargin).offset(-Dimension.shared.largeMargin_50)
             } else {
-                make.bottom.equalTo(bottomLayoutGuide.snp.top).offset(-Dimension.shared.normalMargin)
+                make.bottom.equalTo(bottomLayoutGuide.snp.top).offset(-Dimension.shared.largeMargin_50)
             }
         }
-    }
-}
-
-// MARK: - UICollectionViewDelegateFlowLayout
-
-extension YourHomeViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: collectionView.frame.height)
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        menuBar.scrollIndicator(to: scrollView.contentOffset)
     }
 }
 
@@ -97,6 +85,18 @@ extension YourHomeViewController: UICollectionViewDataSource {
         let cell: PlaylistCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
         cell.tracks = music[indexPath.item]
         return cell
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension YourHomeViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: collectionView.frame.height)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        menuBar.scrollIndicator(to: scrollView.contentOffset)
     }
 }
 

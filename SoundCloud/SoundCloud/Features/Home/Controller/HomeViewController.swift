@@ -40,17 +40,13 @@ class HomeViewController: BaseViewController {
     // MARK: - Fetch Data
     
     func fetchJson (){
-        print("attempt to fetch Json")
         if let path = Bundle.main.path(forResource: "data", ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
                 let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
                 if let jsonResult = jsonResult as? [ Any] {
-                    // do stuff
                     jsonResult.forEach { (item) in
-                        
                         let section = SectionTitle(dictionary: item as! [String : Any])
-                        // print("FEtching",section.playlists)
                         self.sections.append(section)
                     }
                     self.homeCollectionView.reloadData()

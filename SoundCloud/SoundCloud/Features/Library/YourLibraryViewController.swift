@@ -57,18 +57,16 @@ class YourLibraryViewController: BaseViewController {
     func setupViews() {
         guard let containerView = container.view else { return }
         containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.backgroundColor = UIColor.mainBackground
         view.addSubview(containerView)
         containerView.snp.makeConstraints { (make) in
             if #available(iOS 11, *) {
                 make.top.equalTo(view.safeAreaLayoutGuide).offset(Dimension.shared.smallMargin)
-                make.bottom.equalTo(view.snp_bottomMargin).offset(-Dimension.shared.normalMargin)
             } else {
                 make.top.equalTo(topLayoutGuide.snp.bottom).offset(Dimension.shared.smallMargin)
-                make.bottom.equalTo(bottomLayoutGuide.snp.top).offset(-Dimension.shared.normalMargin)
             }
-            make.left.right.equalToSuperview()
+            make.left.bottom.right.equalToSuperview()
         }
+        musicTapped()
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -88,15 +86,10 @@ class YourLibraryViewController: BaseViewController {
         
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: selector, for: .primaryActionTriggered)
-        var attributes: [NSAttributedString.Key: NSObject] = [:]
-        if #available(iOS 11.0, *) {
-            attributes = [
-                NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .largeTitle).withTraits(traits: [.traitBold]),
-                NSAttributedString.Key.foregroundColor: UIColor.white]
-        } else {
-            // Fallback on earlier versions
-        }
         
+        let attributes = [
+            NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .largeTitle).withTraits(traits: [.traitBold]),
+            NSAttributedString.Key.foregroundColor: UIColor.white]
         let attributedText = NSMutableAttributedString(string: text, attributes: attributes)
         
         button.setAttributedTitle(attributedText, for: .normal)

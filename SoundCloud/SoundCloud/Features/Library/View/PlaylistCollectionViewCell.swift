@@ -38,8 +38,7 @@ class PlaylistCollectionViewCell: BaseCollectionViewCell {
     private func layoutPlayListCollectionView() {
         addSubview(playListCollectionView)
         playListCollectionView.snp.makeConstraints { (make) in
-            make.top.left.right.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-Dimension.shared.largeMargin_90)
+            make.edges.equalToSuperview()
         }
     }
 }
