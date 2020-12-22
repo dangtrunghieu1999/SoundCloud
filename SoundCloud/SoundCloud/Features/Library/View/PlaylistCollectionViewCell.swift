@@ -54,6 +54,7 @@ extension PlaylistCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: TrackCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
         cell.track = tracks?[indexPath.item]
+        
         return cell
     }
 }

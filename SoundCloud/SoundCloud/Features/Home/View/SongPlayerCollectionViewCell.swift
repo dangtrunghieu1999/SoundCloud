@@ -16,7 +16,6 @@ class SongPlayerCollectionViewCell: BaseCollectionViewCell {
         let imageView = UIImageView()
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 5
         return imageView
     }()
     

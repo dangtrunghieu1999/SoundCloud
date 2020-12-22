@@ -55,7 +55,7 @@ class BaseViewController: UIViewController {
     // MARK: - Setup UI
     
     func setupUIComponents() {
-        self.setupTabbar()
+//        self.setupTabbar()
         self.addBackButtonIfNeeded()
     }
     

@@ -18,8 +18,9 @@ final class ImageManager {
     static let setting                          = UIImage(named: "setting")
     static let searchPlayer                     = UIImage(named: "searchPlayer")
     static let mic                              = UIImage(named: "mic")
+    static let like                             = UIImage(named: "like")
+    static let more                             = UIImage(named: "more")
     
-
     
     
     
