@@ -14,6 +14,8 @@ final class TextManager {
     static let recently                             = "Recently player"
     static let madeyou                              = "Made for You"
     static let songPlayerHoler                      = "Song player holder"
-
+    static let signInTitle                          = "Hàng triệu bài hát. Miễn phí trên Spotify."
+    static let signUnFree                           = "ĐĂNG KÝ MIỄN PHÍ"
+    static let signIn                               = "ĐĂNG NHẬP"
 }
 

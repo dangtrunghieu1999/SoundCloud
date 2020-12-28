@@ -40,6 +40,8 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         self.setupUIComponents()
         view.backgroundColor = UIColor.mainBackground
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        UINavigationBar.appearance().shadowImage = UIImage()
     }
     
     // MARK: - UI Actions

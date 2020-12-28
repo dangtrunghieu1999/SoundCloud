@@ -20,7 +20,7 @@ final class ImageManager {
     static let mic                              = UIImage(named: "mic")
     static let like                             = UIImage(named: "like")
     static let more                             = UIImage(named: "more")
-    
+    static let logoSpotify                      = UIImage(named: "logoSpotify")
     
     
     
