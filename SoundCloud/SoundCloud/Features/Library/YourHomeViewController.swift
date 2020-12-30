@@ -12,7 +12,7 @@ class YourHomeViewController: BaseViewController {
     
     // MARK: - Variables
     
-    let music: [[Track]] = [playlists, artists, albums]
+    let music: [[TrackSong]] = [playlists, artists, albums]
     
     // MARK: - UI Elements
     

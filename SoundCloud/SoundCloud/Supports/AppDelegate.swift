@@ -18,6 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
+        FRadioPlayer.shared.isAutoPlay = true
+        FRadioPlayer.shared.enableArtwork = true
+        FRadioPlayer.shared.artworkSize = 600
 //        window?.rootViewController = ZTabBarViewController()
         window?.rootViewController = UINavigationController(rootViewController: SignInViewController())
         UITabBar.appearance().barTintColor = UIColor.background

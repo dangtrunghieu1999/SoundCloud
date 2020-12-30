@@ -42,6 +42,8 @@ class BaseViewController: UIViewController {
         view.backgroundColor = UIColor.mainBackground
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
         UINavigationBar.appearance().shadowImage = UIImage()
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
     
     // MARK: - UI Actions

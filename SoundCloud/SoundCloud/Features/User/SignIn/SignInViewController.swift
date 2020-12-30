@@ -68,7 +68,7 @@ class SignInViewController: BaseViewController {
     // MARK: - UI Action
     
     @objc private func tapOnSignUp() {
-        
+        navigationController?.pushViewController(SignUpViewController(), animated: true)
     }
     
     @objc private func tapOnSignIn() {
@@ -83,7 +83,7 @@ class SignInViewController: BaseViewController {
         logoImageView.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.width.height.equalTo(40)
-            make.centerY.equalToSuperview().offset(-Dimension.shared.largeMargin_50)
+            make.centerY.equalToSuperview().offset(-Dimension.shared.largeMargin_90)
         }
     }
     

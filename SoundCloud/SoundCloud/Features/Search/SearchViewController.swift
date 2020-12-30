@@ -118,3 +118,10 @@ extension SearchViewController: UICollectionViewDataSource {
     }
 }
 
+extension SearchViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = StationsViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+

@@ -10,7 +10,7 @@ import UIKit
 
 class PlaylistCollectionViewCell: BaseCollectionViewCell {
     
-    var tracks: [Track]?
+    var tracks: [TrackSong]?
     
     // MARK: - UI Elements
     
@@ -67,7 +67,7 @@ extension PlaylistCollectionViewCell: UICollectionViewDelegateFlowLayout {
     }
 }
 
-struct Track {
+struct TrackSong {
     let imageName: String
     let title: String
     let artist: String

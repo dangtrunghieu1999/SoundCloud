@@ -77,6 +77,10 @@ extension UIColor {
     class var spotifyGreen: UIColor {
         return UIColor(hex: "#57B560")
     }
+    
+    class var spotifyBrown: UIColor {
+        return UIColor(hex: "#333333")
+    }
 }
 
 // MARK: - Support Method

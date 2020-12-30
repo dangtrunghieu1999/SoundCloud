@@ -17,5 +17,9 @@ final class TextManager {
     static let signInTitle                          = "Hàng triệu bài hát. Miễn phí trên Spotify."
     static let signUnFree                           = "ĐĂNG KÝ MIỄN PHÍ"
     static let signIn                               = "ĐĂNG NHẬP"
+    static let signUp                               = "ĐĂNG KÝ"
+    static let dateOfBirth                          = "Ngày sinh"
+
+
 }
 

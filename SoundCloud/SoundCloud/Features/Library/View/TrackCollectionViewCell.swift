@@ -12,7 +12,7 @@ class TrackCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
     
-    var track: Track? {
+    var track: TrackSong? {
         didSet {
             guard let track = track else { return }
             let image = UIImage(named: track.imageName) ?? UIImage(named: "placeholder")!
