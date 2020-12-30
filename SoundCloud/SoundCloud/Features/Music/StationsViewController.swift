@@ -51,8 +51,6 @@ class StationsViewController: BaseViewController {
     
     let radioPlayer = RadioPlayer()
     
-    weak var nowPlayingViewController: NowPlayingViewController?
-    
     // MARK: - Lists
     
     var stations = [RadioStation]() {
@@ -213,29 +211,7 @@ class StationsViewController: BaseViewController {
             self.stations = stationsArray
         }
     }
-    
-    // MARK: - Segue
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "NowPlaying", let nowPlayingVC = segue.destination as? NowPlayingViewController else { return }
         
-        title = ""
-        
-        let newStation: Bool
-        
-        if let indexPath = (sender as? IndexPath) {
-            radioPlayer.station = searchController.isActive ? searchedStations[indexPath.row] : stations[indexPath.row]
-            newStation = radioPlayer.station != previousStation
-            previousStation = radioPlayer.station
-        } else {
-            newStation = false
-        }
-        
-        nowPlayingViewController = nowPlayingVC
-        nowPlayingVC.load(station: radioPlayer.station, track: radioPlayer.track, isNewStation: newStation)
-        nowPlayingVC.delegate = self
-    }
-    
     // MARK: - Private helpers
     
     private func stationsDidUpdate() {
@@ -374,9 +350,6 @@ extension StationsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
-        let vc = NowPlayingViewController()
-        navigationController?.pushViewController(vc, animated: true)
-//        performSegue(withIdentifier: "NowPlaying", sender: indexPath)
     }
 }
 
@@ -423,11 +396,9 @@ extension StationsViewController: UISearchResultsUpdating {
 extension StationsViewController: RadioPlayerDelegate {
     
     func playerStateDidChange(_ playerState: FRadioPlayerState) {
-        nowPlayingViewController?.playerStateDidChange(playerState, animate: true)
     }
     
     func playbackStateDidChange(_ playbackState: FRadioPlaybackState) {
-        nowPlayingViewController?.playbackStateDidChange(playbackState, animate: true)
         startNowPlayingAnimation(radioPlayer.player.isPlaying)
     }
     
@@ -435,12 +406,10 @@ extension StationsViewController: RadioPlayerDelegate {
         updateLockScreen(with: track)
         updateNowPlayingButton(station: radioPlayer.station, track: track)
         updateHandoffUserActivity(userActivity, station: radioPlayer.station, track: track)
-        nowPlayingViewController?.updateTrackMetadata(with: track)
     }
     
     func trackArtworkDidUpdate(_ track: Track?) {
         updateLockScreen(with: track)
-        nowPlayingViewController?.updateTrackArtwork(with: track)
     }
 }
 
@@ -473,39 +442,5 @@ extension StationsViewController {
         components.queryItems = [URLQueryItem]()
         components.queryItems?.append(URLQueryItem(name: "q", value: "\(track.artist) \(track.title)"))
         return components.url
-    }
-}
-
-// MARK: - NowPlayingViewControllerDelegate
-
-extension StationsViewController: NowPlayingViewControllerDelegate {
-    
-    func didPressPlayingButton() {
-        radioPlayer.player.togglePlaying()
-    }
-    
-    func didPressStopButton() {
-        radioPlayer.player.stop()
-    }
-    
-    func didPressNextButton() {
-        guard let index = getIndex(of: radioPlayer.station) else { return }
-        radioPlayer.station = (index + 1 == stations.count) ? stations[0] : stations[index + 1]
-        handleRemoteStationChange()
-    }
-    
-    func didPressPreviousButton() {
-        guard let index = getIndex(of: radioPlayer.station) else { return }
-        radioPlayer.station = (index == 0) ? stations.last : stations[index - 1]
-        handleRemoteStationChange()
-    }
-    
-    func handleRemoteStationChange() {
-        if let nowPlayingVC = nowPlayingViewController {
-            nowPlayingVC.load(station: radioPlayer.station, track: radioPlayer.track)
-            nowPlayingVC.stationDidChange()
-        } else if let station = radioPlayer.station {
-            radioPlayer.player.radioURL = URL(string: station.streamURL)
-        }
     }
 }
