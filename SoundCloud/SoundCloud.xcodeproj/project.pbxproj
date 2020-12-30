@@ -27,6 +27,7 @@
 		CF459652251B9CAD0062158D /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF459651251B9CAD0062158D /* BaseCollectionViewCell.swift */; };
 		CF459654251B9CD60062158D /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF459653251B9CD60062158D /* BaseTableViewCell.swift */; };
 		CF459656251B9CF00062158D /* BaseTableViewHeaderFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF459655251B9CF00062158D /* BaseTableViewHeaderFooter.swift */; };
+		CF516C77259C42A400B47728 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF516C76259C42A400B47728 /* Main.storyboard */; };
 		CF646059251B905D00C03F2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF646058251B905D00C03F2D /* AppDelegate.swift */; };
 		CF646065251B905E00C03F2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF646063251B905E00C03F2D /* LaunchScreen.storyboard */; };
 		CF646089251B90DE00C03F2D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF646088251B90DE00C03F2D /* HomeViewController.swift */; };
@@ -109,6 +110,7 @@
 		CF459651251B9CAD0062158D /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF459653251B9CD60062158D /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		CF459655251B9CF00062158D /* BaseTableViewHeaderFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewHeaderFooter.swift; sourceTree = "<group>"; };
+		CF516C76259C42A400B47728 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CF646055251B905D00C03F2D /* SoundCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF646058251B905D00C03F2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF646064251B905E00C03F2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				CF646063251B905E00C03F2D /* LaunchScreen.storyboard */,
+				CF516C76259C42A400B47728 /* Main.storyboard */,
 			);
 			path = StoryBoards;
 			sourceTree = "<group>";
@@ -649,6 +652,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF516C77259C42A400B47728 /* Main.storyboard in Resources */,
 				CFEE6B392577FF9A00519368 /* Assets.xcassets in Resources */,
 				CFC1B554259B88E4004530F2 /* NothingFoundCell.xib in Resources */,
 				CFC1B5AB259B8C12004530F2 /* LogoShareView.xib in Resources */,

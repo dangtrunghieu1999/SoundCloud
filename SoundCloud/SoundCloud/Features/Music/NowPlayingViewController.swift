@@ -22,18 +22,6 @@ class NowPlayingViewController: UIViewController {
     weak var delegate: NowPlayingViewControllerDelegate?
 
     // MARK: - IB UI
-    
-    @IBOutlet weak var albumHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var albumImageView: SpringImageView!
-    @IBOutlet weak var artistLabel: UILabel!
-    @IBOutlet weak var playingButton: UIButton!
-    @IBOutlet weak var songLabel: SpringLabel!
-    @IBOutlet weak var stationDescLabel: UILabel!
-    @IBOutlet weak var volumeParentView: UIView!
-    @IBOutlet weak var previousButton: UIButton!
-    @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var airPlayView: UIView!
-    
     // MARK: - Properties
     
     var currentStation: RadioStation!
