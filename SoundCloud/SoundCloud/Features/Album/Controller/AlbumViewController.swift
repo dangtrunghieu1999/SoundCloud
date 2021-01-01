@@ -12,7 +12,7 @@ class AlbumViewController: BaseViewController {
     
     // MARK: - UI ELemenets
     
-    var tracks: [TrackSong] = playlists
+    var tracks: [Track] = [Track(imageName: "track1", title: "Hay trao cho anh", artist: "SonTungMTP")]
     
     fileprivate lazy var albumCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()

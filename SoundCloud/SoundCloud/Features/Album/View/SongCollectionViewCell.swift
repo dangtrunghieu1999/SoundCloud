@@ -10,7 +10,7 @@ import UIKit
 
 class SongCollectionViewCell: BaseCollectionViewCell {
     
-    var track: TrackSong? {
+    var track: Track? {
         didSet {
             guard let track = track else { return }
             let image = UIImage(named: track.imageName) ?? UIImage(named: "placeholder")!
@@ -113,3 +113,5 @@ class SongCollectionViewCell: BaseCollectionViewCell {
     }
 
 }
+
+

@@ -58,8 +58,7 @@ class HomeViewController: BaseViewController {
     }
     
     override func touchUpInRightBarButtonItem() {
-        let vc = AlbumViewController()
-        navigationController?.pushViewController(vc, animated: true)
+
     }
     
     // MARK: - Layouts

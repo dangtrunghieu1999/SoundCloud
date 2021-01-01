@@ -17,7 +17,7 @@ class HeaderViewCollectionReusableView: BaseCollectionViewHeaderFooterCell {
     
     var isFloating = false
     
-    var track: TrackSong? {
+    var track: Track? {
         didSet {
             guard let track = track else { return }
             let image = UIImage(named: track.imageName) ?? UIImage(named: "placeholder")!

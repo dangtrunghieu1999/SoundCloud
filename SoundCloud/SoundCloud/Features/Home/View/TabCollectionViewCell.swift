@@ -50,7 +50,7 @@ class TabCollectionViewCell: BaseCollectionViewCell {
         collectionView.dataSource = self
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.registerReusableCell(SongPlayerCollectionViewCell.self)
+        collectionView.registerReusableCell(PlayListCollectionViewCell.self)
         return collectionView
     }()
     
@@ -102,7 +102,7 @@ extension TabCollectionViewCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: SongPlayerCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        let cell: PlayListCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
         cell.configCell(song: playlists[indexPath.row])
         return cell
     }

@@ -1,5 +1,5 @@
 //
-//  RecentlyCellCollectionViewCell.swift
+//  PlayListCollectionViewCell.swift
 //  SoundCloud
 //
 //  Created by Dang Trung Hieu on 12/3/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SongPlayerCollectionViewCell: BaseCollectionViewCell {
+class PlayListCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - UI Elements
     
