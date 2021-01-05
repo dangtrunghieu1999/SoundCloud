@@ -28,12 +28,7 @@ struct MiniUser: ParserData, BaseUserProtocol {
         profileImageURL = user.profileImageURL
         uid = user.uid
     }
-    
-    //    init(user: UserSignUpInformation) {
-    //        displayName = user.displayName
-    //        profileImageURL = ""
-    //        uid = ""
-    //    }
+
     
     init(dict: [String: Any], uid: String) {
         self.uid = uid

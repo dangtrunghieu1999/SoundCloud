@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import SDWebImage
 
 @UIApplicationMain
 
@@ -19,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.rootViewController = ZTabBarViewController()
-//        window?.rootViewController = UINavigationController(rootViewController: SignInViewController())
+//        window?.rootViewController = UINavigationController(rootViewController: ())
         UITabBar.appearance().barTintColor = UIColor.background
         UINavigationBar.appearance().barStyle = .blackOpaque
         return true

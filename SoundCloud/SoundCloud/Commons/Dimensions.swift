@@ -138,5 +138,13 @@ class Dimension {
         return 40 * heightScale
     }
     
+    var heightTabar: CGFloat {
+        return 52
+    }
+    
+    var heightViewPlayMusic: CGFloat {
+        return 64 * heightScale
+    }
+    
 }
 

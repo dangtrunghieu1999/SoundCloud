@@ -58,7 +58,8 @@ class HomeViewController: BaseViewController {
     }
     
     override func touchUpInRightBarButtonItem() {
-
+        let vc = SettingViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     // MARK: - Layouts

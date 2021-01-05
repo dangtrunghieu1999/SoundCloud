@@ -18,29 +18,27 @@ class ViewPlaySong: BaseView {
     //MARK: UIControl
     private var imageSong: UIImageView = {
         let imageConfig = UIImageView()
-        
         imageConfig.contentMode = .scaleAspectFill
         imageConfig.clipsToBounds = true
-        
+        imageConfig.image = UIImage(named: "2020")
         return imageConfig
     }()
     
     private var nameLabel: UILabel = {
         let labelConfig = UILabel()
-        
         labelConfig.textColor = UIColor.white
         labelConfig.textAlignment = .left
         labelConfig.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .bold)
-        
+        labelConfig.text = "Hãy trao cho anh"
         return labelConfig
     }()
     
     private var disPlayNameLabel: UILabel = {
         let labelConfig = UILabel()
-        
         labelConfig.textColor = UIColor.white
         labelConfig.textAlignment = .left
         labelConfig.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
+        labelConfig.text = "Sơn Tùng MTP"
         return labelConfig
     }()
     

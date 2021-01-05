@@ -78,9 +78,6 @@ class MusicPlayer {
         self.player = AVPlayer(url: url)
         self.player?.play()
         
-        
-        //TODO: Play next song when end playing
-        NotificationCenter.default.addObserver(self, selector: #selector(MusicPlayer.nextPlay), name: .AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
     }
     
     @objc func nextPlay() {

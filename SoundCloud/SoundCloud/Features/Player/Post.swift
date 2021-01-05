@@ -18,7 +18,7 @@ class Post: BaseFirebaseNodeObjectProtocol, ParserData {
     
     var timeStamp: Double
     
-    var activities: PostActivities
+//    var activities: PostActivities
     
     //To containt user infomation to show in Newfeed
     var user: YLUser?
@@ -30,16 +30,16 @@ class Post: BaseFirebaseNodeObjectProtocol, ParserData {
         status = ""
         attachments = PostAttachments()
         timeStamp = 0
-        activities = PostActivities()
+//        activities = PostActivities()
         
         user = nil
     }
     
     convenience init?(dict: [String: Any], uid: String) {
         self.init()
-        if let activitiesDict = dict["activities"] as? [String: Any],
-            let activities = PostActivities.init(dict: activitiesDict),
-            let attachmentsDict = dict["attachments"] as? [String: Any],
+//        if let activitiesDict = dict["activities"] as? [String: Any],
+//            let activities = PostActivities.init(dict: activitiesDict),
+           if let attachmentsDict = dict["attachments"] as? [String: Any],
             let attachments = PostAttachments.init(dict: attachmentsDict),
             let ownerUID = dict["ownerUID"] as? String,
             let status = dict["status"] as? String,
@@ -47,7 +47,7 @@ class Post: BaseFirebaseNodeObjectProtocol, ParserData {
             let title = dict["title"] as? String {
             
             self.uid = uid
-            self.activities = activities
+//            self.activities = activities
             self.attachments = attachments
             self.ownerUID = ownerUID
             self.status = status
@@ -61,7 +61,7 @@ class Post: BaseFirebaseNodeObjectProtocol, ParserData {
     
     func transformToDictionary() -> Dictionary<String, Any> {
         return [
-            "activities": activities.transformToDictionary(),
+//            "activities": activities.transformToDictionary(),
             "attachments": attachments.transformToDictionary(),
             "ownerUID": ownerUID,
             "status": status,
@@ -99,50 +99,50 @@ struct PostAttachments: ParserData {
     }
 }
 
-class PostActivities: ParserData {
-    var likes: [String: Bool]
-    var commentCount: Int
-    var playCount: Int
-    var isLiked: Bool
-    var saves: [String: Bool]
-    var isSaved: Bool
-    
-    init() {
-        likes = [:]
-        isLiked = false
-        commentCount = 0
-        playCount = 0
-        saves = [:]
-        isSaved = false
-    }
-    
-    convenience init?(dict: [String: Any]) {
-        self.init()
-        if let commentCount = dict["commentCount"] as? Int, let playCount = dict["playCount"] as? Int {
-            self.likes = dict["likes"] as? [String: Bool] ?? [:]
-            if self.likes[YLUser.THIS_USER.uid] != nil {
-                self.isLiked = true
-            }
-            self.commentCount = commentCount
-            self.playCount = playCount
-            saves = dict["saves"] as? [String: Bool] ?? [:]
-            if saves[YLUser.THIS_USER.uid] != nil {
-                isSaved = true
-            }
-        } else {
-            return nil
-        }
-    }
-    
-    func transformToDictionary() -> Dictionary<String, Any> {
-        return [
-            "likes": likes,
-            "commentCount": commentCount,
-            "playCount": playCount,
-            "saves": saves
-        ]
-    }
-}
+//class PostActivities: ParserData {
+//    var likes: [String: Bool]
+//    var commentCount: Int
+//    var playCount: Int
+//    var isLiked: Bool
+//    var saves: [String: Bool]
+//    var isSaved: Bool
+//
+//    init() {
+//        likes = [:]
+//        isLiked = false
+//        commentCount = 0
+//        playCount = 0
+//        saves = [:]
+//        isSaved = false
+//    }
+//
+//    convenience init?(dict: [String: Any]) {
+//        self.init()
+//        if let commentCount = dict["commentCount"] as? Int, let playCount = dict["playCount"] as? Int {
+//            self.likes = dict["likes"] as? [String: Bool] ?? [:]
+//            if self.likes[YLUser.THIS_USER.uid] != nil {
+//                self.isLiked = true
+//            }
+//            self.commentCount = commentCount
+//            self.playCount = playCount
+//            saves = dict["saves"] as? [String: Bool] ?? [:]
+//            if saves[YLUser.THIS_USER.uid] != nil {
+//                isSaved = true
+//            }
+//        } else {
+//            return nil
+//        }
+//    }
+//
+//    func transformToDictionary() -> Dictionary<String, Any> {
+//        return [
+//            "likes": likes,
+//            "commentCount": commentCount,
+//            "playCount": playCount,
+//            "saves": saves
+//        ]
+//    }
+//}
 
 class NewPost: Post {
     

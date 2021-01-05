@@ -11,7 +11,7 @@ import UIKit
 class TabCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
-    
+        
     var sectionTitle: SectionTitle? {
         didSet{
             guard let section = self.sectionTitle else {return}
@@ -105,5 +105,11 @@ extension TabCollectionViewCell: UICollectionViewDataSource {
         let cell: PlayListCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
         cell.configCell(song: playlists[indexPath.row])
         return cell
+    }
+}
+
+extension TabCollectionViewCell: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        AppRouter.pushPlayList()
     }
 }

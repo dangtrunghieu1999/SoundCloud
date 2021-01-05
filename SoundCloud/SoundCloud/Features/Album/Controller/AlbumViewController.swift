@@ -11,9 +11,8 @@ import UIKit
 class AlbumViewController: BaseViewController {
     
     // MARK: - UI ELemenets
-    
-    var tracks: [Track] = [Track(imageName: "track1", title: "Hay trao cho anh", artist: "SonTungMTP")]
-    
+    private let tracks = TrackModel.tracks
+        
     fileprivate lazy var albumCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 16

@@ -120,7 +120,8 @@ extension SearchViewController: UICollectionViewDataSource {
 
 extension SearchViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
+        let vc = PlayerMusicViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
