@@ -11,9 +11,7 @@ import UIKit
 
 class ListPlaySongCell: BaseCollectionViewCell, BaseDetailSongMusic {
 
-    
-    
-    fileprivate var arrPost: [Post]?
+    fileprivate var arrSong: [SongTrack]?
     
     fileprivate lazy var listSongTableView: UITableView = {
         let tableView = UITableView()
@@ -34,7 +32,7 @@ class ListPlaySongCell: BaseCollectionViewCell, BaseDetailSongMusic {
     
     //MARK: Public function
     func setData(data: Any?) {
-        self.arrPost = MusicPlayer.shared.playListSong
+        self.arrSong = MusicPlayer.shared.playListSong
         self.listSongTableView.reloadData()
     }
     
@@ -59,21 +57,21 @@ class ListPlaySongCell: BaseCollectionViewCell, BaseDetailSongMusic {
 extension ListPlaySongCell: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.arrPost?.count ?? 0
+        return self.arrSong?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: InfomationPlaySongCell = tableView.dequeueReusableCell(for: indexPath)
         cell.setOrdinalNumber(index: indexPath.item)
-        cell.post = self.arrPost?[indexPath.item]
+        cell.song = self.arrSong?[indexPath.item]
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let newPost = self.arrPost?[indexPath.item] else { return }
+        guard let newSong = self.arrSong?[indexPath.item] else { return }
         
-        MusicPlayer.shared.play(newPost: newPost, onSuccess: {
+        MusicPlayer.shared.play(newSong: newSong, onSuccess: {
             //Success
         }) {
             //Error

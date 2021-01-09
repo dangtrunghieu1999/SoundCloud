@@ -17,7 +17,7 @@ class DishSongCellCollectionViewCell: BaseCollectionViewCell, BaseDetailSongMusi
     // MARK: - Variables
     
     private var angleDish: Double = 0
-    private var post = Post()
+    private var song = SongTrack()
     private var timer: Timer?
     weak var delegate: DishSongCellDelegate?
     
@@ -27,7 +27,6 @@ class DishSongCellCollectionViewCell: BaseCollectionViewCell, BaseDetailSongMusi
         let imageConfig = UIImageView()
         imageConfig.contentMode = .scaleAspectFill
         imageConfig.clipsToBounds = true
-        imageConfig.image = UIImage(named: "artwork")
         imageConfig.layer.cornerRadius = 300 / 2
         imageConfig.layer.masksToBounds = true
         return imageConfig
@@ -47,16 +46,15 @@ class DishSongCellCollectionViewCell: BaseCollectionViewCell, BaseDetailSongMusi
             return
         }
         
-        guard let postConfig = MusicPlayer.shared.curentSong else { return }
-        self.post = postConfig
+        guard let songConfig = MusicPlayer.shared.curentSong else { return }
+        self.song = songConfig
         
-        guard let url = URL(string: self.post.attachments.imageURL) else {
+        guard let url = URL(string: songConfig.image) else {
             return
         }
         
         self.startAnimation()
         self.imageSong.sd_setImage(with: url)
-        
     }
     
     func setDelegate(delegate: Any?) {

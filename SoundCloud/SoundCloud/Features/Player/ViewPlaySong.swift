@@ -12,7 +12,7 @@ class ViewPlaySong: BaseView {
     
     //MARK: Variable
     private var angleDish: Double = 0
-    private var post = Post()
+    private var song = SongTrack()
     private var timer: Timer?
     
     //MARK: UIControl
@@ -20,7 +20,6 @@ class ViewPlaySong: BaseView {
         let imageConfig = UIImageView()
         imageConfig.contentMode = .scaleAspectFill
         imageConfig.clipsToBounds = true
-        imageConfig.image = UIImage(named: "2020")
         return imageConfig
     }()
     
@@ -29,7 +28,6 @@ class ViewPlaySong: BaseView {
         labelConfig.textColor = UIColor.white
         labelConfig.textAlignment = .left
         labelConfig.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .bold)
-        labelConfig.text = "Hãy trao cho anh"
         return labelConfig
     }()
     
@@ -38,38 +36,68 @@ class ViewPlaySong: BaseView {
         labelConfig.textColor = UIColor.white
         labelConfig.textAlignment = .left
         labelConfig.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
-        labelConfig.text = "Sơn Tùng MTP"
         return labelConfig
     }()
     
     //MARK: Initialize function
     override func initialize() {
         super.initialize()
-        
+        self.addObserver()
         self.backgroundColor = UIColor.mainBackground
         self.setupViewImageSong()
         self.setupviewNameLabel()
         self.setupviewDisplayNameLabel()
+        
     }
     
     //MARK: Public fucntion
+    
     @objc func startPlaySong() {
-        guard let post = MusicPlayer.shared.curentSong else { return }
-        self.post = post
-        
+        guard let song = MusicPlayer.shared.curentSong else { return }
+        self.song = song
         self.setData()
         self.startAnimation()
     }
     
+    
     //MARK: Support function
+    public func setData(song: SongTrack) {
+        self.song = song
+        self.nameLabel.text = self.song.title
+        self.disPlayNameLabel.text = self.song.artist_id
+        guard let url = URL(string: self.song.image) else {
+            return
+        }
+
+        self.imageSong.sd_setImage(with: url)
+    }
+    
+    
     private func setData() {
-//        self.nameLabel.text = self.post.title
-//        self.disPlayNameLabel.text = self.post.user?.displayName
-//        guard let url = URL(string: self.post.attachments.imageURL) else {
-//            return
-//        }
-//
-//        self.imageSong.sd_setImage(with: url)
+        self.nameLabel.text = self.song.title
+        self.disPlayNameLabel.text = self.song.artist_id
+        guard let url = URL(string: self.song.image) else {
+            return
+        }
+
+        self.imageSong.sd_setImage(with: url)
+    }
+    
+    private func addObserver() {
+        //AddObserver when start play song
+        NotificationCenter.default.addObserver(self, selector: #selector(startPlaySong), name: NSNotification.Name(rawValue: NotifiCationName.startPlaySOng.rawValue), object: nil)
+        
+        //Add Observer play next song
+        NotificationCenter.default.addObserver(self, selector: #selector(startPlaySong), name: NSNotification.Name(rawValue: NotifiCationName.playNextSong.rawValue), object: nil)
+        
+        //Add Observer stop play song
+        NotificationCenter.default.addObserver(self, selector: #selector(stopAnimation), name: NSNotification.Name(rawValue: NotifiCationName.stopPlaySong.rawValue), object: nil)
+        
+        //Add Observe pause
+        NotificationCenter.default.addObserver(self, selector: #selector(pausePlaySong), name: NSNotification.Name(rawValue: NotifiCationName.pausePlaySong.rawValue), object: nil)
+        
+        //Add Observe continue play song
+        NotificationCenter.default.addObserver(self, selector: #selector(continuePlaySong), name: NSNotification.Name(rawValue: NotifiCationName.continuePlaySong.rawValue), object: nil)
     }
     
     private func startAnimation() {

@@ -10,14 +10,13 @@ import UIKit
 
 class SongCollectionViewCell: BaseCollectionViewCell {
     
-    var track: Track? {
+    var song: SongTrack? {
         didSet {
-            guard let track = track else { return }
-            let image = UIImage(named: track.imageName) ?? UIImage(named: "placeholder")!
-            
-            songImageView.image  = image
-            songTitleLabel.text  = track.title
-            artistTitleLabel.text = track.artist
+            guard let song = song else { return }
+            let url = URL(string: song.image)
+            songImageView.sd_setImage(with: url)
+            songTitleLabel.text  = song.title
+            artistTitleLabel.text = song.artist_id
         }
     }
     
@@ -34,6 +33,7 @@ class SongCollectionViewCell: BaseCollectionViewCell {
         label.textColor = UIColor.white
         label.font = UIFont.preferredFont(forTextStyle: .body).withTraits(traits: .traitBold)
         label.textAlignment = .left
+        label.numberOfLines = 1
         return label
     }()
     
@@ -90,7 +90,7 @@ class SongCollectionViewCell: BaseCollectionViewCell {
         stackView.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalTo(songImageView.snp.right).offset(Dimension.shared.mediumMargin)
-            make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
+            make.right.equalToSuperview().offset(-Dimension.shared.largeMargin_90)
         }
     }
     

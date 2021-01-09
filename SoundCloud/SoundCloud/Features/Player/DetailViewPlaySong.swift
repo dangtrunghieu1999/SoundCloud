@@ -11,42 +11,66 @@ import AVFoundation
 
 class DetailViewPlaySong: BaseView {
     
-    fileprivate var currentPost: Post?
+    fileprivate var currentSong: SongTrack?
     fileprivate var isSelctSlider: Bool = false
     
     private let backGroundImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = #imageLiteral(resourceName: "ChiPu")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        imageView.image = UIImage(named: "artwork")
         imageView.makeVisualEffect()
         return imageView
     }()
     
-    fileprivate lazy var viewPlaySongCollection: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.isPagingEnabled = true
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.backgroundColor = UIColor.clear
-        //        collectionView.delegate = self
-        //        collectionView.dataSource = self
-        collectionView.registerReusableCell(DishSongCellCollectionViewCell.self)
-        collectionView.registerReusableCell(ListPlaySongCell.self)
-        return collectionView
+    fileprivate lazy var thumnailImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.image = UIImage(named: "artwork")
+        return imageView
     }()
-    
+        
     private let backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.clear
+        let pangesture = UIPanGestureRecognizer(target: self, action: #selector(fakePanGesture))
+        view.addGestureRecognizer(pangesture)
         return view
     }()
     
+    fileprivate lazy var songTrackLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Mãi không rời xa"
+        label.font = UIFont.systemFont(ofSize: FontSize.headline.rawValue, weight: .bold)
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.textColor = .white
+        return label
+    }()
+    
+    fileprivate lazy var artistTrackLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Sơn tùng - MTP"
+        label.font = UIFont.systemFont(ofSize: FontSize.body.rawValue, weight: .semibold)
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.textColor = .white
+        return label
+    }()
+
+    private let saveSongButton: UIButton = {
+        let button = UIButton()
+        button.setImage(ImageManager.like?.withRenderingMode(.alwaysOriginal), for: .normal)
+        button.layer.masksToBounds = true
+        return button
+    }()
+
     fileprivate let currentTimeLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = UIColor.white
+        label.text = "0:03"
         label.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
         return label
     }()
@@ -55,6 +79,7 @@ class DetailViewPlaySong: BaseView {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = UIColor.white
+        label.text = "3:49"
         label.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
         return label
     }()
@@ -69,6 +94,19 @@ class DetailViewPlaySong: BaseView {
     private let playButton: UIButton = {
         let button = UIButton()
         button.setImage(IConPlaySongVC.playIcon.image, for: .normal)
+        button.addTarget(self, action: #selector(playButtonPressed), for: .touchUpInside)
+        return button
+    }()
+    
+    private let shuffleButton: UIButton = {
+        let button = UIButton()
+        button.setImage(IConPlaySongVC.shuffleIcon.image, for: .normal)
+        return button
+    }()
+    
+    private let repeatButton: UIButton = {
+        let button = UIButton()
+        button.setImage(IConPlaySongVC.repeatIcon.image, for: .normal)
         return button
     }()
     
@@ -84,79 +122,45 @@ class DetailViewPlaySong: BaseView {
         return button
     }()
     
-    //MARK: Action UIControl
+    private let deviceButton: UIButton = {
+        let button = UIButton()
+        button.setImage(IConPlaySongVC.deviceIcon.image, for: .normal)
+        return button
+    }()
+    
+    private let shareButton: UIButton = {
+        let button = UIButton()
+        button.setImage(IConPlaySongVC.shareIcon.image, for: .normal)
+        return button
+    }()
+    
+    
+    // MARK: - View LifeCycles
+    
+    override func initialize() {
+        super.initialize()
+        layoutBackgroundImage()
+        layoutThumnailImageView()
+        layoutViewBackgroundView()
+        layoutSongTrackStackView()
+        layoutSaveSongButton()
+        layoutTimeSlider()
+        layoutCurrentTimeLabel()
+        layoutTimeIntervalLabel()
+        layoutShuffleButton()
+        layoutRepeatButton()
+        layoutPlayButton()
+        layoutNextButton()
+        layoutBackButton()
+        layoutDeviceButton()
+        layoutShareButton()
+    }
+    
+    //MARK: - UI Action
+    
     @objc func playButtonPressed() {
         MusicPlayer.shared.pause()
-    }
-    
-    @objc func nextButtonPressed() {
-        MusicPlayer.shared.nextPlay()
-    }
-    
-    @objc func backButtonPressed() {
-        MusicPlayer.shared.backPlay()
-    }
-    
-    @objc func fakePanGesture() {
-        
-    }
-    
-    @objc func seekSlider(_ sender: UISlider) {
-        self.isSelctSlider = false
-        MusicPlayer.shared.seekToTime(sender.value)
-    }
-    
-    @objc func didBeginSelectSlider() {
-        self.isSelctSlider = true
-    }
-    
-    @objc func reloadPlayList() {
-        self.viewPlaySongCollection.reloadData()
-    }
-    
-    @objc func pausePlaySong() {
-        self.checkShowImagePlayIcon()
-        self.viewPlaySongCollection.reloadData()
-    }
-    
-    @objc func continuePlaySong() {
-        self.checkShowImagePlayIcon()
-        self.viewPlaySongCollection.reloadData()
-    }
-    
-    
-    //MARK: Suport Function
-    @objc func startPlaySong() {
-        self.viewPlaySongCollection.reloadData()
-        self.currentPost = MusicPlayer.shared.curentSong
-        
-        //Set backgroundImage
-        if let post = self.currentPost {
-            guard let url = URL(string: post.attachments.imageURL) else {
-                return
-            }
-            
-            self.backGroundImage.sd_setImage(with: url)
-        }
-        
-        self.setViewWhenPlaySong()
-    }
-    
-    @objc func stopPlaySong() {
-        self.checkShowImagePlayIcon()
-        self.viewPlaySongCollection.reloadData()
-    }
-    
-    private func setViewWhenPlaySong() {
-        self.checkShowImagePlayIcon()
-        
-        MusicPlayer.shared.getDuration { (cmTime) in
-            guard let duration = cmTime else { return }
-            
-            self.timeIntervalLabel.getTimeFromCMTime(duration)
-            self.timeSlider.maximumValue = Float(CMTimeGetSeconds(duration))
-        }
-        
+        checkShowImagePlayIcon()
     }
     
     fileprivate func checkShowImagePlayIcon() {
@@ -167,11 +171,15 @@ class DetailViewPlaySong: BaseView {
         }
     }
     
-    //MARK: SetupView function
-    private func setViewBackgroundImage() {
-        self.addSubview(self.backGroundImage)
+    @objc func fakePanGesture() {
         
-        self.backGroundImage.snp.makeConstraints { (make) in
+    }
+
+    //MARK: - Layout
+    
+    private func layoutBackgroundImage() {
+        addSubview(backGroundImage)
+        backGroundImage.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
             make.height.equalToSuperview()
             make.centerX.equalToSuperview()
@@ -179,135 +187,137 @@ class DetailViewPlaySong: BaseView {
         }
     }
     
-    private func setupViewCollectionViewSong() {
-        self.addSubview(self.viewPlaySongCollection)
-        
-        self.viewPlaySongCollection.snp.makeConstraints { (make) in
-            make.width.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.7)
+    private func layoutThumnailImageView() {
+        addSubview(thumnailImageView)
+        thumnailImageView.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(Dimension.shared.largeMargin)
+            make.right.equalToSuperview().offset(-Dimension.shared.largeMargin)
+            make.height.equalToSuperview().multipliedBy(0.5)
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(4 * Dimension.shared.normalMargin)
         }
     }
     
-    private func setupViewBackgroundView() {
-        self.addSubview(self.backgroundView)
-        
-        self.backgroundView.snp.makeConstraints { (make) in
+    private func layoutViewBackgroundView() {
+        addSubview(backgroundView)
+        backgroundView.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
-            make.top.equalTo(self.viewPlaySongCollection.snp.bottom).offset(Dimension.shared.normalMargin)
+            make.top.equalTo(thumnailImageView.snp.bottom).offset(Dimension.shared.normalMargin)
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview()
         }
-        
-        let pangesture = UIPanGestureRecognizer(target: self, action: #selector(DetailViewPlaySong.fakePanGesture))
-        self.backgroundView.addGestureRecognizer(pangesture)
     }
     
-    private func setupViewTimeSlider() {
+    private func layoutSongTrackStackView() {
+        let stackView = makeStackView(axis: .vertical)
+        stackView.spacing = 6
+        stackView.addArrangedSubview(songTrackLabel)
+        stackView.addArrangedSubview(artistTrackLabel)
+        addSubview(stackView)
+        stackView.snp.makeConstraints { (make) in
+            make.top.equalTo(thumnailImageView.snp.bottom).offset(Dimension.shared.largeMargin_50)
+            make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
+            make.right.equalToSuperview().offset(-Dimension.shared.largeMargin_90)
+        }
+    }
+    
+    private func layoutSaveSongButton() {
+        addSubview(saveSongButton)
+        saveSongButton.snp.makeConstraints { (make) in
+            make.top.equalTo(thumnailImageView.snp.bottom).offset(Dimension.shared.largeMargin_50 + 24)
+            make.right.equalToSuperview().offset(-Dimension.shared.largeMargin)
+            make.width.height.equalTo(24)
+        }
+    }
+    
+    private func layoutTimeSlider() {
         addSubview(timeSlider)
         timeSlider.snp.makeConstraints { (make) in
             make.width.equalToSuperview().multipliedBy(0.7)
             make.centerX.equalToSuperview()
-            make.top.equalTo(self.viewPlaySongCollection.snp.bottom).offset(2 * Dimension.shared.normalMargin)
+            make.top.equalTo(saveSongButton.snp.bottom).offset(Dimension.shared.largeMargin_25)
         }
-        timeSlider.addTarget(self, action: #selector(seekSlider(_:)), for: .touchUpInside)
-        timeSlider.addTarget(self, action: #selector(didBeginSelectSlider), for: .valueChanged)
     }
     
-    private func setupViewCurrentTimeLabel() {
-        addSubview(self.currentTimeLabel)
+    private func layoutCurrentTimeLabel() {
+        addSubview(currentTimeLabel)
         currentTimeLabel.snp.makeConstraints { (make) in
             make.width.equalTo(40 * Dimension.shared.widthScale)
-            make.left.equalToSuperview().offset(Dimension.shared.normalMargin / 2)
+            make.left.equalTo(thumnailImageView)
             make.centerY.equalTo(timeSlider)
         }
     }
     
-    private func setupViewTimeIntervalLabel() {
+    private func layoutTimeIntervalLabel() {
         addSubview(timeIntervalLabel)
         timeIntervalLabel.snp.makeConstraints { (make) in
             make.width.equalTo(currentTimeLabel)
-            make.right.equalToSuperview().offset(-Dimension.shared.normalMargin / 2)
-            make.centerY.equalTo(self.timeSlider)
+            make.right.equalTo(thumnailImageView)
+            make.centerY.equalTo(timeSlider)
         }
     }
     
-    private func  setupViewPlayButton() {
-        addSubview(self.playButton)
+    private func layoutShuffleButton() {
+        addSubview(shuffleButton)
+        shuffleButton.snp.makeConstraints { (make) in
+            make.left.equalTo(thumnailImageView)
+            make.width.height.equalTo(30)
+            make.top.equalTo(timeSlider.snp.bottom).offset(Dimension.shared.largeMargin_25  + 5)
+        }
+    }
+    
+    private func layoutRepeatButton() {
+        addSubview(repeatButton)
+        repeatButton.snp.makeConstraints { (make) in
+            make.right.equalTo(thumnailImageView)
+            make.width.height.equalTo(30)
+            make.top.equalTo(timeSlider.snp.bottom).offset(Dimension.shared.largeMargin_25  + 5)
+        }
+    }
+    
+    private func layoutPlayButton() {
+        addSubview(playButton)
         playButton.snp.makeConstraints { (make) in
-            make.height.equalTo(35)
-            make.width.equalTo(self.playButton.snp.height)
             make.centerX.equalToSuperview()
-            make.top.equalTo(self.timeSlider.snp.bottom).offset(2 * Dimension.shared.normalMargin)
+            make.width.height.equalTo(65)
+            make.centerY.equalTo(shuffleButton)
         }
-        
-        self.playButton.addTarget(self, action: #selector(playButtonPressed), for: .touchUpInside)
     }
     
-    private func  setupViewNextButton() {
+    private func layoutNextButton() {
         addSubview(nextButton)
         nextButton.snp.makeConstraints { (make) in
-            make.height.equalTo(35 * 0.65)
-            make.width.equalTo(nextButton.snp.height)
-            make.left.equalTo(playButton.snp.right).offset(2.5 * Dimension.shared.normalMargin)
-            make.centerY.equalTo(playButton)
+            make.right.equalTo(repeatButton.snp.left).offset(-45)
+            make.height.width.equalTo(35)
+            make.centerY.equalTo(shuffleButton)
         }
-        nextButton.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
     }
     
-    private func  setupViewBackButton() {
+    private func layoutBackButton() {
         addSubview(backButton)
         backButton.snp.makeConstraints { (make) in
-            make.height.equalTo(self.nextButton)
-            make.width.equalTo(self.nextButton.snp.height)
-            make.right.equalTo(self.playButton.snp.left).offset(-2.5 * Dimension.shared.normalMargin)
-            make.centerY.equalTo(self.playButton)
-        }
-        
-        self.backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
-    }
-}
-
-//MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
-extension DetailViewPlaySong: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.item == 0 {
-            let cell: DishSongCellCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.setData(data: nil)
-            cell.setDelegate(delegate: self)
-            return cell
-        } else {
-            let cell: ListPlaySongCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.setData(data: nil)
-            cell.setDelegate(delegate: self)
-            return cell
+            make.left.equalTo(shuffleButton.snp.right).offset(45)
+            make.height.width.equalTo(35)
+            make.centerY.equalTo(shuffleButton)
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-}
-
-//MARK: - DishSongCellDelegate
-extension DetailViewPlaySong: DishSongCellDelegate {
-    
-    func updateCurrentTime() {
-        guard let currentTime = MusicPlayer.shared.getCurrentTime() else { return }
-        self.currentTimeLabel.getTimeFromCMTime(currentTime)
-        
-        if !self.isSelctSlider {
-            self.timeSlider.value = Float(currentTime.seconds)
+    private func layoutDeviceButton() {
+        addSubview(deviceButton)
+        deviceButton.snp.makeConstraints { (make) in
+            make.top.equalTo(shuffleButton.snp.bottom).offset(Dimension.shared.largeMargin_25 + 15)
+            make.height.width.equalTo(shuffleButton)
+            make.left.equalTo(thumnailImageView)
         }
     }
+    
+    private func layoutShareButton() {
+        addSubview(shareButton)
+        shareButton.snp.makeConstraints { (make) in
+            make.top.equalTo(deviceButton)
+            make.height.width.equalTo(25)
+            make.right.equalTo(thumnailImageView)
+        }
+    }
+    
 }
-

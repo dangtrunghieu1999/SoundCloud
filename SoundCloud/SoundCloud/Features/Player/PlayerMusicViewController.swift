@@ -15,8 +15,6 @@ class PlayerMusicViewController: BaseViewController {
     fileprivate var direction = Direction.none
     fileprivate var finalState = StatePlaySong.none
     fileprivate var currentTranslation: CGFloat?
-    fileprivate var posts = Post()
-    fileprivate var attachments = PostAttachments()
     
     fileprivate lazy var viewPlaySong: ViewPlaySong = {
         let viewConfig = ViewPlaySong()
@@ -38,17 +36,6 @@ class PlayerMusicViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         layoutViewPlaySong()
-        fetchData()
-    }
-    
-    func fetchData() {
-        attachments.dataURL = "http://strm112.1.fm/acountry_mobile_mp3"
-        attachments.imageURL = "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/d/c/5/4/dc5466987d2555c67c161f078049142f.jpg"
-        posts.ownerUID = "id123"
-        posts.uid = "id123"
-        posts.status = "good"
-        posts.timeStamp = 180.0
-        posts.title = "title"
     }
     
     // MARK: - UI Action

@@ -9,11 +9,15 @@
 import UIKit
 
 enum IConPlaySongVC: String {
-    case thumbImage = "ThumbImage"
-    case playIcon = "PlayIcon"
-    case pauseIcon = "PauseIcon"
-    case nextIcon = "NextIcon"
-    case backIcon = "BackIcon"
+    case thumbImage     = "ThumbImage"
+    case playIcon       = "PlayIcon"
+    case pauseIcon      = "PauseIcon"
+    case nextIcon       = "NextIcon"
+    case backIcon       = "BackIcon"
+    case repeatIcon     = "RepeatIcon"
+    case shuffleIcon    = "ShuffleIcon"
+    case shareIcon      = "ShareIcon"
+    case deviceIcon     = "DeviceIcon"
 }
 
 extension IConPlaySongVC {

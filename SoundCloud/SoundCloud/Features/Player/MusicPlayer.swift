@@ -26,55 +26,56 @@ class MusicPlayer {
         
     }
     
-    var curentSong: Post?
-    var playListSong: [Post]?
+    var curentSong: SongTrack?
+    var playListSong: [SongTrack]?
     var player: AVPlayer?
     var isPlaying: Bool = false
     
     //Feature Method
-    func play(newPost: Post, onSuccess: ()->Void, onError: ()->Void) {
+    func play(newSong: SongTrack, onSuccess: ()->Void, onError: ()->Void) {
         self.isPlaying = true
         
-        let checkNewPost = self.playListSong?.contains(where: { (post) -> Bool in
-            return post.uid == newPost.uid
+        let checkNewPost = self.playListSong?.contains(where: { (song) -> Bool in
+            return song.id == newSong.id
         })
         
-        self.curentSong = newPost
+        self.curentSong = newSong
         if !(checkNewPost ?? false) {
             if self.playListSong == nil {
-                self.playListSong = [Post]()
+                self.playListSong = [SongTrack]()
             }
             
-            self.playListSong?.append(newPost)
+            self.playListSong?.append(newSong)
         }
         
-        self.play(post: newPost) {
+        self.play(song: newSong) {
             onError()
         }
         
         onSuccess()
     }
     
-    func addToPlayList(post: Post) {
-        let checkNewPost = self.playListSong?.contains(where: { (postTemp) -> Bool in
-            return postTemp.uid == post.uid
+    func addToPlayList(song: SongTrack) {
+        let checkNewPost = self.playListSong?.contains(where: { (songTemp) -> Bool in
+            return songTemp.id == song.id
         })
         
         if !(checkNewPost ?? false) {
             if self.playListSong == nil {
-                self.playListSong = [Post]()
+                self.playListSong = [SongTrack]()
             }
-             self.playListSong?.append(post)
+             self.playListSong?.append(song)
             
         }
     }
     
-    private func play(post: Post, onerror: ()->Void) {
-        guard let url: URL = URL(string: post.attachments.dataURL) else {
-            onerror()
-            return
-        }
+    private func play(song: SongTrack, onerror: ()->Void) {
+//        guard let url: URL = URL(string: song.path) else {
+//            onerror()
+//            return
+//        }
         
+        guard let url: URL = URL(string: "http://strm112.1.fm/acountry_mobile_mp3") else { return }
         self.player = AVPlayer(url: url)
         self.player?.play()
         
@@ -83,8 +84,8 @@ class MusicPlayer {
     @objc func nextPlay() {
         self.isPlaying = true
         
-        let index = self.playListSong?.firstIndex(where: { (post) -> Bool in
-            return post.uid == self.curentSong?.uid
+        let index = self.playListSong?.firstIndex(where: { (song) -> Bool in
+            return song.id == self.curentSong?.id
         })
         
         guard let count = self.playListSong?.count else {
@@ -99,16 +100,16 @@ class MusicPlayer {
         
         if index == count - 1 {
             self.curentSong = self.playListSong?[0]
-            guard let post = self.curentSong else { return }
+            guard let song = self.curentSong else { return }
             
-            self.play(post: post, onerror: {
+            self.play(song: song, onerror: {
                 //error
             })
         } else {
             self.curentSong = self.playListSong?[index!  + 1]
-            guard let post = self.curentSong else { return }
+            guard let song = self.curentSong else { return }
             
-            self.play(post: post, onerror: {
+            self.play(song: song, onerror: {
                 //error
             })
         }
@@ -119,8 +120,8 @@ class MusicPlayer {
     func backPlay() {
         self.isPlaying = true
         
-        let index = self.playListSong?.firstIndex(where: { (post) -> Bool in
-            return post.uid == self.curentSong?.uid
+        let index = self.playListSong?.firstIndex(where: { (song) -> Bool in
+            return song.id == self.curentSong?.id
         })
         
         guard let count = self.playListSong?.count else {
@@ -135,16 +136,16 @@ class MusicPlayer {
         
         if indexConfig == 0 {
             self.curentSong = self.playListSong?[count - 1]
-            guard let post = self.curentSong else { return }
+            guard let song = self.curentSong else { return }
             
-            self.play(post: post, onerror: {
+            self.play(song: song, onerror: {
                 //error
             })
         } else {
             self.curentSong = self.playListSong?[indexConfig - 1]
-            guard let post = self.curentSong else { return }
+            guard let song = self.curentSong else { return }
             
-            self.play(post: post, onerror: {
+            self.play(song: song, onerror: {
                 //error
             })
         }
@@ -182,8 +183,8 @@ class MusicPlayer {
         self.player?.seek(to: newTime)
     }
     
-    func addNewSong(post: Post) {
-        self.playListSong?.append(post)
+    func addNewSong(song: SongTrack) {
+        self.playListSong?.append(song)
     }
     
     func getCurrentTime()->CMTime? {

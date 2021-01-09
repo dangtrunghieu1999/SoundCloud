@@ -11,7 +11,7 @@ import UIKit
 open class BaseView: UIView {
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.white
+        backgroundColor = UIColor.mainBackground
         initialize()
     }
     

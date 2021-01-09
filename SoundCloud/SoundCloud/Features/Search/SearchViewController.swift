@@ -45,8 +45,6 @@ class SearchViewController: BaseViewController {
         return collectionView
     }()
     
-    
-    
     // MARK: - View LifeCycles
     
     override func viewDidLoad() {
@@ -120,7 +118,7 @@ extension SearchViewController: UICollectionViewDataSource {
 
 extension SearchViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = PlayerMusicViewController()
+        let vc = AlbumViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
 }

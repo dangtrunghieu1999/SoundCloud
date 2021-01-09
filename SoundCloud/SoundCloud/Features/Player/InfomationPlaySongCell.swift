@@ -11,10 +11,10 @@ import NVActivityIndicatorView
 
 class InfomationPlaySongCell: BaseTableViewCell {
     
-    var post: Post? {
+    var song: SongTrack? {
         didSet {
-            self.nameOfSongLabel.text = self.post?.title
-            self.displayNameLabel.text = self.post?.user?.displayName
+            self.nameOfSongLabel.text = self.song?.title
+            self.displayNameLabel.text = self.song?.artist_id
             self.checkShowOrHideIndicatorView()
         }
     }
@@ -66,7 +66,7 @@ class InfomationPlaySongCell: BaseTableViewCell {
             return
         }
         
-        if self.post?.uid == MusicPlayer.shared.curentSong?.uid {
+        if self.song?.id == MusicPlayer.shared.curentSong?.id {
             self.indicatorView.isHidden = false
         } else {
             self.indicatorView.isHidden = true
