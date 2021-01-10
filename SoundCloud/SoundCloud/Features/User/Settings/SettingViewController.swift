@@ -10,6 +10,17 @@ import UIKit
 
 class SettingViewController: BaseViewController {
 
+    // MARK: - UI Elements
+    
+    fileprivate lazy var settingTableView: UITableView = {
+        let tableView = UITableView()
+        
+        return tableView
+    }()
+    
+    
+    // MARK: - View LifeCycles
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = TextManager.setting

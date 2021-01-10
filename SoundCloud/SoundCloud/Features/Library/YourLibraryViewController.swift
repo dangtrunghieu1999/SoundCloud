@@ -13,6 +13,6 @@ class YourLibraryViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = TextManager.yourLibray
+        navigationItem.title = TextManager.music
     }
 }

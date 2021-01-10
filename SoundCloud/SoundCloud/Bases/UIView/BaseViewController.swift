@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 enum BarButtonItemType {
     case left
@@ -36,6 +37,12 @@ class BaseViewController: UIViewController {
 
     private (set) lazy var tapGestureOnSuperView = UITapGestureRecognizer(target: self,
                                                                           action: #selector(touchInBaseView))
+    
+    private lazy var hub: JGProgressHUD = {
+        let hub = JGProgressHUD(style: .dark)
+        return hub
+    }()
+
     
     // MARK: - View LifeCycles
     
@@ -69,6 +76,15 @@ class BaseViewController: UIViewController {
     }
 
     // MARK: - Public Method
+    
+    func showLoading() {
+        view.endEditing(true)
+        hub.show(in: view)
+    }
+    
+    func hideLoading() {
+        hub.dismiss()
+    }
     
     func addTapOnSuperViewDismissKeyboard() {
         tapGestureOnSuperView.cancelsTouchesInView = false

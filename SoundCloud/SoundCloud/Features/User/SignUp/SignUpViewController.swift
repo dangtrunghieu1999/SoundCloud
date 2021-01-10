@@ -11,7 +11,12 @@ import UIKit
 class SignUpViewController: BaseViewController {
     
     private var selectedDate = AppConfig.defaultDate
-
+    
+    fileprivate lazy var viewModel: SignUpViewModel = {
+        let viewModel = SignUpViewModel()
+        return viewModel
+    }()
+    
     // MARK: - UI Elements
     
     fileprivate lazy var emailTitleLabel: UILabel = {
@@ -111,14 +116,15 @@ class SignUpViewController: BaseViewController {
         let button = UIButton()
         button.setTitle(TextManager.signUp, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold)
-        button.setTitleColor(UIColor.white, for: .normal)
+        button.setTitleColor(UIColor.black, for: .normal)
         button.contentHorizontalAlignment = .center
         button.addTarget(self, action: #selector(tapOnSignUp), for: .touchUpInside)
         button.layer.cornerRadius = 25
+        button.isUserInteractionEnabled = false
         button.backgroundColor = UIColor.spotifyBrown
         return button
     }()
-
+    
     
     // MARK: - View LifeCycles
     
@@ -137,6 +143,15 @@ class SignUpViewController: BaseViewController {
     }
     
     @objc private func tapOnSignUp() {
+        //        guard let email = emailTextField.text,
+        //              let userName = usernameTextField.text,
+        //              let password = passwordTextField.text
+        //        else {
+        //            return
+        //        }
+        
+        showLoading()
+        
         
     }
     
@@ -145,10 +160,27 @@ class SignUpViewController: BaseViewController {
         DOBTextField.text = selectedDate.desciption(by: DateFormat.shortDateUserFormat)
         textFieldValueChange(DOBTextField)
     }
-
     
     @objc private func textFieldValueChange(_ textField: UITextField) {
+        guard let email = emailTextField.text else { return }
+        guard let username = usernameTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+//        if email != "" && username != "" && password != "" && selectedDate != nil {
+//            signUpButton.isUserInteractionEnabled = true
+//            signUpButton.backgroundColor = UIColor.white
+//        } else {
+//            signUpButton.isUserInteractionEnabled = false
+//            signUpButton.backgroundColor = UIColor.spotifyBrown
+//        }
         
+        if viewModel.canSignUp(email: email, password: password, userName: username, dob: selectedDate) {
+            signUpButton.isUserInteractionEnabled = true
+            signUpButton.backgroundColor = UIColor.white
+        } else {
+            signUpButton.isUserInteractionEnabled = false
+            signUpButton.backgroundColor = UIColor.spotifyBrown
+        }
+
     }
     
     private func layoutEmailTitleLabel() {

@@ -10,6 +10,11 @@ import UIKit
 
 class LoginViewController: BaseViewController {
     
+    fileprivate lazy var viewModel: SignInViewModel = {
+        let viewModel = SignInViewModel()
+        return viewModel
+    }()
+
     // MARK: - UI Elements
     
     fileprivate lazy var emailTitleLabel: UILabel = {
@@ -92,10 +97,23 @@ class LoginViewController: BaseViewController {
         }
     }
 
-    
     @objc private func tapOnSignIn() {
         guard let window = UIApplication.shared.keyWindow else { return }
         window.rootViewController = ZTabBarViewController()
+//        showLoading()
+//
+//        guard let userName = emailTextField.text, let passWord = passwordTextField.text else {
+//            return
+//        }
+//
+//        viewModel.requestSignIn(userName: userName, passWord: passWord, onSuccess: {
+//            self.hideLoading()
+//            guard let window = UIApplication.shared.keyWindow else { return }
+//            window.rootViewController = ZTabBarViewController()
+//        }) { (message) in
+//            self.hideLoading()
+//            AlertManager.shared.show(TextManager.alertTitle, message: message)
+//        }
     }
     
     private func layoutEmailTitleLabel() {

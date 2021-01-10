@@ -9,4 +9,8 @@ target 'SoundCloud' do
     pod 'NVActivityIndicatorView'
     pod 'Alamofire', '4.8.1'
     pod 'SwiftyJSON', '~> 4.0'
+    pod 'JGProgressHUD', '2.0.3'
+    pod 'Toast-Swift', '~> 4.0.1'
+    pod 'KeychainAccess', '4.2.1'
+
 end
