@@ -12,7 +12,7 @@ class SettingViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Cài đặt"
+        navigationItem.title = TextManager.setting
     }
     
 }

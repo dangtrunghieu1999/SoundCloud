@@ -19,6 +19,11 @@ final class TextManager {
     static let signIn                               = "ĐĂNG NHẬP"
     static let signUp                               = "ĐĂNG KÝ"
     static let dateOfBirth                          = "Ngày sinh"
+    static let home                                 = "Trang chủ"
+    static let search                               = "Tìm kiếm"
+    static let library                              = "Thư viện"
+    static let setting                              = "Cài đặt"
+    static let yourLibray                           = "Thư viện của tôi"
 
 
 }

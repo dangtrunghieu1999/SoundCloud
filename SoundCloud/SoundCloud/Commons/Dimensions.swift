@@ -50,6 +50,14 @@ class Dimension {
     var largeMargin_25: CGFloat {
         return 25 * self.widthScale
     }
+    
+    var largeMargin_30: CGFloat {
+        return 30 * self.widthScale
+    }
+    
+    var largeMargin_45: CGFloat {
+        return 45 * self.widthScale
+    }
    
     var largeMargin_50: CGFloat {
         return 50 * self.widthScale
@@ -84,6 +92,22 @@ class Dimension {
         return 32 * self.widthScale
     }
     
+    var mediumHeightButton: CGFloat {
+        return 30 * self.widthScale
+    }
+    
+    var mediumHeightButton_24: CGFloat {
+        return 24 * self.widthScale
+    }
+
+    var mediumHeightButton_35: CGFloat {
+        return 35 * self.widthScale
+    }
+    
+    var normalHeightButton: CGFloat {
+        return 65 * self.widthScale
+    }
+
     var largeWidthButton: CGFloat {
         return 291 * self.widthScale
     }
@@ -144,6 +168,26 @@ class Dimension {
     
     var heightViewPlayMusic: CGFloat {
         return 64 * heightScale
+    }
+    
+    var heightImagePlayMusic: CGFloat {
+        return 300 * heightScale
+    }
+    
+    var imageViewPlayMusic: CGFloat {
+        return 54
+    }
+    
+    var multipliedByMedium: CGFloat {
+        return 0.5
+    }
+
+    var multipliedByDefault: CGFloat {
+        return 0.7
+    }
+    
+    var widthLabelDefault: CGFloat {
+        return 40 * self.widthScale
     }
     
 }

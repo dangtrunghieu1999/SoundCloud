@@ -75,7 +75,7 @@ class MusicPlayer {
 //            return
 //        }
         
-        guard let url: URL = URL(string: "http://strm112.1.fm/acountry_mobile_mp3") else { return }
+        guard let url: URL = URL(string: "http://musicmd1fr.keeng.net/bucket-media-keeng/sas_01/video/2014/12/20/27e072d51bea4cb3a6d4f6271591d6ec2b17e482.mp4") else { return }
         self.player = AVPlayer(url: url)
         self.player?.play()
         
@@ -204,3 +204,5 @@ class MusicPlayer {
         
     }
 }
+
+

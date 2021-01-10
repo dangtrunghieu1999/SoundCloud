@@ -11,6 +11,8 @@ import UIKit
 final class ImageManager {
     
     
+    // MARK: - Home
+    
     static let home                             = UIImage(named: "home")
     static let search                           = UIImage(named: "search")
     static let library                          = UIImage(named: "library")
@@ -22,6 +24,17 @@ final class ImageManager {
     static let more                             = UIImage(named: "more")
     static let logoSpotify                      = UIImage(named: "logoSpotify")
     
+    // MARK: - PlaySong
     
-    
+    static let playAll                          = UIImage(named: "playAll")
+    static let thumbImage                       = UIImage(named: "ThumbImage")
+    static let playIcon                         = UIImage(named: "PlayIcon")
+    static let pauseIcon                        = UIImage(named: "PauseIcon")
+    static let nextIcon                         = UIImage(named: "NextIcon")
+    static let backIcon                         = UIImage(named: "BackIcon")
+    static let repeatIcon                       = UIImage(named: "RepeatIcon")
+    static let shuffleIcon                      = UIImage(named: "ShuffleIcon")
+    static let shareIcon                        = UIImage(named: "ShareIcon")
+    static let deviceIcon                       = UIImage(named: "DeviceIcon")
+
 }

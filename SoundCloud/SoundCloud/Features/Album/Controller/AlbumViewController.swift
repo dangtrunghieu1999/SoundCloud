@@ -39,7 +39,7 @@ class AlbumViewController: BaseViewController {
     
     fileprivate lazy var albumCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 16
+        layout.minimumLineSpacing = Dimension.shared.normalMargin
         layout.minimumInteritemSpacing = 0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
@@ -261,7 +261,7 @@ class AlbumViewController: BaseViewController {
 
 extension AlbumViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 400)
+        return CGSize(width: collectionView.frame.width, height: 360)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -275,9 +275,9 @@ extension AlbumViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let songTrack = song[indexPath.row]
         self.viewPlaySong.setData(song: songTrack)
-//        self.detailViewPlaySong.setData(song: songTrack)
         MusicPlayer.shared.play(newSong: songTrack) {
-            
+            self.detailViewPlaySong.setData()
+            self.detailViewPlaySong.setViewPlaySong(viewPlay: viewPlaySong)
         } onError: {
         
         }

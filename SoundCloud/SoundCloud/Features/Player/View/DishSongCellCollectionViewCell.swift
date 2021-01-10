@@ -12,7 +12,7 @@ protocol DishSongCellDelegate: class{
     func updateCurrentTime()
 }
 
-class DishSongCellCollectionViewCell: BaseCollectionViewCell, BaseDetailSongMusic {
+class DishSongCellCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
     
@@ -36,10 +36,11 @@ class DishSongCellCollectionViewCell: BaseCollectionViewCell, BaseDetailSongMusi
     
     override func initialize() {
         super.initialize()
+        layoutImageSong()
+        backgroundColor = .clear
     }
     
-    
-    func setData(data: Any?) {
+    func setData() {
         if !MusicPlayer.shared.isPlaying {
             self.timer?.invalidate()
             self.timer = nil
@@ -57,14 +58,8 @@ class DishSongCellCollectionViewCell: BaseCollectionViewCell, BaseDetailSongMusi
         self.imageSong.sd_setImage(with: url)
     }
     
-    func setDelegate(delegate: Any?) {
-        guard let delegateCofig = delegate as? DishSongCellDelegate else {
-            return
-        }
-        self.delegate = delegateCofig
-    }
-    
-    private func startAnimation() {
+
+    func startAnimation() {
         self.timer?.invalidate()
         self.timer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { (timer) in
             self.rotateDish()
@@ -96,11 +91,11 @@ class DishSongCellCollectionViewCell: BaseCollectionViewCell, BaseDetailSongMusi
     
     //MARK: Layout
     
-    private func setupViewImageSong() {
-        self.addSubview(self.imageSong)
-        self.imageSong.snp.makeConstraints { (make) in
-            make.height.equalTo(300)
-            make.width.equalTo(self.imageSong.snp.height)
+    private func layoutImageSong() {
+        addSubview(imageSong)
+        imageSong.snp.makeConstraints { (make) in
+            make.height.equalTo(Dimension.shared.heightImagePlayMusic)
+            make.width.equalTo(imageSong.snp.height)
             make.centerY.equalToSuperview()
             make.centerX.equalToSuperview()
         }

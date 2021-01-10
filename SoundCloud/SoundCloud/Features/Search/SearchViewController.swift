@@ -50,7 +50,7 @@ class SearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "Search"
+        navigationItem.title = TextManager.search
         layoutSearchTextField()
         layoutSearchCollectionView()
     }
@@ -118,8 +118,7 @@ extension SearchViewController: UICollectionViewDataSource {
 
 extension SearchViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = AlbumViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        
     }
 }
 

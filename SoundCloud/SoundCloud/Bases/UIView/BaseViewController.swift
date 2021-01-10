@@ -34,6 +34,9 @@ struct BarButtonItemModel {
 
 class BaseViewController: UIViewController {
 
+    private (set) lazy var tapGestureOnSuperView = UITapGestureRecognizer(target: self,
+                                                                          action: #selector(touchInBaseView))
+    
     // MARK: - View LifeCycles
     
     override func viewDidLoad() {
@@ -44,6 +47,7 @@ class BaseViewController: UIViewController {
         UINavigationBar.appearance().shadowImage = UIImage()
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
+        addTapOnSuperViewDismissKeyboard()
     }
     
     // MARK: - UI Actions
@@ -55,6 +59,35 @@ class BaseViewController: UIViewController {
     @objc func touchUpInLeftBarButtonItem() {}
     
     @objc func touchUpInRightBarButtonItem() {}
+    
+    @objc func keyboardWillShow(_ notification: NSNotification) {}
+    
+    @objc func keyboardWillHide(_ notification: NSNotification) {}
+    
+    @objc func touchInBaseView() {
+        view.endEditing(true)
+    }
+
+    // MARK: - Public Method
+    
+    func addTapOnSuperViewDismissKeyboard() {
+        tapGestureOnSuperView.cancelsTouchesInView = false
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(tapGestureOnSuperView)
+    }
+    
+    func registerKeyboardNotification() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow(_:)),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide(_:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+
     
     // MARK: - Setup UI
     
