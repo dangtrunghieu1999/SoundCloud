@@ -81,14 +81,14 @@ class Dimension {
     
     // MARK: - Button
     var largeHeightButton: CGFloat {
-        return 54 * self.widthScale
+        return 50 * self.widthScale
     }
     
     var defaultHeightButton: CGFloat {
         return 42 * self.widthScale
     }
     
-    var smalltHeightButton: CGFloat {
+    var smallHeightButton: CGFloat {
         return 32 * self.widthScale
     }
     
@@ -108,12 +108,12 @@ class Dimension {
         return 65 * self.widthScale
     }
 
-    var largeWidthButton: CGFloat {
-        return 291 * self.widthScale
-    }
-    
     var smallWidthButton: CGFloat {
         return 120 * self.widthScale
+    }
+    
+    var largeWidthButton: CGFloat {
+        return 150 * self.widthScale
     }
     
     var supperSmallWidthButton: CGFloat {
@@ -161,7 +161,7 @@ class Dimension {
     var defaultHeightTextField: CGFloat {
         return 40 * heightScale
     }
-    
+
     var heightTabar: CGFloat {
         return 52
     }
@@ -189,6 +189,16 @@ class Dimension {
     var widthLabelDefault: CGFloat {
         return 40 * self.widthScale
     }
+    
+    var widthLabelLarge_300: CGFloat {
+        return 300 * self.widthScale
+    }
+    
+    var widthAvatarDefault: CGFloat {
+        return 100 * self.widthScale
+    }
+    
+    
     
 }
 

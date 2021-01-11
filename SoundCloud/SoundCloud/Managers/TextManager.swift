@@ -17,6 +17,7 @@ final class TextManager {
     static let signInTitle                          = "Hàng triệu bài hát. Miễn phí trên Spotify."
     static let signUnFree                           = "ĐĂNG KÝ MIỄN PHÍ"
     static let signIn                               = "ĐĂNG NHẬP"
+    static let logout                               = "ĐĂNG XUẤT"
     static let signUp                               = "ĐĂNG KÝ"
     static let dateOfBirth                          = "Ngày sinh"
     static let home                                 = "Trang chủ"
@@ -25,6 +26,7 @@ final class TextManager {
     static let setting                              = "Cài đặt"
     static let yourLibray                           = "Thư viện của tôi"
     static let music                                = "Nhạc của tôi"
+    static let settingProfile                       = "CHỈNH SỬA HỒ SƠ"
     
     // MARK: - Alert
     
@@ -42,6 +44,24 @@ final class TextManager {
     static let cancel                       = "Huỷ"
     static let save                         = "Lưu"
     static let agree                        = "Đồng ý"
+
+    // MARK: - Setting
+    static let dataSever                        = "Data Server"
+    static let account                          = "Tài khoản"
+    static let replay                           = "Phát lại"
+    static let contentPrivate                   = "Nội dung nhạy cảm"
+    static let device                           = "Thiết bị"
+    static let car                              = "Ô tô"
+    static let social                           = "Mạng xã hội"
+    static let assistant                        = "Trợ lý thoại và ứng dụng"
+    static let soundQuality                     = "Chất lượng âm thanh"
+    static let storageSpace                     = "Không gian lưu trữ"
+    static let notification                     = "Thông báo"
+    static let promotion                        = "Quảng cáo"
+    static let fileDeivce                       = "Tệp trên máy"
+    static let intro                            = "Giới thiệu"
+
+
 
 }
 

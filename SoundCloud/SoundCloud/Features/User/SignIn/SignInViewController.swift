@@ -102,7 +102,7 @@ class SignInViewController: BaseViewController {
             make.top.equalTo(titleLabel.snp.bottom).offset(Dimension.shared.largeMargin)
             make.left.equalToSuperview().offset(Dimension.shared.largeMargin)
             make.right.equalToSuperview().offset(-Dimension.shared.largeMargin)
-            make.height.equalTo(50)
+            make.height.equalTo(Dimension.shared.largeMargin_50)
         }
     }
     
@@ -111,7 +111,7 @@ class SignInViewController: BaseViewController {
         signInButton.snp.makeConstraints { (make) in
             make.top.equalTo(signUpButton.snp.bottom).offset(Dimension.shared.normalMargin)
             make.left.right.equalTo(signUpButton)
-            make.height.equalTo(50)
+            make.height.equalTo(Dimension.shared.largeMargin_50)
         }
     }
     

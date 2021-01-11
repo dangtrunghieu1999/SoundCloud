@@ -20,6 +20,8 @@ class BaseTableViewHeaderFooter: UITableViewHeaderFooterView, Reusable {
         super.init(coder: aDecoder)
     }
     
-    func initialize() {}
+    func initialize() {
+        backgroundColor = .clear
+    }
     
 }

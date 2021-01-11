@@ -23,7 +23,8 @@ final class ImageManager {
     static let like                             = UIImage(named: "like")
     static let more                             = UIImage(named: "more")
     static let logoSpotify                      = UIImage(named: "logoSpotify")
-    
+    static let next                             = UIImage(named: "next")
+
     // MARK: - PlaySong
     
     static let playAll                          = UIImage(named: "playAll")

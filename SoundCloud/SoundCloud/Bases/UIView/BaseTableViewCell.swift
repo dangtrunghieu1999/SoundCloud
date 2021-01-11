@@ -31,6 +31,5 @@ open class BaseTableViewCell: UITableViewCell, Reusable {
     
     private func setupDefault() {
         selectionStyle = .none
-        backgroundColor = UIColor.white
     }
 }

@@ -134,7 +134,7 @@ class LoginViewController: BaseViewController {
             make.top.equalTo(emailTitleLabel.snp.bottom).offset(Dimension.shared.smallMargin)
             make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
             make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
-            make.height.equalTo(50)
+            make.height.equalTo(Dimension.shared.largeHeightButton)
         }
     }
     
@@ -151,7 +151,7 @@ class LoginViewController: BaseViewController {
         passwordTextField.snp.makeConstraints { (make) in
             make.top.equalTo(passwordTitleLabel.snp.bottom).offset(Dimension.shared.smallMargin)
             make.left.right.equalTo(emailTextField)
-            make.height.equalTo(50)
+            make.height.equalTo(Dimension.shared.largeHeightButton)
         }
     }
     
@@ -159,8 +159,8 @@ class LoginViewController: BaseViewController {
         view.addSubview(signInButton)
         signInButton.snp.makeConstraints { (make) in
             make.top.equalTo(passwordTextField.snp.bottom).offset(Dimension.shared.largeMargin_50)
-            make.width.equalTo(150)
-            make.height.equalTo(50)
+            make.width.equalTo(Dimension.shared.largeWidthButton)
+            make.height.equalTo(Dimension.shared.largeHeightButton)
             make.centerX.equalToSuperview()
         }
     }
