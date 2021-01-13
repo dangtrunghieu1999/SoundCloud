@@ -10,9 +10,15 @@ import UIKit
 
 class YourLibraryViewController: BaseViewController {
     
+    // MARK: - UI Elements
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = TextManager.music
     }
+    
+    
 }

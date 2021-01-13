@@ -28,7 +28,9 @@ class SearchViewController: BaseViewController {
         textField.layer.borderWidth = 1.0
         textField.returnKeyType = .search
         textField.clearButtonMode = .whileEditing
+        textField.delegate = self
         textField.layer.borderColor = UIColor.lightSeparator.cgColor
+        textField.addTarget(self, action: #selector(touchInSearchSongBar), for: .editingDidBegin)
         return textField
     }()
     
@@ -56,6 +58,13 @@ class SearchViewController: BaseViewController {
     }
     
     // MARK: - UI Action
+    
+    @objc func touchInSearchSongBar() {
+        let vc = SearchSongViewController()
+        let navController = UINavigationController(rootViewController: vc)
+        self.navigationController?.present(navController, animated: true, completion: nil)
+        searchTextField.endEditing(true)
+    }
     
     // MARK: - Layout
     

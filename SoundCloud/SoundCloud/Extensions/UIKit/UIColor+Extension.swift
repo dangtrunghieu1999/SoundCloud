@@ -31,7 +31,7 @@ extension UIColor {
     }
     
     class var lightBodyText: UIColor {
-        return UIColor(hex: "#787878")
+        return UIColor(hex: "#242424")
     }
     
     class var lightSeparator: UIColor {

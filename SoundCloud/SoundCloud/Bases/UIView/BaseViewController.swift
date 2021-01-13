@@ -42,6 +42,27 @@ class BaseViewController: UIViewController {
         let hub = JGProgressHUD(style: .dark)
         return hub
     }()
+    
+    lazy var searchBar: PaddingTextField = {
+        let searchBar = PaddingTextField()
+        searchBar.setDefaultBackgroundColor()
+        searchBar.layer.cornerRadius = 5
+        searchBar.layer.masksToBounds = true
+        searchBar.attributedPlaceholder = NSAttributedString(string:TextManager.search,
+                                                             attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        searchBar.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
+        searchBar.textColor = .white
+        searchBar.returnKeyType = .search
+        searchBar.leftImage = ImageManager.search
+        var rect = navigationController?.navigationBar.frame ?? CGRect.zero
+        rect.size.height = 30
+        searchBar.frame = rect
+        searchBar.clearButtonMode = .whileEditing
+        searchBar.delegate = self
+        searchBar.addTarget(self, action: #selector(touchInSearchBar), for: .editingDidBegin)
+        searchBar.addTarget(self, action: #selector(searchBarValueChange(_:)), for: .editingChanged)
+        return searchBar
+    }()
 
     
     // MARK: - View LifeCycles
@@ -57,6 +78,10 @@ class BaseViewController: UIViewController {
         addTapOnSuperViewDismissKeyboard()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     // MARK: - UI Actions
     
     @objc func touchUpInBackButton() {
@@ -70,6 +95,10 @@ class BaseViewController: UIViewController {
     @objc func keyboardWillShow(_ notification: NSNotification) {}
     
     @objc func keyboardWillHide(_ notification: NSNotification) {}
+    
+    @objc func searchBarValueChange(_ textField: UITextField) {}
+    
+    @objc func touchInSearchBar() {}
     
     @objc func touchInBaseView() {
         view.endEditing(true)
@@ -179,4 +208,13 @@ class BaseViewController: UIViewController {
         }
     }
 
+}
+
+// MARK: - UITextFieldDelegate
+
+extension BaseViewController: UITextFieldDelegate {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchBar.endEditing(true)
+        return true
+    }
 }

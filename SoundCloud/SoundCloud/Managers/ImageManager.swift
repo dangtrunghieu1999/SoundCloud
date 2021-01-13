@@ -24,6 +24,7 @@ final class ImageManager {
     static let more                             = UIImage(named: "more")
     static let logoSpotify                      = UIImage(named: "logoSpotify")
     static let next                             = UIImage(named: "next")
+    static let cancel                           = UIImage(named: "cancel")
 
     // MARK: - PlaySong
     
@@ -38,4 +39,6 @@ final class ImageManager {
     static let shareIcon                        = UIImage(named: "ShareIcon")
     static let deviceIcon                       = UIImage(named: "DeviceIcon")
 
+    
+    static let sendMail                         = UIImage(named: "mail_send")
 }

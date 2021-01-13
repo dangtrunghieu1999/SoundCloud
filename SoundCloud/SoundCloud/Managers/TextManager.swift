@@ -60,7 +60,10 @@ final class TextManager {
     static let promotion                        = "Quảng cáo"
     static let fileDeivce                       = "Tệp trên máy"
     static let intro                            = "Giới thiệu"
-
+    static let yourCode                         = "Mã code"
+    static let next                             = "Tiếp tục"
+    
+    static let sendCodeRecoverPWInEmail     = "Chúng tôi đã gửi cho bạn mã code qua email, hãy check mail bạn nhé! \n\n Vui lòng nhập code để khôi phục lại mật khẩu của bạn"
 
 
 }

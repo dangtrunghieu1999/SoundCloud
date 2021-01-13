@@ -150,7 +150,9 @@ class SignUpViewController: BaseViewController {
         //            return
         //        }
         
-        showLoading()
+//        showLoading()
+        let vc = VerifyOTPViewController()
+        navigationController?.pushViewController(vc, animated: true)
         
         
     }

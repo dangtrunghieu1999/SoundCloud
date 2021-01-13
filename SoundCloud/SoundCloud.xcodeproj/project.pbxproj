@@ -34,6 +34,7 @@
 		CF459656251B9CF00062158D /* BaseTableViewHeaderFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF459655251B9CF00062158D /* BaseTableViewHeaderFooter.swift */; };
 		CF4942A725A021F1008436C0 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4942A625A021F1008436C0 /* UIImageView+Extension.swift */; };
 		CF4942AD25A03265008436C0 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4942AC25A03265008436C0 /* UILabel+Extension.swift */; };
+		CF542E8825AE96350013D862 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF542E8725AE96350013D862 /* UIView+Extension.swift */; };
 		CF551ECC259F66C4004D2C3B /* AnimatePlayVCHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF551ECB259F66C4004D2C3B /* AnimatePlayVCHelper.swift */; };
 		CF551ECF259F671F004D2C3B /* DetailViewPlaySong.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF551ECE259F671F004D2C3B /* DetailViewPlaySong.swift */; };
 		CF551ED2259F6748004D2C3B /* BaseDetailSongMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF551ED1259F6748004D2C3B /* BaseDetailSongMusic.swift */; };
@@ -49,6 +50,7 @@
 		CF64609B251B972D00C03F2D /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64609A251B972D00C03F2D /* ImageManager.swift */; };
 		CF64609D251B974B00C03F2D /* TextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64609C251B974B00C03F2D /* TextManager.swift */; };
 		CF7222E8251B9E7D00F22E0F /* Dimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7222E7251B9E7D00F22E0F /* Dimensions.swift */; };
+		CF85478E25AD3C1C000595A3 /* VerifyOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF85478D25AD3C1C000595A3 /* VerifyOTPViewController.swift */; };
 		CF9A36B72590F170005323CE /* StackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9A36B62590F170005323CE /* StackView+Extension.swift */; };
 		CFA11DBB259F3DE700AE3843 /* AppRouters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA11DBA259F3DE700AE3843 /* AppRouters.swift */; };
 		CFA11DBE259F3E5E00AE3843 /* UIViewController+Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA11DBD259F3E5E00AE3843 /* UIViewController+Extenstion.swift */; };
@@ -59,6 +61,7 @@
 		CFB07A39259188E6008FD3AB /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB07A38259188E6008FD3AB /* AlbumViewController.swift */; };
 		CFB07A3D25918925008FD3AB /* HeaderViewCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB07A3C25918925008FD3AB /* HeaderViewCollectionReusableView.swift */; };
 		CFB07A542591A48C008FD3AB /* SongCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB07A532591A48C008FD3AB /* SongCollectionViewCell.swift */; };
+		CFB1AA1925ADF0D800356B26 /* SearchSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB1AA1825ADF0D800356B26 /* SearchSongViewController.swift */; };
 		CFBB192A259B289100CA58A1 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBB1929259B289100CA58A1 /* AppConfig.swift */; };
 		CFBB192D259B28CA00CA58A1 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBB192C259B28CA00CA58A1 /* String+Extension.swift */; };
 		CFBB1930259B297E00CA58A1 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBB192F259B297E00CA58A1 /* Date+Extension.swift */; };
@@ -111,6 +114,7 @@
 		CF459655251B9CF00062158D /* BaseTableViewHeaderFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewHeaderFooter.swift; sourceTree = "<group>"; };
 		CF4942A625A021F1008436C0 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		CF4942AC25A03265008436C0 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		CF542E8725AE96350013D862 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		CF551ECB259F66C4004D2C3B /* AnimatePlayVCHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatePlayVCHelper.swift; sourceTree = "<group>"; };
 		CF551ECE259F671F004D2C3B /* DetailViewPlaySong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewPlaySong.swift; sourceTree = "<group>"; };
 		CF551ED1259F6748004D2C3B /* BaseDetailSongMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDetailSongMusic.swift; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 		CF64609A251B972D00C03F2D /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		CF64609C251B974B00C03F2D /* TextManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextManager.swift; sourceTree = "<group>"; };
 		CF7222E7251B9E7D00F22E0F /* Dimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimensions.swift; sourceTree = "<group>"; };
+		CF85478D25AD3C1C000595A3 /* VerifyOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPViewController.swift; sourceTree = "<group>"; };
 		CF9A36B62590F170005323CE /* StackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StackView+Extension.swift"; sourceTree = "<group>"; };
 		CFA11DBA259F3DE700AE3843 /* AppRouters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouters.swift; sourceTree = "<group>"; };
 		CFA11DBD259F3E5E00AE3843 /* UIViewController+Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extenstion.swift"; sourceTree = "<group>"; };
@@ -138,6 +143,7 @@
 		CFB07A38259188E6008FD3AB /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		CFB07A3C25918925008FD3AB /* HeaderViewCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewCollectionReusableView.swift; sourceTree = "<group>"; };
 		CFB07A532591A48C008FD3AB /* SongCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCollectionViewCell.swift; sourceTree = "<group>"; };
+		CFB1AA1825ADF0D800356B26 /* SearchSongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSongViewController.swift; sourceTree = "<group>"; };
 		CFBB1929259B289100CA58A1 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		CFBB192C259B28CA00CA58A1 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		CFBB192F259B297E00CA58A1 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
@@ -187,6 +193,14 @@
 				63F110FA1BCA958983F5DADA /* Pods_SoundCloud.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF048BE925ACABD100914BD6 /* Verify */ = {
+			isa = PBXGroup;
+			children = (
+				CF85478D25AD3C1C000595A3 /* VerifyOTPViewController.swift */,
+			);
+			path = Verify;
 			sourceTree = "<group>";
 		};
 		CF0B0C9625A4B1DA007689B6 /* APIService */ = {
@@ -351,6 +365,7 @@
 				CFA11DBD259F3E5E00AE3843 /* UIViewController+Extenstion.swift */,
 				CF4942A625A021F1008436C0 /* UIImageView+Extension.swift */,
 				CF4942AC25A03265008436C0 /* UILabel+Extension.swift */,
+				CF542E8725AE96350013D862 /* UIView+Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -381,6 +396,7 @@
 			children = (
 				CFC8E545251D81380080FC15 /* SearchViewController.swift */,
 				CFBED1852589C3E000F19CD7 /* SearchPlayerCollectionViewCell.swift */,
+				CFB1AA1825ADF0D800356B26 /* SearchSongViewController.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -388,8 +404,6 @@
 		CF6460A1251B979900C03F2D /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				CF9A36B22590E7BF005323CE /* View */,
-				CF9A36B12590E7BA005323CE /* Model */,
 				CF26D8912590BBB5004B2EF9 /* YourLibraryViewController.swift */,
 			);
 			path = Library;
@@ -406,20 +420,6 @@
 				CFD66E6025AAD80200C14E6B /* AppInfo.swift */,
 			);
 			path = Commons;
-			sourceTree = "<group>";
-		};
-		CF9A36B12590E7BA005323CE /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		CF9A36B22590E7BF005323CE /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		CFA11DC2259F439E00AE3843 /* Settings */ = {
@@ -506,6 +506,7 @@
 		CFC49AA5259021D00020B68B /* User */ = {
 			isa = PBXGroup;
 			children = (
+				CF048BE925ACABD100914BD6 /* Verify */,
 				CFA11DC2259F439E00AE3843 /* Settings */,
 				CFC49AA7259021F50020B68B /* SignUp */,
 				CFC49AA6259021D90020B68B /* SignIn */,
@@ -708,6 +709,7 @@
 				CF646092251B954600C03F2D /* UICollectionView+Extension.swift in Sources */,
 				CF646098251B95CF00C03F2D /* UITableView+Extension.swift in Sources */,
 				CF551ED5259F6775004D2C3B /* DishSongCellCollectionViewCell.swift in Sources */,
+				CFB1AA1925ADF0D800356B26 /* SearchSongViewController.swift in Sources */,
 				CFD66E6525AAD9DE00C14E6B /* SignUpViewModel.swift in Sources */,
 				CF9A36B72590F170005323CE /* StackView+Extension.swift in Sources */,
 				CF3912AF259B377300979DA4 /* ViewPlaySong.swift in Sources */,
@@ -715,6 +717,7 @@
 				CF0DEF4025AB085C004AA0DA /* SettingTableViewCell.swift in Sources */,
 				CFC49AAF259022630020B68B /* BaseAlertViewController.swift in Sources */,
 				CF7222E8251B9E7D00F22E0F /* Dimensions.swift in Sources */,
+				CF542E8825AE96350013D862 /* UIView+Extension.swift in Sources */,
 				CF64609B251B972D00C03F2D /* ImageManager.swift in Sources */,
 				CF0B0CB625A4B34D007689B6 /* SongTrack.swift in Sources */,
 				CFD66E4325AAD5E600C14E6B /* SignInViewModel.swift in Sources */,
@@ -752,6 +755,7 @@
 				CF646090251B952D00C03F2D /* UIColor+Extension.swift in Sources */,
 				CFD66E4725AAD61200C14E6B /* BaseViewModel.swift in Sources */,
 				CF0B0CAC25A4B28B007689B6 /* APIResponse.swift in Sources */,
+				CF85478E25AD3C1C000595A3 /* VerifyOTPViewController.swift in Sources */,
 				CF646089251B90DE00C03F2D /* HomeViewController.swift in Sources */,
 				CF646059251B905D00C03F2D /* AppDelegate.swift in Sources */,
 				CF459654251B9CD60062158D /* BaseTableViewCell.swift in Sources */,
