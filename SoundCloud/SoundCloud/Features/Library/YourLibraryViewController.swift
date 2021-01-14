@@ -13,6 +13,8 @@ class YourLibraryViewController: BaseViewController {
     // MARK: - Variables
     
     fileprivate lazy var song = [SongTrack]()
+    fileprivate lazy var playListName = [String]()
+    fileprivate lazy var likeSong = [SongTrack]()
     
     // MARK: - UI Elements
     
@@ -31,6 +33,7 @@ class YourLibraryViewController: BaseViewController {
         tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
         tableView.registerReusableCell(LibraryTableViewCell.self)
+        tableView.registerReusableHeaderFooter(CreateYourLibraryTableView.self)
         return tableView
     }()
 
@@ -45,7 +48,10 @@ class YourLibraryViewController: BaseViewController {
     // MARK: - Layout
     
     private func checkView() {
-        if song.count > 0 {
+        playListName.append("Trung Hieu")
+        likeSong = MusicPlayer.shared.playListSong!
+        libraryTableView.reloadData()
+        if playListName.count > 0 || likeSong.count > 0{
             layoutLibraryTableView()
         } else {
             layoutPlayListEmpty()
@@ -84,23 +90,46 @@ class YourLibraryViewController: BaseViewController {
 
 extension YourLibraryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 300
+        if playListName.count > 0 || likeSong.count > 0{
+            return 100
+        } else {
+            return 300
+        }
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 80
+    }
+
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("aaa")
+        
     }
 }
 
 extension YourLibraryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if section == 0 && likeSong.count > 0{
+            return 1
+        } else {
+            return playListName.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: LibraryTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+        if likeSong.count > 0 {
+            cell.configLikeSong(image: ImageManager.favorites, title: TextManager.favorites, description: "1 bài hát")
+        }
         return cell
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header: CreateYourLibraryTableView = tableView.dequeueReusableHeaderFooterView()
+        return header
+    }
+
 }
 
 extension YourLibraryViewController: EmptyPlayListSongView {

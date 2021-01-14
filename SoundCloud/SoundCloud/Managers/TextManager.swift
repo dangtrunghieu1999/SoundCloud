@@ -71,6 +71,8 @@ final class TextManager {
     static let namePlayList                     = "Đặt tên cho playlist của bạn."
     static let yourPlayList                     = "Playlist của tôi"
     static let create                           = "Tạo"
+    static let createPlay                       = "Tạo playlist"
+    static let favorites                        = "Bài hát ưa thích"
 
 }
 

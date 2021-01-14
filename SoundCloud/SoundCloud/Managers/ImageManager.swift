@@ -40,4 +40,7 @@ final class ImageManager {
     static let shareIcon                        = UIImage(named: "ShareIcon")
     static let deviceIcon                       = UIImage(named: "DeviceIcon")
     static let sendMail                         = UIImage(named: "mail_send")
+    static let create                           = UIImage(named: "create")
+    static let favorites                        = UIImage(named: "favorites")
+
 }

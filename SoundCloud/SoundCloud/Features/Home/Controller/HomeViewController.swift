@@ -35,6 +35,7 @@ class HomeViewController: BaseViewController {
         self.setRightNavigationBar(ImageManager.setting)
         fetchJson()
         layoutHomeCollectionView()
+
     }
     
     // MARK: - Fetch Data
