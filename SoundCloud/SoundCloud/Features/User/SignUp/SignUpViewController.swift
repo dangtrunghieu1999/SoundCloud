@@ -31,7 +31,7 @@ class SignUpViewController: BaseViewController {
     fileprivate lazy var emailTextField: PaddingTextField = {
         let textField = PaddingTextField()
         textField.layer.borderWidth = 1
-        textField.layer.cornerRadius = 5
+        textField.layer.cornerRadius = Dimension.shared.largeHeightButton / 2
         textField.backgroundColor = UIColor.spotifyBrown
         textField.layer.masksToBounds = true
         textField.textColor = UIColor.white
@@ -51,7 +51,7 @@ class SignUpViewController: BaseViewController {
     fileprivate lazy var passwordTextField: PaddingTextField = {
         let textField = PaddingTextField()
         textField.layer.borderWidth = 1
-        textField.layer.cornerRadius = 5
+        textField.layer.cornerRadius = Dimension.shared.largeHeightButton / 2
         textField.backgroundColor = UIColor.spotifyBrown
         textField.layer.masksToBounds = true
         textField.isSecureTextEntry = true
@@ -72,7 +72,7 @@ class SignUpViewController: BaseViewController {
     fileprivate lazy var usernameTextField: PaddingTextField = {
         let textField = PaddingTextField()
         textField.layer.borderWidth = 1
-        textField.layer.cornerRadius = 5
+        textField.layer.cornerRadius = Dimension.shared.largeHeightButton / 2
         textField.backgroundColor = UIColor.spotifyBrown
         textField.layer.masksToBounds = true
         textField.textColor = UIColor.white
@@ -106,7 +106,7 @@ class SignUpViewController: BaseViewController {
         textField.inputView = datePicker
         textField.backgroundColor = UIColor.spotifyBrown
         textField.layer.borderWidth = 1
-        textField.layer.cornerRadius = 5
+        textField.layer.cornerRadius = Dimension.shared.largeHeightButton / 2
         textField.textColor = UIColor.white
         textField.text = selectedDate.desciption(by: DateFormat.shortDateUserFormat)
         return textField

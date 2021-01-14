@@ -30,23 +30,25 @@ class VerifyOTPViewController: BaseViewController {
     
     fileprivate lazy var enterCodeTextField: PaddingTextField = {
         let textField = PaddingTextField()
-        textField.placeholder = TextManager.yourCode
-        textField.layer.borderColor = UIColor.separator.cgColor
-        textField.layer.borderWidth = 1
-        textField.layer.cornerRadius = Dimension.shared.defaultHeightTextField / 2
+        textField.attributedPlaceholder = NSAttributedString(string:TextManager.yourCode,
+                                                             attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        textField.backgroundColor = .spotifyBrown
         textField.layer.masksToBounds = true
+        textField.layer.cornerRadius = Dimension.shared.largeHeightButton / 2
         textField.textColor = UIColor.white
         textField.keyboardType = .numberPad
+        textField.textAlignment = .center
+        textField.becomeFirstResponder()
         textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
         return textField
     }()
     
     fileprivate lazy var nextButton: UIButton = {
         let button = UIButton()
-        button.setTitle(TextManager.next, for: .normal)
+        button.setTitle(TextManager.next.uppercased(), for: .normal)
         button.backgroundColor = UIColor.spotifyBrown
         button.titleLabel?.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .medium)
-        button.layer.cornerRadius = Dimension.shared.defaultHeightButton / 2
+        button.layer.cornerRadius = Dimension.shared.largeHeightButton / 2
         button.layer.masksToBounds = true
         button.isUserInteractionEnabled = false
         button.setTitleColor(UIColor.black, for: .normal)
@@ -105,7 +107,7 @@ class VerifyOTPViewController: BaseViewController {
         enterCodeTextField.snp.makeConstraints { (make) in
             make.left.equalTo(view).offset(Dimension.shared.largeMargin_30)
             make.right.equalTo(view).offset(-Dimension.shared.largeMargin_30)
-            make.height.equalTo(Dimension.shared.defaultHeightTextField)
+            make.height.equalTo(Dimension.shared.largeHeightButton)
             make.top.equalTo(titleLabel.snp.bottom).offset(Dimension.shared.largeMargin)
         }
     }
@@ -113,8 +115,8 @@ class VerifyOTPViewController: BaseViewController {
     private func layoutNextButton() {
         view.addSubview(nextButton)
         nextButton.snp.makeConstraints { (make) in
-            make.width.equalTo(Dimension.shared.smallWidthButton)
-            make.height.equalTo(Dimension.shared.defaultHeightButton)
+            make.width.equalTo(Dimension.shared.largeWidthButton)
+            make.height.equalTo(Dimension.shared.largeHeightButton)
             make.centerX.equalToSuperview()
             make.top.equalTo(enterCodeTextField.snp.bottom).offset(Dimension.shared.largeMargin_30)
         }

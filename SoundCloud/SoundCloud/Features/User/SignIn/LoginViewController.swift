@@ -29,7 +29,7 @@ class LoginViewController: BaseViewController {
     fileprivate lazy var emailTextField: PaddingTextField = {
         let textField = PaddingTextField()
         textField.layer.borderWidth = 1
-        textField.layer.cornerRadius = 5
+        textField.layer.cornerRadius = Dimension.shared.largeHeightButton / 2
         textField.backgroundColor = UIColor.spotifyBrown
         textField.layer.masksToBounds = true
         textField.textColor = UIColor.white
@@ -49,7 +49,7 @@ class LoginViewController: BaseViewController {
     fileprivate lazy var passwordTextField: PaddingTextField = {
         let textField = PaddingTextField()
         textField.layer.borderWidth = 1
-        textField.layer.cornerRadius = 5
+        textField.layer.cornerRadius = Dimension.shared.largeHeightButton / 2
         textField.backgroundColor = UIColor.spotifyBrown
         textField.layer.masksToBounds = true
         textField.isSecureTextEntry = true

@@ -17,6 +17,7 @@ final class TextManager {
     static let signInTitle                          = "Hàng triệu bài hát. Miễn phí trên Spotify."
     static let signUnFree                           = "ĐĂNG KÝ MIỄN PHÍ"
     static let signIn                               = "ĐĂNG NHẬP"
+    static let createPlayList                       = "TẠO PLAYLIST"
     static let logout                               = "ĐĂNG XUẤT"
     static let signUp                               = "ĐĂNG KÝ"
     static let dateOfBirth                          = "Ngày sinh"
@@ -65,6 +66,11 @@ final class TextManager {
     
     static let sendCodeRecoverPWInEmail     = "Chúng tôi đã gửi cho bạn mã code qua email, hãy check mail bạn nhé! \n\n Vui lòng nhập code để khôi phục lại mật khẩu của bạn"
 
+    static let createPlaylist                   = "Tạo playlist đầu tiên \n của bạn"
+    static let descriptionList                  = "Thật dễ dàng, chúng tôi sẽ giúp bạn"
+    static let namePlayList                     = "Đặt tên cho playlist của bạn."
+    static let yourPlayList                     = "Playlist của tôi"
+    static let create                           = "Tạo"
 
 }
 
