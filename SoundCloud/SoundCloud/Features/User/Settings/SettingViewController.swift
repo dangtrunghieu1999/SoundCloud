@@ -85,6 +85,7 @@ extension SettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header: SettingHeaderView = tableView.dequeueReusableHeaderFooterView()
+        header.delegate = self
         return header
     }
     
@@ -92,6 +93,14 @@ extension SettingViewController: UITableViewDataSource {
         let footer: SettingFooterView = tableView.dequeueReusableHeaderFooterView()
         return footer
     }
-    
+}
+
+extension SettingViewController: SettingHeaderViewDelegate {
+    func tapOnSettingProfile() {
+        let vc = SettingProfileViewController()
+        let navController = UINavigationController(rootViewController: vc)
+        self.navigationController?.present(navController, animated: true, completion: nil)
+
+    }
 }
 

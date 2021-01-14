@@ -43,6 +43,7 @@
 		CF551ECF259F671F004D2C3B /* DetailViewPlaySong.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF551ECE259F671F004D2C3B /* DetailViewPlaySong.swift */; };
 		CF551ED2259F6748004D2C3B /* BaseDetailSongMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF551ED1259F6748004D2C3B /* BaseDetailSongMusic.swift */; };
 		CF551ED5259F6775004D2C3B /* DishSongCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF551ED4259F6775004D2C3B /* DishSongCellCollectionViewCell.swift */; };
+		CF6165B725B030380024AEE5 /* SettingProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6165B625B030380024AEE5 /* SettingProfileViewController.swift */; };
 		CF646059251B905D00C03F2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF646058251B905D00C03F2D /* AppDelegate.swift */; };
 		CF646065251B905E00C03F2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF646063251B905E00C03F2D /* LaunchScreen.storyboard */; };
 		CF646089251B90DE00C03F2D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF646088251B90DE00C03F2D /* HomeViewController.swift */; };
@@ -128,6 +129,7 @@
 		CF551ECE259F671F004D2C3B /* DetailViewPlaySong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewPlaySong.swift; sourceTree = "<group>"; };
 		CF551ED1259F6748004D2C3B /* BaseDetailSongMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDetailSongMusic.swift; sourceTree = "<group>"; };
 		CF551ED4259F6775004D2C3B /* DishSongCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishSongCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		CF6165B625B030380024AEE5 /* SettingProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingProfileViewController.swift; sourceTree = "<group>"; };
 		CF646055251B905D00C03F2D /* SoundCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF646058251B905D00C03F2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF646064251B905E00C03F2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 				CF0DEF4325AB0864004AA0DA /* View */,
 				CF0DEF4225AB085F004AA0DA /* Model */,
 				CFA11DC3259F43BB00AE3843 /* SettingViewController.swift */,
+				CF6165B625B030380024AEE5 /* SettingProfileViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -780,6 +783,7 @@
 				CF646059251B905D00C03F2D /* AppDelegate.swift in Sources */,
 				CF459654251B9CD60062158D /* BaseTableViewCell.swift in Sources */,
 				CF64609D251B974B00C03F2D /* TextManager.swift in Sources */,
+				CF6165B725B030380024AEE5 /* SettingProfileViewController.swift in Sources */,
 				CFD66E6125AAD80200C14E6B /* AppInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

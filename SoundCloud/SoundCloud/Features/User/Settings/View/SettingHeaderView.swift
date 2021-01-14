@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol SettingHeaderViewDelegate: class {
+    func tapOnSettingProfile()
+}
+
 class SettingHeaderView: BaseTableViewHeaderFooter {
+    
+    weak var delegate: SettingHeaderViewDelegate?
     
     fileprivate lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView()
@@ -36,6 +42,7 @@ class SettingHeaderView: BaseTableViewHeaderFooter {
         button.contentHorizontalAlignment = .center
         button.backgroundColor = UIColor.spotifyBrown
         button.layer.cornerRadius = Dimension.shared.mediumHeightButton / 2
+        button.addTarget(self, action: #selector(tapOnSettingProfile), for: .touchUpInside)
         return button
     }()
     
@@ -44,6 +51,10 @@ class SettingHeaderView: BaseTableViewHeaderFooter {
         layoutAvatarImageView()
         layoutUserNameTextField()
         layoutSettingProfileButton()
+    }
+    
+    @objc func tapOnSettingProfile() {
+        delegate?.tapOnSettingProfile()
     }
     
     private func layoutAvatarImageView() {

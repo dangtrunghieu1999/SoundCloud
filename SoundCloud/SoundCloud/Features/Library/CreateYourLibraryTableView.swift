@@ -10,13 +10,17 @@ import UIKit
 
 class CreateYourLibraryTableView: BaseTableViewHeaderFooter {
 
+    weak var delegate: EmptyPlayListSongView?
+    
     // MARK: - UI Elements
     
     fileprivate lazy var createPlayListButton: UIButton = {
         let button = UIButton()
         button.layer.masksToBounds = true
-        button.contentMode = .scaleAspectFill
+        button.contentMode = .scaleAspectFit
         button.setImage(ImageManager.create, for: .normal)
+        button.addTarget(self, action: #selector(tapCreatePlayList), for: .touchUpInside)
+        button.isUserInteractionEnabled = true
         return button
     }()
     
@@ -33,6 +37,10 @@ class CreateYourLibraryTableView: BaseTableViewHeaderFooter {
         super.initialize()
         layoutCreatePlayListButton()
         layoutTitleLabel()
+    }
+    
+    @objc private func tapCreatePlayList() {
+        delegate?.tapOnCreatePlayList()
     }
     
     private func layoutCreatePlayListButton() {

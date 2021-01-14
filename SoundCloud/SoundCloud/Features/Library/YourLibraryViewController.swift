@@ -36,7 +36,7 @@ class YourLibraryViewController: BaseViewController {
         tableView.registerReusableHeaderFooter(CreateYourLibraryTableView.self)
         return tableView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -100,11 +100,12 @@ extension YourLibraryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 80
     }
-
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        print("aaasas")
     }
+    
 }
 
 extension YourLibraryViewController: UITableViewDataSource {
@@ -127,9 +128,10 @@ extension YourLibraryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header: CreateYourLibraryTableView = tableView.dequeueReusableHeaderFooterView()
+        header.delegate = self
         return header
     }
-
+    
 }
 
 extension YourLibraryViewController: EmptyPlayListSongView {
@@ -139,3 +141,4 @@ extension YourLibraryViewController: EmptyPlayListSongView {
         self.navigationController?.present(navController, animated: true, completion: nil)
     }
 }
+

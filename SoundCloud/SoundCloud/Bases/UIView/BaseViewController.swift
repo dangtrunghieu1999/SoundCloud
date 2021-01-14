@@ -31,6 +31,11 @@ struct BarButtonItemModel {
         self.title = title
         self.target = target
     }
+    
+    init(_ title: String? = nil,_ target: Target) {
+        self.title  = title
+        self.target = target
+    }
 }
 
 class BaseViewController: UIViewController {
@@ -205,6 +210,18 @@ class BaseViewController: UIViewController {
             navigationItem.rightBarButtonItems = barButtonItems
         } else {
             navigationItem.leftBarButtonItems = barButtonItems
+        }
+    }
+    
+    func setTitleNavigationBar(leftTitle: String?, rightTitle: String?) {
+        if leftTitle != nil {
+            let leftBarItemTarget: Target = (target: self, selector: #selector(touchUpInLeftBarButtonItem))
+            let leftBarButtonModel = BarButtonItemModel(leftTitle, leftBarItemTarget)
+            addBarItems(with: [leftBarButtonModel], type: .left)
+        } else {
+            let rightBarItemTarget: Target = (target: self, selector: #selector(touchUpInRightBarButtonItem))
+            let rightBarButtonModel = BarButtonItemModel(rightTitle, rightBarItemTarget)
+            addBarItems(with: [rightBarButtonModel], type: .right)
         }
     }
     
