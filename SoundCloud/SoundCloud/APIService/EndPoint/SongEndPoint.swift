@@ -17,7 +17,7 @@ extension SongEndPoint: EndPointType {
     var path: String {
         switch self {
         case .getPlistSong:
-            return "/get-list-recommend-song"
+            return "/node-list-song"
         }
     }
     

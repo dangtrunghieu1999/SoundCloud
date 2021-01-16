@@ -55,7 +55,7 @@ class ViewPlaySong: BaseView {
     func setData(song: SongTrack) {
         self.song = song
         self.nameLabel.text = self.song.title
-        self.disPlayNameLabel.text = self.song.artist_id
+        self.disPlayNameLabel.text = self.song.title
         guard let url = URL(string: self.song.image) else {
             return
         }

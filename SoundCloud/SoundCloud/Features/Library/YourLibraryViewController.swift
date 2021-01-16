@@ -48,8 +48,7 @@ class YourLibraryViewController: BaseViewController {
     // MARK: - Layout
     
     private func checkView() {
-        playListName.append("Trung Hieu")
-        likeSong = MusicPlayer.shared.playListSong!
+        likeSong = MusicPlayer.shared.yourPlayListSong ?? []
         libraryTableView.reloadData()
         if playListName.count > 0 || likeSong.count > 0{
             layoutLibraryTableView()
@@ -103,7 +102,13 @@ extension YourLibraryViewController: UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("aaasas")
+        if indexPath.section == 0 {
+            let vc = LikeSongViewController()
+            vc.configData(likeSongs: likeSong)
+            navigationController?.pushViewController(vc, animated: true)
+        } else {
+            
+        }
     }
     
 }
@@ -121,7 +126,9 @@ extension YourLibraryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: LibraryTableViewCell = tableView.dequeueReusableCell(for: indexPath)
         if likeSong.count > 0 {
-            cell.configLikeSong(image: ImageManager.favorites, title: TextManager.favorites, description: "1 bài hát")
+            cell.configLikeSong(image: ImageManager.favorites,
+                                title: TextManager.favorites,
+                                description: "\(likeSong.count) \(TextManager.song)")
         }
         return cell
     }
@@ -131,12 +138,11 @@ extension YourLibraryViewController: UITableViewDataSource {
         header.delegate = self
         return header
     }
-    
 }
 
 extension YourLibraryViewController: EmptyPlayListSongView {
     func tapOnCreatePlayList() {
-        let vc = YourPlayListViewController()
+        let vc = CreateYourPlayListViewController()
         let navController = UINavigationController(rootViewController: vc)
         self.navigationController?.present(navController, animated: true, completion: nil)
     }

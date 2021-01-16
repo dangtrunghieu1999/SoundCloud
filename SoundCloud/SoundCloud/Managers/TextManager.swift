@@ -73,6 +73,6 @@ final class TextManager {
     static let create                           = "Tạo"
     static let createPlay                       = "Tạo playlist"
     static let favorites                        = "Bài hát ưa thích"
-
+    static let song                             = "Bài hát"
 }
 

@@ -55,6 +55,7 @@ class AlbumViewController: BaseViewController {
         
         APIService.request(endPoint: endPoint, onSuccess: { [weak self](apiResponse) in
             self?.song = apiResponse.toArray([SongTrack.self])
+            MusicPlayer.shared.yourPlayListSong = self?.song
             self?.reloadDataWhenFinishLoadAPI()
         }, onFailure: { (apiError) in
             print("error")

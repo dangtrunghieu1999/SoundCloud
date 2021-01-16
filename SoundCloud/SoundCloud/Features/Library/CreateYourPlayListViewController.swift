@@ -8,7 +8,7 @@
 
 import UIKit
 
-class YourPlayListViewController: BaseViewController {
+class CreateYourPlayListViewController: BaseViewController {
 
     // MARK: - UI Elements
     

@@ -31,19 +31,19 @@ class APIResponse {
     init(response: DataResponse<Data>) {
         let json = JSON(response.data ?? Data())
         if (response.response?.isSuccess ?? false) {
-            if json["item"].exists() {
-                self.data = json["item"]
+            if json["data"].exists() {
+                self.data = json["data"]
             } else {
                 self.data = json
             }
         } else {
             if let errorCode = json["code"].int {
                 self.error = ServiceErrorAPI(code: errorCode,
-                                             title: json["item"].stringValue,
+                                             title: json["data"].stringValue,
                                              message: json["message"].stringValue)
             } else {
                 self.error = ServiceErrorAPI(code: response.response?.statusCode ?? HTTPStatusCode.internalError.rawValue,
-                                             title: json["item"].stringValue,
+                                             title: json["data"].stringValue,
                                              message: json["message"].stringValue)
             }
             self.data = nil

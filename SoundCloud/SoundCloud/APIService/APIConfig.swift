@@ -13,4 +13,5 @@ class APIConfig {
     static var baseURLString: String {
         return "http://demo7080721.mockable.io"
     }
+
 }
