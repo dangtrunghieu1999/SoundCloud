@@ -13,22 +13,23 @@ class User: NSObject, JSONParsable, NSCoding {
     
     var id              = ""
     var token           = ""
-    var firstName       = ""
-    var lastName        = ""
-    var pictureURL      = ""
     var fullName        = ""
     var email           = ""
+    var gender          :Bool?
+    var listPlaylists: [SongTrack] = []
+    var listFavoriteSongs: [SongTrack] = []
+    
     
     required override init() {}
 
     required init(json: JSON) {
-        self.id             = json["id"].stringValue
-        self.token          = json["auth_token"].stringValue
-        self.firstName      = json["FirstName"].stringValue
-        self.lastName       = json["LastName"].stringValue
-        self.pictureURL     = json["PictureUrl"].stringValue
-        self.email          = json["Email"].stringValue
-        self.fullName       = json["FullName"].stringValue
+        self.id                = json["id"].stringValue
+        self.token             = json["token"].stringValue
+        self.fullName          = json["fullname"].stringValue
+        self.email             = json["email"].stringValue
+        self.gender            = json["gender"].boolValue
+        self.listPlaylists     = json["listPlaylists"].arrayValue.map{SongTrack(json: $0)}
+        self.listFavoriteSongs = json["listFavoriteSongs"].arrayValue.map{SongTrack(json: $0)}
         
         if id == "" {
             id              = json["Id"].stringValue
@@ -37,26 +38,26 @@ class User: NSObject, JSONParsable, NSCoding {
             id              = json["UserId"].stringValue
         }
         
-        if fullName.isEmpty {
-            self.fullName = "\(lastName) \(firstName)".trimmingCharacters(in: .whitespaces)
-        }
     }
     
     required init?(coder aDecoder: NSCoder) {
-        id          = aDecoder.decodeObject(forKey: "id") as? String ?? ""
-        token       = aDecoder.decodeObject(forKey: "auth_token") as? String ?? ""
-        firstName   = aDecoder.decodeObject(forKey: "FirstName") as? String ?? ""
-        lastName    = aDecoder.decodeObject(forKey: "LastName") as? String ?? ""
-        email       = aDecoder.decodeObject(forKey: "PictureUrl") as? String ?? ""
-        fullName    = "\(lastName) \(firstName)".trimmingCharacters(in: .whitespaces)
+        id                   = aDecoder.decodeObject(forKey: "id") as? String ?? ""
+        token                = aDecoder.decodeObject(forKey: "token") as? String ?? ""
+        fullName             = aDecoder.decodeObject(forKey: "fullname") as? String ?? ""
+        email                = aDecoder.decodeObject(forKey: "email") as? String ?? ""
+        gender               = aDecoder.decodeObject(forKey: "gender") as? Bool ?? true
+        listPlaylists        = aDecoder.decodeObject(forKey: "listPlaylists") as? [SongTrack] ?? []
+        listFavoriteSongs    = aDecoder.decodeObject(forKey: "listPlaylists") as? [SongTrack] ?? []
     }
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(id,           forKey: "id")
-        aCoder.encode(token,        forKey: "auth_token")
-        aCoder.encode(firstName,    forKey: "FirstName")
-        aCoder.encode(lastName,     forKey: "LastName")
-        aCoder.encode(email,        forKey: "PictureUrl")
+        aCoder.encode(token,        forKey: "auth")
+        aCoder.encode(fullName,     forKey: "fullname")
+        aCoder.encode(email,        forKey: "email")
+        aCoder.encode(gender,       forKey: "gender")
+        aCoder.encode(listPlaylists,forKey: "listPlaylists")
+        aCoder.encode(listFavoriteSongs, forKey: "listFavoriteSongs")
     }
     
 }

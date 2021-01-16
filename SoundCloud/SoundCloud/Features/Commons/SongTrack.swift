@@ -13,25 +13,23 @@ import SwiftyJSON
 class SongTrack: NSObject, JSONParsable {
     
     var title           = ""
-    var download_permit = ""
     var genre           = ""
     var views           = ""
     var path            = ""
     var image           = ""
     var id              = ""
-    var artists         = ""
+    var playList: [Any] = []
     required override init() {}
     
     
     required init(json: JSON) {
-        id              = json["id"].stringValue
+        id              = json["_id"].stringValue
         title           = json["title"].stringValue
-        download_permit = json["download_permit"].stringValue
         genre           = json["genre"].stringValue
         path            = json["path"].stringValue
         image           = json["image"].stringValue
         views           = json["views"].stringValue
-        artists         = json["artists"].stringValue
+        playList        = json["playList"].arrayObject ?? []
     }
     
 }

@@ -23,7 +23,7 @@ extension UserEndPoint: EndPointType {
     var path: String {
         switch self {
         case .signIn:
-            return "/Auth/Login"
+            return "/auth/login"
         case .signUp:
             return "/User/Create"
         case .forgotPW:
@@ -33,7 +33,7 @@ extension UserEndPoint: EndPointType {
         case .createNewPW:
             return "/User/CreateNewPassword"
         case .getUserById:
-            return "/User/GetById"
+            return "user/profile"
         case .searchUser:
             return "/User/SearchUser"
         }

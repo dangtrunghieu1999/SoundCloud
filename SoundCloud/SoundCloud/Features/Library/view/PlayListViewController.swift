@@ -1,20 +1,18 @@
 //
-//  SettingProfileViewController.swift
+//  PlayListViewController.swift
 //  SoundCloud
 //
-//  Created by Dang Trung Hieu on 1/14/21.
+//  Created by Dang Trung Hieu on 1/16/21.
 //  Copyright © 2021 Dang Trung Hieu. All rights reserved.
 //
 
 import UIKit
 
-class SettingProfileViewController: BaseViewController {
-
-    
-    // MARK: - UI Elements
+class PlayListViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
     
 }

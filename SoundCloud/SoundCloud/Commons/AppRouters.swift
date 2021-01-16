@@ -10,8 +10,10 @@ import Foundation
 import UIKit
 class AppRouter: NSObject {
     
-    class func pushPlayList() {
+    class func pushAlbumSongList(album: PlayList) {
         let viewController = AlbumViewController()
+        viewController.album = album
+        viewController.idAlbum = album.id
         UINavigationController.topNavigationVC?.pushViewController(viewController, animated: true)
     }
 }

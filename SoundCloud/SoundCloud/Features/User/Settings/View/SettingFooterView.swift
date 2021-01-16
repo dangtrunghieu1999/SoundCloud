@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol SettingFooterViewDelegate: class {
+    func tapOnLogOut()
+}
+
 class SettingFooterView: BaseTableViewHeaderFooter {
+    
+    weak var delegate: SettingFooterViewDelegate?
     
     private let logOutButton: UIButton = {
         let button = UIButton()
@@ -18,12 +24,17 @@ class SettingFooterView: BaseTableViewHeaderFooter {
         button.contentHorizontalAlignment = .center
         button.backgroundColor = UIColor.white
         button.layer.cornerRadius = Dimension.shared.largeHeightButton / 2
+        button.addTarget(self, action: #selector(tapOnLogOut), for: .touchUpInside)
         return button
     }()
     
     override func initialize() {
         super.initialize()
         layoutLogOutButton()
+    }
+    
+    @objc private func tapOnLogOut() {
+        delegate?.tapOnLogOut()
     }
     
     private func layoutLogOutButton() {

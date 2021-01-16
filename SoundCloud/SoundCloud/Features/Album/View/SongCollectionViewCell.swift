@@ -16,7 +16,7 @@ class SongCollectionViewCell: BaseCollectionViewCell {
             let url = URL(string: song.image)
             songImageView.sd_setImage(with: url)
             songTitleLabel.text  = song.title
-            artistTitleLabel.text = song.artists
+            artistTitleLabel.text = song.title
         }
     }
     

@@ -16,15 +16,13 @@ class HeaderViewCollectionReusableView: BaseCollectionViewHeaderFooterCell {
     
     fileprivate lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.layer.masksToBounds = true
-        imageView.image = UIImage(named: "type1")
         return imageView
     }()
     
     fileprivate lazy var titleAlbumLabel: UILabel = {
         let label = UILabel()
-        label.text = "Nhạc việt"
         label.textColor = UIColor.white
         label.font = UIFont.systemFont(ofSize: FontSize.headline.rawValue, weight: .bold)
         return label
@@ -51,8 +49,6 @@ class HeaderViewCollectionReusableView: BaseCollectionViewHeaderFooterCell {
         return button
     }()
     
-    
-    
     // MARK: - View LifeCycles
     
     override func initialize() {
@@ -62,6 +58,13 @@ class HeaderViewCollectionReusableView: BaseCollectionViewHeaderFooterCell {
         layoutSavePlayListButton()
         layoutSeeMoreButton()
         layoutSongPlayAllButton()
+    }
+    
+    func configCell(album: PlayList?) {
+        guard let album = album else { return }
+        let url = URL(string: album.image)
+        self.imageView.sd_setImage(with: url)
+        self.titleAlbumLabel.text = album.name
     }
     
     private func layoutImageView() {
@@ -107,7 +110,5 @@ class HeaderViewCollectionReusableView: BaseCollectionViewHeaderFooterCell {
             make.top.equalTo(imageView.snp.bottom).offset(Dimension.shared.normalMargin)
         }
     }
-    
-    
 }
 

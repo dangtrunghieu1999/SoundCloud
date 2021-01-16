@@ -15,7 +15,7 @@ protocol PaddingTextFieldDelegate {
 open class PaddingTextField: UITextField {
     
     var paddingViewDelegate: PaddingTextFieldDelegate?
-    var padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+    var padding = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     var rightImage: UIImage? {
         didSet {
             setupViewImagesIfNeeded()

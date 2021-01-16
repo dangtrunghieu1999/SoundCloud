@@ -44,6 +44,8 @@ class BaseViewController: UIViewController {
     fileprivate var finalState = StatePlaySong.none
     fileprivate var currentTranslation: CGFloat?
     
+    var isRequestingAPI = true
+    
     lazy var viewPlaySong: ViewPlaySong = {
         let viewConfig = ViewPlaySong()
         viewConfig.layer.masksToBounds = false

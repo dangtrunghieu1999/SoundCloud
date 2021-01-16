@@ -10,7 +10,9 @@ import UIKit
 
 class SignUpViewController: BaseViewController {
     
-    private var selectedDate = AppConfig.defaultDate
+    var selectedGender = true
+    
+    var gender: [String] = ["Nam","Nữ"]
     
     fileprivate lazy var viewModel: SignUpViewModel = {
         let viewModel = SignUpViewModel()
@@ -21,7 +23,7 @@ class SignUpViewController: BaseViewController {
     
     fileprivate lazy var emailTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Email của bạn là gì?"
+        label.text = TextManager.emailPlaceHolder
         label.textColor = UIColor.white
         label.font = UIFont.systemFont(ofSize: FontSize.headline.rawValue, weight: .bold)
         label.textAlignment = .left
@@ -35,13 +37,14 @@ class SignUpViewController: BaseViewController {
         textField.backgroundColor = UIColor.spotifyBrown
         textField.layer.masksToBounds = true
         textField.textColor = UIColor.white
+        textField.keyboardType = .emailAddress
         textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
         return textField
     }()
     
     fileprivate lazy var passwordTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Tạo mật khẩu"
+        label.text = TextManager.passwordPlaceHolder
         label.textColor = UIColor.white
         label.font = UIFont.systemFont(ofSize: FontSize.headline.rawValue, weight: .bold)
         label.textAlignment = .left
@@ -62,7 +65,7 @@ class SignUpViewController: BaseViewController {
     
     fileprivate lazy var usernameTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Tên của bạn là gì?"
+        label.text = TextManager.namePlaceHolder
         label.textColor = UIColor.white
         label.font = UIFont.systemFont(ofSize: FontSize.headline.rawValue, weight: .bold)
         label.textAlignment = .left
@@ -80,38 +83,38 @@ class SignUpViewController: BaseViewController {
         return textField
     }()
     
-    fileprivate let DOBTitleLabel: UILabel = {
+    fileprivate lazy var genderTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = TextManager.dateOfBirth
+        label.text = TextManager.gender
         label.textColor = UIColor.white
         label.font = UIFont.systemFont(ofSize: FontSize.headline.rawValue, weight: .bold)
         return label
     }()
     
-    fileprivate lazy var datePicker: UIDatePicker = {
-        let datePicker = UIDatePicker()
-        datePicker.locale = Locale(identifier: "Vi")
-        datePicker.datePickerMode = .date
-        datePicker.minimumDate = AppConfig.minDate
-        datePicker.maximumDate = Date()
-        datePicker.date = selectedDate
-        datePicker.addTarget(self, action: #selector(datePickerChange(_:)), for: .valueChanged)
-        return datePicker
+    fileprivate lazy var genderPickerView: UIPickerView = {
+        let pickerView = UIPickerView()
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        return pickerView
     }()
     
-    fileprivate lazy var DOBTextField: PaddingTextField = {
+    fileprivate lazy var genderTextField: PaddingTextField = {
         let textField = PaddingTextField()
-        textField.placeholder = TextManager.dateOfBirth
-        textField.layer.masksToBounds = true
-        textField.inputView = datePicker
-        textField.backgroundColor = UIColor.spotifyBrown
         textField.layer.borderWidth = 1
+        textField.attributedPlaceholder = NSAttributedString(string:TextManager.male,
+                                                             attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         textField.layer.cornerRadius = Dimension.shared.largeHeightButton / 2
+        textField.backgroundColor = UIColor.spotifyBrown
+        textField.layer.masksToBounds = true
         textField.textColor = UIColor.white
-        textField.text = selectedDate.desciption(by: DateFormat.shortDateUserFormat)
+        textField.inputView = genderPickerView
+        textField.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .bold)
+        textField.rightImage = ImageManager.dropDown
+        textField.addTarget(self, action: #selector(textFieldBeginEditing), for: .touchUpInside)
+        textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
         return textField
     }()
-    
+
     fileprivate var signUpButton: UIButton = {
         let button = UIButton()
         button.setTitle(TextManager.signUp, for: .normal)
@@ -137,8 +140,8 @@ class SignUpViewController: BaseViewController {
         layoutPasswordTextField()
         layoutUserNameTitleLabel()
         layoutUserNameTextField()
-        layoutDOBTitleLabel()
-        layoutDOBTextField()
+        layoutGenderTitleLabel()
+        layoutGenderTextField()
         layoutSignUpButton()
     }
     
@@ -150,39 +153,35 @@ class SignUpViewController: BaseViewController {
         //            return
         //        }
         
-//        showLoading()
+        //        showLoading()
         let vc = VerifyOTPViewController()
         navigationController?.pushViewController(vc, animated: true)
         
-        
     }
     
-    @objc private func datePickerChange(_ picker: UIDatePicker) {
-        selectedDate = picker.date
-        DOBTextField.text = selectedDate.desciption(by: DateFormat.shortDateUserFormat)
-        textFieldValueChange(DOBTextField)
+    
+    @objc private func textFieldBeginEditing() {
+        guard let textGender = genderTextField.text else {
+            return
+        }
+        if textGender == "Nam" {
+            selectedGender = true
+        } else {
+            selectedGender = false
+        }
     }
     
     @objc private func textFieldValueChange(_ textField: UITextField) {
         guard let email = emailTextField.text else { return }
         guard let username = usernameTextField.text else { return }
         guard let password = passwordTextField.text else { return }
-//        if email != "" && username != "" && password != "" && selectedDate != nil {
-//            signUpButton.isUserInteractionEnabled = true
-//            signUpButton.backgroundColor = UIColor.white
-//        } else {
-//            signUpButton.isUserInteractionEnabled = false
-//            signUpButton.backgroundColor = UIColor.spotifyBrown
-//        }
-        
-        if viewModel.canSignUp(email: email, password: password, userName: username, dob: selectedDate) {
+        if viewModel.canSignUp(email: email, password: password, userName: username,gender: selectedGender ) {
             signUpButton.isUserInteractionEnabled = true
             signUpButton.backgroundColor = UIColor.white
         } else {
             signUpButton.isUserInteractionEnabled = false
             signUpButton.backgroundColor = UIColor.spotifyBrown
         }
-
     }
     
     private func layoutEmailTitleLabel() {
@@ -220,7 +219,7 @@ class SignUpViewController: BaseViewController {
         passwordTextField.snp.makeConstraints { (make) in
             make.top.equalTo(passwordTitleLabel.snp.bottom).offset(Dimension.shared.smallMargin)
             make.left.right.equalTo(emailTextField)
-            make.height.equalTo(50)
+            make.height.equalTo(Dimension.shared.largeHeightButton)
         }
     }
     
@@ -237,24 +236,25 @@ class SignUpViewController: BaseViewController {
         usernameTextField.snp.makeConstraints { (make) in
             make.top.equalTo(usernameTitleLabel.snp.bottom).offset(Dimension.shared.smallMargin)
             make.left.right.equalTo(emailTextField)
-            make.height.equalTo(50)
+            make.height.equalTo(Dimension.shared.largeHeightButton)
         }
     }
     
-    private func layoutDOBTitleLabel() {
-        view.addSubview(DOBTitleLabel)
-        DOBTitleLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(emailTitleLabel)
+    private func layoutGenderTitleLabel() {
+        view.addSubview(genderTitleLabel)
+        genderTitleLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(usernameTitleLabel)
             make.top.equalTo(usernameTextField.snp.bottom).offset(Dimension.shared.normalMargin)
         }
     }
     
-    private func layoutDOBTextField() {
-        view.addSubview(DOBTextField)
-        DOBTextField.snp.makeConstraints { (make) in
-            make.height.equalTo(50)
-            make.left.right.equalTo(emailTextField)
-            make.top.equalTo(DOBTitleLabel.snp.bottom).offset(Dimension.shared.smallMargin)
+    private func layoutGenderTextField() {
+        view.addSubview(genderTextField)
+        genderTextField.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
+            make.height.equalTo(Dimension.shared.largeHeightButton)
+            make.top.equalTo(genderTitleLabel.snp.bottom).offset(Dimension.shared.smallMargin)
+            make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
         }
     }
     
@@ -262,9 +262,34 @@ class SignUpViewController: BaseViewController {
         view.addSubview(signUpButton)
         signUpButton.snp.makeConstraints { (make) in
             make.width.equalTo(150)
-            make.height.equalTo(50)
+            make.height.equalTo(Dimension.shared.largeHeightButton)
             make.centerX.equalToSuperview()
-            make.top.equalTo(DOBTextField.snp.bottom).offset(Dimension.shared.largeMargin)
+            make.top.equalTo(genderTextField.snp.bottom).offset(Dimension.shared.largeMargin)
         }
+    }
+}
+
+extension SignUpViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return gender.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == genderPickerView {
+            return gender[row]
+        } else {
+            return gender[row]
+        }
+    }
+}
+
+extension SignUpViewController: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int,
+                    inComponent component: Int) {
+        genderTextField.text = gender[row]
     }
 }

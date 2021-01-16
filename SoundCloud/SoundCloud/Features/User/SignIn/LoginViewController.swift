@@ -98,22 +98,19 @@ class LoginViewController: BaseViewController {
     }
 
     @objc private func tapOnSignIn() {
-        guard let window = UIApplication.shared.keyWindow else { return }
-        window.rootViewController = ZTabBarViewController()
-//        showLoading()
-//
-//        guard let userName = emailTextField.text, let passWord = passwordTextField.text else {
-//            return
-//        }
-//
-//        viewModel.requestSignIn(userName: userName, passWord: passWord, onSuccess: {
-//            self.hideLoading()
-//            guard let window = UIApplication.shared.keyWindow else { return }
-//            window.rootViewController = ZTabBarViewController()
-//        }) { (message) in
-//            self.hideLoading()
-//            AlertManager.shared.show(TextManager.alertTitle, message: message)
-//        }
+        
+        guard let userName = emailTextField.text, let passWord = passwordTextField.text else {
+            return
+        }
+        showLoading()
+        viewModel.requestSignIn(userName: userName, passWord: passWord, onSuccess: {
+            self.hideLoading()
+            guard let window = UIApplication.shared.keyWindow else { return }
+            window.rootViewController = ZTabBarViewController()
+        }) { (message) in
+            self.hideLoading()
+            AlertManager.shared.show(TextManager.alertTitle, message: message)
+        }
     }
     
     private func layoutEmailTitleLabel() {

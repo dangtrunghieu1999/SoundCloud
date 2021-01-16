@@ -11,7 +11,7 @@ import Foundation
 class APIConfig {
     
     static var baseURLString: String {
-        return "http://demo7080721.mockable.io"
+        return "https://mp3-music-ios.herokuapp.com"
     }
 
 }

@@ -10,30 +10,36 @@ import Foundation
 import Alamofire
 
 enum SongEndPoint {
-    case getPlistSong
+    case getHomeSong
+    case getPlistSongById(bodyParams: Parameters)
 }
 
 extension SongEndPoint: EndPointType {
     var path: String {
         switch self {
-        case .getPlistSong:
-            return "/node-list-song"
+        case .getPlistSongById:
+            return "/album/a"
+        case .getHomeSong:
+            return ""
         }
     }
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .getPlistSong:
+        case .getPlistSongById:
+            return .get
+        case .getHomeSong:
             return .get
         }
+        
     }
     
     var parameters: Parameters? {
         switch self {
-        case .getPlistSong:
+        case .getPlistSongById(let params):
+            return params
+        case .getHomeSong:
             return nil
         }
     }
-    
-    
 }

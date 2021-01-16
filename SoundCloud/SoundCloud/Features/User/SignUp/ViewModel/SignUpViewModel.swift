@@ -20,11 +20,11 @@ class SignUpViewModel: BaseViewModel {
     func canSignUp(email: String?,
                    password: String?,
                    userName: String?,
-                   dob: Date?) -> Bool {
+                   gender: Bool?) -> Bool {
         if (email != nil && email != ""  && (email?.isPhoneNumber ?? false || email?.isValidEmail ?? false)
             && userName != nil && userName != ""
             && password != nil && password != ""
-            && dob != nil) {
+            && gender != nil) {
             return true
         } else {
             return false

@@ -12,16 +12,11 @@ class TabCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
         
-    var sectionTitle: SectionTitle? {
+    var sectionTitle: SectionHome? {
         didSet{
             guard let section = self.sectionTitle else {return}
             self.titleLabel.text = section.title
-            
-            self.sectionTitle?.playlists.forEach({ (item) in
-                let playlist = PlayList(dictionary: item as! [String : Any])
-                self.playlists.append(playlist)
-            })
-            
+            playlists = section.playlists.map{$0}
             self.tabCollectionView.reloadData()
         }
     }
@@ -110,6 +105,7 @@ extension TabCollectionViewCell: UICollectionViewDataSource {
 
 extension TabCollectionViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        AppRouter.pushPlayList()
+        let albumCurrent = playlists[indexPath.row]
+        AppRouter.pushAlbumSongList(album: albumCurrent)
     }
 }

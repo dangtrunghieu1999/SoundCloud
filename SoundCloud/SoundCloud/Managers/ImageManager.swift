@@ -26,6 +26,7 @@ final class ImageManager {
     static let next                             = UIImage(named: "next")
     static let cancel                           = UIImage(named: "cancel")
     static let close                            = UIImage(named: "close")
+    static let dropDown                         = UIImage(named: "dropDown")
     
     // MARK: - PlaySong
     

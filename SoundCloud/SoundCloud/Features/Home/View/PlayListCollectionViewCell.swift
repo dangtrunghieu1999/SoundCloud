@@ -35,9 +35,11 @@ class PlayListCollectionViewCell: BaseCollectionViewCell {
         layoutNameTrackLabel()
     }
     
-    public func configCell(song: PlayList) {
-        self.trackImageView.image = UIImage(named: song.image)
-        self.nameTrackLabel.text  = song.title
+    public func configCell(song: PlayList?) {
+        guard let song = song else { return }
+        let url = URL(string: song.image)
+        self.trackImageView.sd_setImage(with: url)
+        self.nameTrackLabel.text  = song.name
     }
     
     // MARK: - Layouts

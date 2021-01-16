@@ -25,12 +25,15 @@ extension JSONParsable {
 }
 
 class APIResponse {
+    var flag: Bool = false
     var data: JSON?
     var error: ServiceErrorAPI?
     
     init(response: DataResponse<Data>) {
         let json = JSON(response.data ?? Data())
-        if (response.response?.isSuccess ?? false) {
+        self.flag = json["flag"].boolValue
+        
+        if (response.response?.isSuccess ?? false && json["flag"].boolValue) {
             if json["data"].exists() {
                 self.data = json["data"]
             } else {

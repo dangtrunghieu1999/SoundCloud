@@ -20,10 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = ZTabBarViewController()
-//        window?.rootViewController = UINavigationController(rootViewController: YourLibraryViewController())
         UITabBar.appearance().barTintColor = UIColor.background
         UINavigationBar.appearance().barStyle = .blackOpaque
+        
+        if UserManager.isLoggedIn() {
+            UserManager.getUserProfile()
+            window?.rootViewController = ZTabBarViewController()
+        } else {
+            let signInVC = SignInViewController()
+            window?.rootViewController = UINavigationController(rootViewController: signInVC)
+        }
         return true
     }
 

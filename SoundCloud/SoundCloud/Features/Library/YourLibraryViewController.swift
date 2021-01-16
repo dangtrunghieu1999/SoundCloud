@@ -18,6 +18,14 @@ class YourLibraryViewController: BaseViewController {
     
     // MARK: - UI Elements
     
+    private lazy var refreshControl: UIRefreshControl = {
+        let control = UIRefreshControl()
+        control.tintColor = UIColor.background
+        control.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        return control
+    }()
+
+    
     fileprivate lazy var emptyPlayList: EmptyPlayListSong = {
         let view = EmptyPlayListSong()
         view.delegate = self
@@ -31,6 +39,7 @@ class YourLibraryViewController: BaseViewController {
         tableView.delegate = self
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
+        tableView.refreshControl = refreshControl
         tableView.showsVerticalScrollIndicator = false
         tableView.registerReusableCell(LibraryTableViewCell.self)
         tableView.registerReusableHeaderFooter(CreateYourLibraryTableView.self)
@@ -46,7 +55,7 @@ class YourLibraryViewController: BaseViewController {
     }
     
     // MARK: - Layout
-    
+
     private func checkView() {
         likeSong = MusicPlayer.shared.yourPlayListSong ?? []
         libraryTableView.reloadData()
@@ -55,6 +64,12 @@ class YourLibraryViewController: BaseViewController {
         } else {
             layoutPlayListEmpty()
         }
+    }
+    
+    @objc private func refreshData() {
+        self.hideLoading()
+        self.libraryTableView.reloadData()
+        self.refreshControl.endRefreshing()
     }
     
     private func layoutPlayListEmpty() {

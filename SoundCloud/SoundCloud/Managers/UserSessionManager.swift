@@ -107,7 +107,7 @@ class UserSessionManager: NSObject {
 extension UserSessionManager {
     func getUserProfile() {
         guard let userId = userId else { return }
-        let endPoint = UserEndPoint.getUserById(params: ["id": userId])
+        let endPoint = UserEndPoint.getUserById(params: ["userID": userId])
         
         APIService.request(endPoint: endPoint, onSuccess: { (apiResponse) in
             guard let userProfile = apiResponse.toObject(User.self) else { return }

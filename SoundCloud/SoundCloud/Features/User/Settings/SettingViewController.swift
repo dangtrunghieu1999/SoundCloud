@@ -56,6 +56,7 @@ class SettingViewController: BaseViewController {
 // MARK:- UITableViewDelegate
 
 extension SettingViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40
     }
@@ -91,16 +92,25 @@ extension SettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footer: SettingFooterView = tableView.dequeueReusableHeaderFooterView()
+        footer.delegate = self
         return footer
     }
 }
 
 extension SettingViewController: SettingHeaderViewDelegate {
+    
     func tapOnSettingProfile() {
         let vc = SettingProfileViewController()
         let navController = UINavigationController(rootViewController: vc)
         self.navigationController?.present(navController, animated: true, completion: nil)
+    }
+}
 
+extension SettingViewController: SettingFooterViewDelegate {
+    
+    func tapOnLogOut() {
+        guard let window = UIApplication.shared.keyWindow else { return }
+        window.rootViewController = UINavigationController(rootViewController: SignInViewController())
     }
 }
 

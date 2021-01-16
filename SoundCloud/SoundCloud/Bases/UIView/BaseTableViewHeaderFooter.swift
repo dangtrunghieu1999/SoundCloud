@@ -21,7 +21,7 @@ class BaseTableViewHeaderFooter: UITableViewHeaderFooterView, Reusable {
     }
     
     func initialize() {
-        backgroundColor = .clear
+        backgroundColor = UIColor.black
     }
     
 }

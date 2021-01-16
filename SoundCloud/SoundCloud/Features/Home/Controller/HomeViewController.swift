@@ -11,8 +11,8 @@ import UIKit
 class HomeViewController: BaseViewController {
     
     // MARK:- Variables
-    
-    var sections = [SectionTitle]()
+        
+    var sections = [SectionHome]()
     
     // MARK: - UI Elements
     
@@ -33,29 +33,30 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setRightNavigationBar(ImageManager.setting)
-        fetchJson()
         layoutHomeCollectionView()
-
+        requestAPIGetPlistSong()
     }
     
     // MARK: - Fetch Data
     
-    func fetchJson (){
-        if let path = Bundle.main.path(forResource: "data", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-                if let jsonResult = jsonResult as? [ Any] {
-                    jsonResult.forEach { (item) in
-                        let section = SectionTitle(dictionary: item as! [String : Any])
-                        self.sections.append(section)
-                    }
-                    self.homeCollectionView.reloadData()
-                }
-            } catch {
-                // handle error
-            }
+    @objc private func requestAPIGetPlistSong() {
+        let endPoint = SongEndPoint.getHomeSong
+        self.showLoading()
+        APIService.request(endPoint: endPoint, onSuccess: { [weak self](apiResponse) in
+            self?.sections = apiResponse.toArray([SectionHome.self])
+            self?.reloadDataWhenFinishLoadAPI()
+        }, onFailure: { (apiError) in
+            self.reloadDataWhenFinishLoadAPI()
+            print("error")
+        }) {
+            print("error")
         }
+    }
+    
+    private func reloadDataWhenFinishLoadAPI() {
+        self.hideLoading()
+        self.isRequestingAPI = false
+        self.homeCollectionView.reloadData()
     }
     
     override func touchUpInRightBarButtonItem() {

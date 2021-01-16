@@ -13,9 +13,17 @@ class AlbumViewController: BaseViewController {
     // MARK - Variables
     
     var song: [SongTrack] = []
+    var album = PlayList()
+    var idAlbum = ""
     
     // MARK: - UI ELemenets
     
+    private lazy var refreshControl: UIRefreshControl = {
+        let control = UIRefreshControl()
+        control.tintColor = UIColor.background
+        control.addTarget(self, action: #selector(requestAPIGetPlistSong), for: .valueChanged)
+        return control
+    }()
 
     fileprivate lazy var albumCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -50,14 +58,15 @@ class AlbumViewController: BaseViewController {
     }
     // MARK: - API
     
-    fileprivate func requestAPIGetPlistSong() {
-        let endPoint = SongEndPoint.getPlistSong
-        
+    @objc private func requestAPIGetPlistSong() {
+        let endPoint = SongEndPoint.getPlistSongById(bodyParams: ["albumID": "5ffffc467c4793a7bb627e0d"])
+        self.showLoading()
         APIService.request(endPoint: endPoint, onSuccess: { [weak self](apiResponse) in
             self?.song = apiResponse.toArray([SongTrack.self])
             MusicPlayer.shared.yourPlayListSong = self?.song
             self?.reloadDataWhenFinishLoadAPI()
         }, onFailure: { (apiError) in
+            self.reloadDataWhenFinishLoadAPI()
             print("error")
         }) {
             print("error")
@@ -65,7 +74,11 @@ class AlbumViewController: BaseViewController {
     }
     
     private func reloadDataWhenFinishLoadAPI() {
+        self.hideLoading()
+        self.isRequestingAPI = false
         self.albumCollectionView.reloadData()
+        self.refreshControl.endRefreshing()
+        
     }
     
     // MARK: - UI Action
@@ -174,6 +187,7 @@ extension AlbumViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header: HeaderViewCollectionReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath)
+        header.configCell(album: album)
         return header
     }
     
