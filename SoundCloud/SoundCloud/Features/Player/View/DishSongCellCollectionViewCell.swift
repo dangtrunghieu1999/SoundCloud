@@ -17,7 +17,7 @@ class DishSongCellCollectionViewCell: BaseCollectionViewCell {
     // MARK: - Variables
     
     private var angleDish: Double = 0
-    private var song = SongTrack()
+    private var song = Song()
     private var timer: Timer?
     weak var delegate: DishSongCellDelegate?
     

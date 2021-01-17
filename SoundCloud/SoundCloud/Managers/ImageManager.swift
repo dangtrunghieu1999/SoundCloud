@@ -25,7 +25,7 @@ final class ImageManager {
     static let logoSpotify                      = UIImage(named: "logoSpotify")
     static let next                             = UIImage(named: "next")
     static let cancel                           = UIImage(named: "cancel")
-    static let close                            = UIImage(named: "close")
+    static let close                            = UIImage(named: "Close")
     static let dropDown                         = UIImage(named: "dropDown")
     
     // MARK: - PlaySong

@@ -1,20 +1,23 @@
 //
-//  SongCollectionViewCell.swift
+//  FavoriteCollectionViewCell.swift
 //  SoundCloud
 //
-//  Created by Dang Trung Hieu on 12/22/20.
-//  Copyright © 2020 Dang Trung Hieu. All rights reserved.
+//  Created by Dang Trung Hieu on 1/17/21.
+//  Copyright © 2021 Dang Trung Hieu. All rights reserved.
 //
 
 import UIKit
 
-class SongCollectionViewCell: BaseCollectionViewCell {
-            
+class FavoriteCollectionViewCell: BaseCollectionViewCell {
+    
+    // MARK: - UI Elements
+    
     fileprivate lazy var songImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.cornerRadius = 10
         return imageView
     }()
     
@@ -45,30 +48,16 @@ class SongCollectionViewCell: BaseCollectionViewCell {
         return button
     }()
     
-    fileprivate lazy var moreButton: UIButton = {
-        let button = UIButton()
-        button.setImage(ImageManager.more,for: .normal)
-        button.layer.masksToBounds = true
-        button.contentMode = .scaleAspectFit
-        return button
-    }()
-    
-    fileprivate lazy var nextButton: UIButton = {
-        let button = UIButton()
-        button.setImage(ImageManager.next,for: .normal)
-        button.layer.masksToBounds = true
-        button.contentMode = .scaleAspectFit
-        return button
-    }()
+    // MARK: - View Life Cycles
     
     override func initialize() {
         super.initialize()
         layoutSongImageView()
         layoutStackView()
-        layoutMoreButton()
         layoutLikeButton()
+        backgroundColor = UIColor.spotifyBrown
     }
-        
+    
     public func configCell(song: Song?) {
         guard let song = song else { return }
         let url = URL(string: song.image)
@@ -82,11 +71,12 @@ class SongCollectionViewCell: BaseCollectionViewCell {
         addSubview(songImageView)
         songImageView.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
-            make.width.height.equalTo(50)
-            make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
+            make.left.equalToSuperview()
+            make.height.equalToSuperview()
+            make.width.equalTo(65)
         }
     }
-
+    
     private func layoutStackView() {
         let stackView = makeStackView(axis: .vertical)
         stackView.spacing = 6
@@ -100,33 +90,12 @@ class SongCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
-    private func layoutMoreButton() {
-        addSubview(moreButton)
-        moreButton.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview()
-            make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
-            make.width.height.equalTo(16)
-        }
-    }
-    
     private func layoutLikeButton() {
         addSubview(likeButton)
         likeButton.snp.makeConstraints { (make) in
-            make.right.equalTo(moreButton.snp.left).offset(-Dimension.shared.normalMargin * 2)
-            make.width.height.equalTo(16)
-            make.centerY.equalTo(moreButton)
-        }
-    }
-    
-    private func layoutNextButton() {
-        addSubview(nextButton)
-        nextButton.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview()
             make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
             make.width.height.equalTo(16)
+            make.centerY.equalToSuperview()
         }
     }
-    
 }
-
-

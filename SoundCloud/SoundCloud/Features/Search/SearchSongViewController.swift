@@ -12,7 +12,7 @@ class SearchSongViewController: BaseViewController {
     
     // MARK: - Variables
     
-    fileprivate lazy var songSeach = [SongTrack]()
+    fileprivate lazy var songSeach = [Song]()
     
     // MARK: - UI Elements
     
@@ -64,7 +64,7 @@ class SearchSongViewController: BaseViewController {
         let endPoint = SongEndPoint.getSearchSong(param: params)
         showLoading()
         APIService.request(endPoint: endPoint) { (apiResponse) in
-            self.songSeach = apiResponse.toArray([SongTrack.self])
+            self.songSeach = apiResponse.toArray([Song.self])
             self.reloadDataWhenFinishLoadAPI()
         } onFailure: { (serviceErrorAPI) in
             self.reloadDataWhenFinishLoadAPI()

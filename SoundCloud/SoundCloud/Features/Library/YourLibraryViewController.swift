@@ -12,20 +12,19 @@ class YourLibraryViewController: BaseViewController {
     
     // MARK: - Variables
     
-    fileprivate lazy var song = [SongTrack]()
+    fileprivate lazy var song = [Song]()
     fileprivate lazy var playListName = [String]()
-    fileprivate lazy var likeSong = [SongTrack]()
+    fileprivate lazy var likeSong = [Song]()
     
     // MARK: - UI Elements
     
     private lazy var refreshControl: UIRefreshControl = {
         let control = UIRefreshControl()
         control.tintColor = UIColor.background
-        control.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        control.addTarget(self, action: #selector(getAPIFavoriteSongMe), for: .valueChanged)
         return control
     }()
 
-    
     fileprivate lazy var emptyPlayList: EmptyPlayListSong = {
         let view = EmptyPlayListSong()
         view.delegate = self
@@ -51,14 +50,26 @@ class YourLibraryViewController: BaseViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = TextManager.music
         layoutLibraryTableView()
-        checkView()
+        getAPIFavoriteSongMe()
     }
     
-    // MARK: - Layout
-
+    // MARK: - Get API
+    
+    @objc private func getAPIFavoriteSongMe() {
+        let endPoint = SongEndPoint.getFavoriteSong
+        showLoading()
+        APIService.request(endPoint: endPoint) { (apiResponse) in
+            self.likeSong = apiResponse.toArray([Song.self])
+            self.checkView()
+            self.reloadDataWhenFinishLoadAPI()
+        } onFailure: { (serviceError) in
+            
+        } onRequestFail: {
+            
+        }
+    }
+    
     private func checkView() {
-        likeSong = MusicPlayer.shared.yourPlayListSong ?? []
-        libraryTableView.reloadData()
         if playListName.count > 0 || likeSong.count > 0{
             layoutLibraryTableView()
         } else {
@@ -66,11 +77,14 @@ class YourLibraryViewController: BaseViewController {
         }
     }
     
-    @objc private func refreshData() {
+    private func reloadDataWhenFinishLoadAPI() {
         self.hideLoading()
+        self.isRequestingAPI = false
         self.libraryTableView.reloadData()
         self.refreshControl.endRefreshing()
     }
+    
+    // MARK: - Layout
     
     private func layoutPlayListEmpty() {
         view.addSubview(emptyPlayList)
@@ -99,8 +113,9 @@ class YourLibraryViewController: BaseViewController {
             make.bottom.equalToSuperview().offset(-Dimension.shared.largeMargin_25)
         }
     }
-    
 }
+
+// MARK: - UITableViewDelegate
 
 extension YourLibraryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -128,6 +143,8 @@ extension YourLibraryViewController: UITableViewDelegate {
     
 }
 
+// MARK: - UITableViewDataSource
+
 extension YourLibraryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 && likeSong.count > 0{
@@ -154,6 +171,8 @@ extension YourLibraryViewController: UITableViewDataSource {
         return header
     }
 }
+
+// MARK: - EmptyPlayListSongView
 
 extension YourLibraryViewController: EmptyPlayListSongView {
     func tapOnCreatePlayList() {

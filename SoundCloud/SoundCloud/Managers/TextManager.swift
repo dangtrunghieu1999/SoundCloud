@@ -32,6 +32,9 @@ final class TextManager {
     static let yourLibray                           = "Thư viện của tôi"
     static let music                                = "Nhạc của tôi"
     static let settingProfile                       = "CHỈNH SỬA HỒ SƠ"
+    static let favorite                             = "Bài hát yêu thích"
+    static let shuffle                              = "PHÁT TRỘN BÀI"
+    static let addSong                              = "THÊM BÀI HÁT"
 
     
     // MARK: - Alert

@@ -13,7 +13,7 @@ class DetailViewPlaySong: BaseView {
    
     // MARK: - Variables
     
-    fileprivate var currentSong: SongTrack?
+    fileprivate var currentSong: Song?
     fileprivate var isSelctSlider: Bool = false
     fileprivate var viewPlaySong = ViewPlaySong()
     fileprivate var dishSongCell = DishSongCellCollectionViewCell()

@@ -47,7 +47,7 @@ class LibraryTableViewCell: BaseTableViewCell {
         descriptionLabel.text = description
     }
     
-    public func configCell(song: SongTrack) {
+    public func configCell(song: Song) {
         
     }
     

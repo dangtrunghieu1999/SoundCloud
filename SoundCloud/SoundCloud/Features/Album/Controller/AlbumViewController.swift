@@ -12,7 +12,7 @@ class AlbumViewController: BaseViewController {
     
     // MARK - Variables
     
-    var song: [SongTrack] = []
+    var song: [Song] = []
     var album = PlayList()
     var idAlbum = ""
     
@@ -62,7 +62,7 @@ class AlbumViewController: BaseViewController {
         let endPoint = SongEndPoint.getPlistSongById(param: ["albumID": idAlbum])
         self.showLoading()
         APIService.request(endPoint: endPoint, onSuccess: { [weak self](apiResponse) in
-            self?.song = apiResponse.toArray([SongTrack.self])
+            self?.song = apiResponse.toArray([Song.self])
             MusicPlayer.shared.yourPlayListSong = self?.song
             self?.reloadDataWhenFinishLoadAPI()
         }, onFailure: { (apiError) in

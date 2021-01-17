@@ -12,7 +12,7 @@ class ViewPlaySong: BaseView {
     
     //MARK: Variable
     private var angleDish: Double = 0
-    private var song = SongTrack()
+    private var song = Song()
     private var timer: Timer?
     
     //MARK: UIControl
@@ -52,7 +52,7 @@ class ViewPlaySong: BaseView {
 
     //MARK: Support function
     
-    func setData(song: SongTrack) {
+    func setData(song: Song) {
         self.song = song
         self.nameLabel.text = self.song.title.capitalizingFirstLetter()
         let artist = CommonMethod.convertArrayToStringText(data: song.listArtists)

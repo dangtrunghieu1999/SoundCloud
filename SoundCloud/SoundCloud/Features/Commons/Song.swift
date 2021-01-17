@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class SongTrack: NSObject, JSONParsable {
+class Song: NSObject, JSONParsable {
     
     var title               = ""
     var genre               = ""

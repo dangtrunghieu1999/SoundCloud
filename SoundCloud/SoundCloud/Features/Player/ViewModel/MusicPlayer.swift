@@ -26,14 +26,14 @@ class MusicPlayer {
         
     }
     
-    var curentSong: SongTrack?
-    var playListSong: [SongTrack]?
-    var yourPlayListSong: [SongTrack]?
+    var curentSong: Song?
+    var playListSong: [Song]?
+    var yourPlayListSong: [Song]?
     var player: AVPlayer?
     var isPlaying: Bool = false
     
     //Feature Method
-    func play(newSong: SongTrack, onSuccess: ()->Void, onError: ()->Void) {
+    func play(newSong: Song, onSuccess: ()->Void, onError: ()->Void) {
         self.isPlaying = true
         
         let checkNewPost = self.playListSong?.contains(where: { (song) -> Bool in
@@ -43,7 +43,7 @@ class MusicPlayer {
         self.curentSong = newSong
         if !(checkNewPost ?? false) {
             if self.playListSong == nil {
-                self.playListSong = [SongTrack]()
+                self.playListSong = [Song]()
             }
             
             self.playListSong?.append(newSong)
@@ -56,14 +56,14 @@ class MusicPlayer {
         onSuccess()
     }
     
-    func addToPlayList(song: SongTrack) {
+    func addToPlayList(song: Song) {
         let checkNewPost = self.playListSong?.contains(where: { (songTemp) -> Bool in
             return songTemp.id == song.id
         })
         
         if !(checkNewPost ?? false) {
             if self.playListSong == nil {
-                self.playListSong = [SongTrack]()
+                self.playListSong = [Song]()
             }
              self.playListSong?.append(song)
             
@@ -71,7 +71,7 @@ class MusicPlayer {
     }
     
 
-    private func play(song: SongTrack, onerror: ()->Void) {
+    private func play(song: Song, onerror: ()->Void) {
         guard let url: URL = URL(string: song.path) else {
             onerror()
             return
@@ -185,7 +185,7 @@ class MusicPlayer {
         self.player?.seek(to: newTime)
     }
     
-    func addNewSong(song: SongTrack) {
+    func addNewSong(song: Song) {
         self.playListSong?.append(song)
     }
     

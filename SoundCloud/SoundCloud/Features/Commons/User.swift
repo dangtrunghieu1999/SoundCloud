@@ -16,8 +16,8 @@ class User: NSObject, JSONParsable, NSCoding {
     var fullName        = ""
     var email           = ""
     var gender          :Bool?
-    var listPlaylists: [SongTrack] = []
-    var listFavoriteSongs: [SongTrack] = []
+    var listPlaylists: [Song] = []
+    var listFavoriteSongs: [Song] = []
     
     
     required override init() {}
@@ -28,8 +28,8 @@ class User: NSObject, JSONParsable, NSCoding {
         self.fullName          = json["fullname"].stringValue
         self.email             = json["email"].stringValue
         self.gender            = json["gender"].boolValue
-        self.listPlaylists     = json["listPlaylists"].arrayValue.map{SongTrack(json: $0)}
-        self.listFavoriteSongs = json["listFavoriteSongs"].arrayValue.map{SongTrack(json: $0)}
+        self.listPlaylists     = json["listPlaylists"].arrayValue.map{Song(json: $0)}
+        self.listFavoriteSongs = json["listFavoriteSongs"].arrayValue.map{Song(json: $0)}
         
         if id == "" {
             id              = json["Id"].stringValue
@@ -46,8 +46,8 @@ class User: NSObject, JSONParsable, NSCoding {
         fullName             = aDecoder.decodeObject(forKey: "fullname") as? String ?? ""
         email                = aDecoder.decodeObject(forKey: "email") as? String ?? ""
         gender               = aDecoder.decodeObject(forKey: "gender") as? Bool ?? true
-        listPlaylists        = aDecoder.decodeObject(forKey: "listPlaylists") as? [SongTrack] ?? []
-        listFavoriteSongs    = aDecoder.decodeObject(forKey: "listPlaylists") as? [SongTrack] ?? []
+        listPlaylists        = aDecoder.decodeObject(forKey: "listPlaylists") as? [Song] ?? []
+        listFavoriteSongs    = aDecoder.decodeObject(forKey: "listPlaylists") as? [Song] ?? []
     }
     
     func encode(with aCoder: NSCoder) {
