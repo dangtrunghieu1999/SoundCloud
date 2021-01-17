@@ -44,18 +44,14 @@ class SignInViewModel: BaseViewModel {
             } else {
                 onError(TextManager.errorMessage)
             }
-        }, onFailure: { [weak self] (serviceError) in
-            if serviceError?.message == "Account is inactive!" {
-                if userName.isValidEmail {
-                    onError(TextManager.invalidEmail)
-                } else {
-                    onError(TextManager.errorMessage)
-                }
+        }, onFailure: { (apiError) in
+            if userName.isValidEmail {
+                onError(TextManager.existEmail)
             } else {
                 onError(TextManager.loginFailMessage)
             }
         }) {
-            onError(TextManager.errorMessage)
+            onError(TextManager.loginFailMessage)
         }
     }
     

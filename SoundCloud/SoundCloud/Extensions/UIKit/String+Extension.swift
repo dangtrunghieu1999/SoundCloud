@@ -144,4 +144,12 @@ extension String {
         result = result.replacingOccurrences(of: "Đ", with: "D")
         return result
     }
+    
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
 }

@@ -207,9 +207,10 @@ class DetailViewPlaySong: BaseView {
             
             self.backGroundImage.sd_setImage(with: url)
         }
-        
-        self.songTrackLabel.text = currentSong?.title
-//        self.artistTrackLabel.text = currentSong?.artist_id
+        guard let song = self.currentSong else { return }
+        self.songTrackLabel.text = song.title.capitalizingFirstLetter()
+        let artist = CommonMethod.convertArrayToStringText(data: song.listArtists)
+        self.artistTrackLabel.text = artist
         self.setViewWhenPlaySong()
         
     }

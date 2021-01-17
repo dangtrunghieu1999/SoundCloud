@@ -11,7 +11,8 @@ import Alamofire
 
 enum SongEndPoint {
     case getHomeSong
-    case getPlistSongById(bodyParams: Parameters)
+    case getPlistSongById(param: Parameters)
+    case getSearchSong(param: Parameters)
 }
 
 extension SongEndPoint: EndPointType {
@@ -21,6 +22,8 @@ extension SongEndPoint: EndPointType {
             return "/album/a"
         case .getHomeSong:
             return ""
+        case .getSearchSong:
+            return "/search"
         }
     }
     
@@ -29,6 +32,8 @@ extension SongEndPoint: EndPointType {
         case .getPlistSongById:
             return .get
         case .getHomeSong:
+            return .get
+        case .getSearchSong:
             return .get
         }
         
@@ -40,6 +45,8 @@ extension SongEndPoint: EndPointType {
             return params
         case .getHomeSong:
             return nil
+        case .getSearchSong(let param):
+            return param
         }
     }
 }

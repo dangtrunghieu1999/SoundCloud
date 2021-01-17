@@ -59,7 +59,7 @@ class AlbumViewController: BaseViewController {
     // MARK: - API
     
     @objc private func requestAPIGetPlistSong() {
-        let endPoint = SongEndPoint.getPlistSongById(bodyParams: ["albumID": "5ffffc467c4793a7bb627e0d"])
+        let endPoint = SongEndPoint.getPlistSongById(param: ["albumID": idAlbum])
         self.showLoading()
         APIService.request(endPoint: endPoint, onSuccess: { [weak self](apiResponse) in
             self?.song = apiResponse.toArray([SongTrack.self])
@@ -181,7 +181,7 @@ extension AlbumViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: SongCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.song = song[indexPath.row]
+        cell.configCell(song: song[indexPath.row])
         return cell
     }
     

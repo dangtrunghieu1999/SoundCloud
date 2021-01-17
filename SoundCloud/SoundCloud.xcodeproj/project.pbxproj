@@ -90,6 +90,7 @@
 		CFD66E6525AAD9DE00C14E6B /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD66E6425AAD9DE00C14E6B /* SignUpViewModel.swift */; };
 		CFD9B58825789FDC009DABBD /* TabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD9B58725789FDC009DABBD /* TabCollectionViewCell.swift */; };
 		CFDD317B2578F62300BF919E /* PlayListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDD317A2578F62300BF919E /* PlayListCollectionViewCell.swift */; };
+		CFEE2FA825B4165200C32CE3 /* MethodCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEE2FA725B4165200C32CE3 /* MethodCommon.swift */; };
 		CFEE6B392577FF9A00519368 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFEE6B382577FF9A00519368 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -181,6 +182,7 @@
 		CFD66E6425AAD9DE00C14E6B /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		CFD9B58725789FDC009DABBD /* TabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCollectionViewCell.swift; sourceTree = "<group>"; };
 		CFDD317A2578F62300BF919E /* PlayListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListCollectionViewCell.swift; sourceTree = "<group>"; };
+		CFEE2FA725B4165200C32CE3 /* MethodCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodCommon.swift; sourceTree = "<group>"; };
 		CFEE6B382577FF9A00519368 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -446,6 +448,7 @@
 				CFA11DBA259F3DE700AE3843 /* AppRouters.swift */,
 				CF551ECB259F66C4004D2C3B /* AnimatePlayVCHelper.swift */,
 				CFD66E6025AAD80200C14E6B /* AppInfo.swift */,
+				CFEE2FA725B4165200C32CE3 /* MethodCommon.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -813,6 +816,7 @@
 				CF0E9586259B219A0077AB65 /* SignUpViewController.swift in Sources */,
 				CF646090251B952D00C03F2D /* UIColor+Extension.swift in Sources */,
 				CFD66E4725AAD61200C14E6B /* BaseViewModel.swift in Sources */,
+				CFEE2FA825B4165200C32CE3 /* MethodCommon.swift in Sources */,
 				CF0B0CAC25A4B28B007689B6 /* APIResponse.swift in Sources */,
 				CF85478E25AD3C1C000595A3 /* VerifyOTPViewController.swift in Sources */,
 				CF646089251B90DE00C03F2D /* HomeViewController.swift in Sources */,

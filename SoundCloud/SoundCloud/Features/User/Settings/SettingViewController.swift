@@ -109,8 +109,13 @@ extension SettingViewController: SettingHeaderViewDelegate {
 extension SettingViewController: SettingFooterViewDelegate {
     
     func tapOnLogOut() {
-        guard let window = UIApplication.shared.keyWindow else { return }
-        window.rootViewController = UINavigationController(rootViewController: SignInViewController())
+        AlertManager.shared.showConfirmMessage(mesage: TextManager.statusLogOut)
+        { (action) in
+            UserManager.logout()
+            guard let window = UIApplication.shared.keyWindow else { return }
+            window.rootViewController = UINavigationController(rootViewController: SignInViewController())
+        }
+
     }
 }
 

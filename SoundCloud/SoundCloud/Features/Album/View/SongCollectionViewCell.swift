@@ -9,17 +9,7 @@
 import UIKit
 
 class SongCollectionViewCell: BaseCollectionViewCell {
-    
-    var song: SongTrack? {
-        didSet {
-            guard let song = song else { return }
-            let url = URL(string: song.image)
-            songImageView.sd_setImage(with: url)
-            songTitleLabel.text  = song.title
-            artistTitleLabel.text = song.title
-        }
-    }
-    
+            
     fileprivate lazy var songImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -47,29 +37,45 @@ class SongCollectionViewCell: BaseCollectionViewCell {
         return label
     }()
     
-    fileprivate lazy var likeImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = ImageManager.like
-        imageView.layer.masksToBounds = true
-        imageView.contentMode = .scaleAspectFit
-        return imageView
+    fileprivate lazy var likeButton: UIButton = {
+        let button = UIButton()
+        button.setImage(ImageManager.like, for: .normal)
+        button.layer.masksToBounds = true
+        button.contentMode = .scaleAspectFit
+        return button
     }()
     
-    fileprivate lazy var moreImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = ImageManager.more
-        imageView.layer.masksToBounds = true
-        imageView.contentMode = .scaleAspectFit
-        return imageView
+    fileprivate lazy var moreButton: UIButton = {
+        let button = UIButton()
+        button.setImage(ImageManager.more,for: .normal)
+        button.layer.masksToBounds = true
+        button.contentMode = .scaleAspectFit
+        return button
     }()
     
+    fileprivate lazy var nextButton: UIButton = {
+        let button = UIButton()
+        button.setImage(ImageManager.next,for: .normal)
+        button.layer.masksToBounds = true
+        button.contentMode = .scaleAspectFit
+        return button
+    }()
     
     override func initialize() {
         super.initialize()
         layoutSongImageView()
         layoutStackView()
-        layoutMoreImageView()
-        layoutLikeImageView()
+        layoutMoreButton()
+        layoutLikeButton()
+    }
+        
+    public func configCell(song: SongTrack?) {
+        guard let song = song else { return }
+        let url = URL(string: song.image)
+        songImageView.sd_setImage(with: url)
+        songTitleLabel.text  = song.title.capitalizingFirstLetter()
+        let artist = CommonMethod.convertArrayToStringText(data: song.listArtists)
+        artistTitleLabel.text = artist.capitalizingFirstLetter()
     }
     
     private func layoutSongImageView() {
@@ -94,24 +100,33 @@ class SongCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
-    private func layoutMoreImageView() {
-        addSubview(moreImageView)
-        moreImageView.snp.makeConstraints { (make) in
+    private func layoutMoreButton() {
+        addSubview(moreButton)
+        moreButton.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
             make.width.height.equalTo(16)
         }
     }
     
-    private func layoutLikeImageView() {
-        addSubview(likeImageView)
-        likeImageView.snp.makeConstraints { (make) in
-            make.right.equalTo(moreImageView.snp.left).offset(-Dimension.shared.normalMargin * 2)
+    private func layoutLikeButton() {
+        addSubview(likeButton)
+        likeButton.snp.makeConstraints { (make) in
+            make.right.equalTo(moreButton.snp.left).offset(-Dimension.shared.normalMargin * 2)
             make.width.height.equalTo(16)
-            make.centerY.equalTo(moreImageView)
+            make.centerY.equalTo(moreButton)
         }
     }
-
+    
+    private func layoutNextButton() {
+        addSubview(nextButton)
+        nextButton.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
+            make.width.height.equalTo(16)
+        }
+    }
+    
 }
 
 

@@ -32,6 +32,7 @@ final class TextManager {
     static let yourLibray                           = "Thư viện của tôi"
     static let music                                = "Nhạc của tôi"
     static let settingProfile                       = "CHỈNH SỬA HỒ SƠ"
+
     
     // MARK: - Alert
     
@@ -43,6 +44,8 @@ final class TextManager {
     static let invalidEmail                 = "Email không hợp lệ. Bạn vui lòng kiểm tra lại!"
     static let existEmail                   = "Email đã đăng kí. Vui lòng quay Đăng nhập hoặc Quên mật khẩu"
     static let existPhoneNumber             = "Số điện thoại đã đăng kí. Vui lòng quay Đăng nhập hoặc Quên mật khẩu"
+    static let statusLogOut                         = "Bạn có chắc chắn muốn đăng xuất?"
+
 
     // MARK: - Common
     

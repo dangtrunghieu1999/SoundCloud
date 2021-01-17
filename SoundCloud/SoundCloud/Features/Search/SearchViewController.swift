@@ -13,7 +13,9 @@ class SearchViewController: BaseViewController {
     
     // MARK: - Variables
     
-    fileprivate lazy var imageModel: [String] = ["type1", "type2", "type3", "type4", "type5", "type6", "type7", "type8", "type5", "type6", "type7", "type8"]
+    fileprivate lazy var imageModel: [String] = ["type1", "type2", "type3", "type4",
+                                                 "type5", "type6", "type7", "type8",
+                                                 "type5", "type6", "type7", "type8"]
     
     // MARK: - UI Elemenets
     
