@@ -151,7 +151,7 @@
 		CF7222E7251B9E7D00F22E0F /* Dimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimensions.swift; sourceTree = "<group>"; };
 		CF7E496225AF320D004C97CD /* CreateYourPlayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateYourPlayListViewController.swift; sourceTree = "<group>"; };
 		CF85478D25AD3C1C000595A3 /* VerifyOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPViewController.swift; sourceTree = "<group>"; };
-		CF894A9425B2782D009EBE50 /* PlayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayListViewController.swift; path = SoundCloud/Features/Library/view/PlayListViewController.swift; sourceTree = SOURCE_ROOT; };
+		CF894A9425B2782D009EBE50 /* PlayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayListViewController.swift; path = SoundCloud/Features/Library/listsong/PlayListViewController.swift; sourceTree = SOURCE_ROOT; };
 		CF894AAB25B2877F009EBE50 /* PlayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayList.swift; sourceTree = "<group>"; };
 		CF894AAF25B28A53009EBE50 /* SectionHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHome.swift; sourceTree = "<group>"; };
 		CF9A36B62590F170005323CE /* StackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StackView+Extension.swift"; sourceTree = "<group>"; };
@@ -272,11 +272,12 @@
 			path = Player;
 			sourceTree = "<group>";
 		};
-		CF418C6D25B096F4002299F6 /* LikeSong */ = {
+		CF418C6D25B096F4002299F6 /* favorite */ = {
 			isa = PBXGroup;
 			children = (
+				CF418C6E25B09704002299F6 /* LikeSongViewController.swift */,
 			);
-			path = LikeSong;
+			path = favorite;
 			sourceTree = "<group>";
 		};
 		CF45964B251B9C320062158D /* Bases */ = {
@@ -302,6 +303,14 @@
 				CFD66E4625AAD61200C14E6B /* BaseViewModel.swift */,
 			);
 			path = UIView;
+			sourceTree = "<group>";
+		};
+		CF50FAE325B460FF00DD5EDC /* listsong */ = {
+			isa = PBXGroup;
+			children = (
+				CF894A9425B2782D009EBE50 /* PlayListViewController.swift */,
+			);
+			path = listsong;
 			sourceTree = "<group>";
 		};
 		CF64604C251B905D00C03F2D = {
@@ -432,9 +441,11 @@
 			isa = PBXGroup;
 			children = (
 				CF894A9125B27767009EBE50 /* view */,
-				CF418C6D25B096F4002299F6 /* LikeSong */,
+				CF50FAE325B460FF00DD5EDC /* listsong */,
+				CF418C6D25B096F4002299F6 /* favorite */,
 				CF26D8912590BBB5004B2EF9 /* YourLibraryViewController.swift */,
 				CF7E496225AF320D004C97CD /* CreateYourPlayListViewController.swift */,
+				CF0A576C25AEB162008050F1 /* LibraryTableViewCell.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -456,21 +467,18 @@
 		CF894A9125B27767009EBE50 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				CF894A9225B2777C009EBE50 /* header */,
-				CF418C6E25B09704002299F6 /* LikeSongViewController.swift */,
-				CF0A576C25AEB162008050F1 /* LibraryTableViewCell.swift */,
-				CF894A9425B2782D009EBE50 /* PlayListViewController.swift */,
+				CF894A9225B2777C009EBE50 /* CreateList */,
 			);
 			path = view;
 			sourceTree = "<group>";
 		};
-		CF894A9225B2777C009EBE50 /* header */ = {
+		CF894A9225B2777C009EBE50 /* CreateList */ = {
 			isa = PBXGroup;
 			children = (
 				CF0A576F25AEB193008050F1 /* CreateYourLibraryTableView.swift */,
 				CF0A577225AEB370008050F1 /* EmptyPlayListSong.swift */,
 			);
-			path = header;
+			path = CreateList;
 			sourceTree = "<group>";
 		};
 		CFA11DC2259F439E00AE3843 /* Settings */ = {
