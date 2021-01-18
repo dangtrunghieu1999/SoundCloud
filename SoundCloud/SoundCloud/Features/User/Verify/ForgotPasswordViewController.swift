@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VerifyOTPViewController: BaseViewController {
+class ForgotPasswordViewController: BaseViewController {
     
     
     fileprivate let imageView: UIImageView = {

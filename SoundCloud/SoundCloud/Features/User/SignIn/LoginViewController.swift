@@ -19,7 +19,7 @@ class LoginViewController: BaseViewController {
     
     fileprivate lazy var emailTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Email hoặc tên người dùng"
+        label.text = TextManager.email
         label.textColor = UIColor.white
         label.font = UIFont.systemFont(ofSize: FontSize.headline.rawValue, weight: .bold)
         label.textAlignment = .left
@@ -39,7 +39,7 @@ class LoginViewController: BaseViewController {
     
     fileprivate lazy var passwordTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Mật khẩu"
+        label.text = TextManager.password
         label.textColor = UIColor.white
         label.font = UIFont.systemFont(ofSize: FontSize.headline.rawValue, weight: .bold)
         label.textAlignment = .left

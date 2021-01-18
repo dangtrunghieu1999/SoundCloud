@@ -81,6 +81,15 @@ extension UIColor {
     class var spotifyBrown: UIColor {
         return UIColor(hex: "#333333")
     }
+    
+    class var pageIndicatorTintColor: UIColor {
+        return UIColor(hex: "E5101D")
+    }
+    
+    class var fadeColor: UIColor {
+        return UIColor(hex: "#2E1C90")
+    }
+
 }
 
 // MARK: - Support Method

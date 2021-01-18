@@ -154,7 +154,7 @@ class SignUpViewController: BaseViewController {
         //        }
         
         //        showLoading()
-        let vc = VerifyOTPViewController()
+        let vc = ForgotPasswordViewController()
         navigationController?.pushViewController(vc, animated: true)
         
     }

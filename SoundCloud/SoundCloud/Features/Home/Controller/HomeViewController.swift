@@ -25,6 +25,7 @@ class HomeViewController: BaseViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.registerReusableCell(TabCollectionViewCell.self)
+        collectionView.registerReusableCell(BannerCollectionViewCell.self)
         return collectionView
     }()
     
@@ -91,14 +92,27 @@ extension HomeViewController: UICollectionViewDelegate {
 
 extension HomeViewController: UICollectionViewDataSource {
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sections.count
+        if section == 0 {
+            return 1
+        } else {
+            return sections.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: TabCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.sectionTitle = sections[indexPath.row]
-        return cell
+        if indexPath.section == 0 {
+            let cell: BannerCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+            return cell
+        } else {
+            let cell: TabCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+            cell.sectionTitle = sections[indexPath.row]
+            return cell
+        }
     }
 }
 
@@ -107,6 +121,10 @@ extension HomeViewController: UICollectionViewDataSource {
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 220)
+        if indexPath.section == 0 {
+            return CGSize(width: view.frame.width, height: 230)
+        } else {
+            return CGSize(width: view.frame.width, height: 220)
+        }
     }
 }

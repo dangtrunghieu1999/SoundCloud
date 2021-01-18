@@ -35,7 +35,8 @@ final class TextManager {
     static let favorite                             = "Bài hát yêu thích"
     static let shuffle                              = "PHÁT TRỘN BÀI"
     static let addSong                              = "THÊM BÀI HÁT"
-
+    static let password                             = "Mật khẩu"
+    static let email                                = "Email hoặc tên người dùng"
     
     // MARK: - Alert
     

@@ -43,5 +43,13 @@ final class ImageManager {
     static let sendMail                         = UIImage(named: "mail_send")
     static let create                           = UIImage(named: "create")
     static let favorites                        = UIImage(named: "favorites")
+    
+    static let promotion1                        = UIImage(named: "promotion1")
+    static let promotion2                        = UIImage(named: "promotion2")
+    static let promotion3                        = UIImage(named: "promotion3")
+    static let promotion4                        = UIImage(named: "promotion4")
+    static let promotion5                        = UIImage(named: "promotion5")
+    static let promotion6                        = UIImage(named: "promotion6")
+
 
 }
