@@ -47,6 +47,7 @@ class AlbumViewController: BaseViewController {
         layoutViewDetailPlaySong()
         layoutAlbumCollectionView()
         requestAPIGetPlistSong()
+        detailViewPlaySong.delegate = self
     }
     
     //MARK: Initialize function
@@ -148,7 +149,7 @@ class AlbumViewController: BaseViewController {
 
 extension AlbumViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 360)
+        return CGSize(width: collectionView.frame.width, height: 400)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -191,6 +192,16 @@ extension AlbumViewController: UICollectionViewDataSource {
         return header
     }
     
+}
+
+extension AlbumViewController: DetailViewPlaySongDelegate {
+    func tapOnShareFile() {
+        let shareText = "Hello, world!"
+        if let image = UIImage(named: "artwork") {
+            let vc = UIActivityViewController(activityItems: [shareText,image], applicationActivities: [])
+            present(vc, animated: true)
+        }
+    }
 }
 
 

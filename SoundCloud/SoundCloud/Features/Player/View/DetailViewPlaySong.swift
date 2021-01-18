@@ -9,6 +9,10 @@
 import UIKit
 import AVFoundation
 
+protocol DetailViewPlaySongDelegate: class {
+    func tapOnShareFile()
+}
+
 class DetailViewPlaySong: BaseView {
    
     // MARK: - Variables
@@ -17,6 +21,10 @@ class DetailViewPlaySong: BaseView {
     fileprivate var isSelctSlider: Bool = false
     fileprivate var viewPlaySong = ViewPlaySong()
     fileprivate var dishSongCell = DishSongCellCollectionViewCell()
+    fileprivate var repeatSelected: Bool = true
+    fileprivate var shuffleSelected: Bool = true
+
+    weak var delegate: DetailViewPlaySongDelegate?
     // MARK: - UI Elements
     
     private let backGroundImage: UIImageView = {
@@ -109,12 +117,14 @@ class DetailViewPlaySong: BaseView {
     private let shuffleButton: UIButton = {
         let button = UIButton()
         button.setImage(ImageManager.shuffleIcon, for: .normal)
+        button.addTarget(self, action: #selector(tapOnShuffle), for: .touchUpInside)
         return button
     }()
     
     private let repeatButton: UIButton = {
         let button = UIButton()
         button.setImage(ImageManager.repeatIcon, for: .normal)
+        button.addTarget(self, action: #selector(tapOnRepeat), for: .touchUpInside)
         return button
     }()
     
@@ -139,6 +149,7 @@ class DetailViewPlaySong: BaseView {
     private let shareButton: UIButton = {
         let button = UIButton()
         button.setImage(ImageManager.shareIcon, for: .normal)
+        button.addTarget(self, action: #selector(tapShareFile), for: .touchUpInside)
         return button
     }()
     
@@ -169,6 +180,33 @@ class DetailViewPlaySong: BaseView {
     @objc func playButtonPressed() {
         MusicPlayer.shared.pause()
         checkShowImagePlayIcon()
+    }
+    
+    @objc func tapOnRepeat() {
+        if repeatSelected{
+            repeatButton.setImage(ImageManager.repeatFocus, for: .normal)
+            repeatSelected = false
+        } else {
+            repeatButton.setImage(ImageManager.repeatIcon, for: .normal)
+            repeatSelected = true
+        }
+    }
+    
+    @objc func tapOnShuffle() {
+        if repeatSelected{
+            repeatButton.setImage(ImageManager.shuffleFocus, for: .normal)
+            repeatSelected = false
+        } else {
+            repeatButton.setImage(ImageManager.shuffleIcon, for: .normal)
+            repeatSelected = true
+        }
+    }
+
+    
+    
+    
+    @objc func tapShareFile() {
+        delegate?.tapOnShareFile()
     }
     
     fileprivate func checkShowImagePlayIcon() {

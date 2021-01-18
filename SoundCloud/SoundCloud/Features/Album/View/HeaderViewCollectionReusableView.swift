@@ -25,6 +25,7 @@ class HeaderViewCollectionReusableView: BaseCollectionViewHeaderFooterCell {
         let label = UILabel()
         label.textColor = UIColor.white
         label.font = UIFont.systemFont(ofSize: FontSize.headline.rawValue, weight: .bold)
+        label.numberOfLines = 0
         return label
     }()
     
@@ -80,7 +81,8 @@ class HeaderViewCollectionReusableView: BaseCollectionViewHeaderFooterCell {
         addSubview(titleAlbumLabel)
         titleAlbumLabel.snp.makeConstraints { (make) in
             make.top.equalTo(imageView.snp.bottom).offset(Dimension.shared.normalMargin)
-            make.left.right.equalTo(imageView)
+            make.left.equalTo(imageView)
+            make.right.equalToSuperview().offset(Dimension.shared.largeMargin_30)
         }
     }
     

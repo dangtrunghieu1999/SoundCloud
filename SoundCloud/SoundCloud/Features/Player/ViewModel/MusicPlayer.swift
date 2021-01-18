@@ -31,6 +31,7 @@ class MusicPlayer {
     var yourPlayListSong: [Song]?
     var player: AVPlayer?
     var isPlaying: Bool = false
+    var isRepeat: Bool = false
     
     //Feature Method
     func play(newSong: Song, onSuccess: ()->Void, onError: ()->Void) {
@@ -79,6 +80,12 @@ class MusicPlayer {
         self.player = AVPlayer(url: url)
         self.player?.play()
         
+    }
+    
+    @objc func repeatSong() {
+        self.isRepeat = true
+        self.player?.seek(to: CMTime.zero)
+        self.player?.play()
     }
     
     @objc func nextPlay() {

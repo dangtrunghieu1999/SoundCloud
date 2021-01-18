@@ -21,6 +21,7 @@ final class ImageManager {
     static let searchPlayer                     = UIImage(named: "searchPlayer")
     static let mic                              = UIImage(named: "mic")
     static let like                             = UIImage(named: "like")
+    static let likeFocus                        = UIImage(named: "likeFocus")
     static let more                             = UIImage(named: "more")
     static let logoSpotify                      = UIImage(named: "logoSpotify")
     static let next                             = UIImage(named: "next")
@@ -52,5 +53,6 @@ final class ImageManager {
     static let promotion6                        = UIImage(named: "promotion6")
     static let lock                              = UIImage(named: "lock")
     static let unLock                            = UIImage(named: "unlock")
-
+    static let repeatFocus                       = UIImage(named: "repeatFocus")
+    static let shuffleFocus                      = UIImage(named: "shuffleFocus")
 }
