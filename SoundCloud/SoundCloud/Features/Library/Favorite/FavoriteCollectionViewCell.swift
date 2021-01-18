@@ -42,7 +42,7 @@ class FavoriteCollectionViewCell: BaseCollectionViewCell {
     
     fileprivate lazy var likeButton: UIButton = {
         let button = UIButton()
-        button.setImage(ImageManager.like, for: .normal)
+        button.setImage(ImageManager.likeFocus, for: .normal)
         button.layer.masksToBounds = true
         button.contentMode = .scaleAspectFit
         return button

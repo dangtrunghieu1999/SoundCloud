@@ -12,7 +12,7 @@ class AlbumViewController: BaseViewController {
     
     // MARK - Variables
     
-    var song: [Song] = []
+    var playList: [Song] = []
     var album = PlayList()
     var idAlbum = ""
     
@@ -63,8 +63,8 @@ class AlbumViewController: BaseViewController {
         let endPoint = SongEndPoint.getPlistSongById(param: ["albumID": idAlbum])
         self.showLoading()
         APIService.request(endPoint: endPoint, onSuccess: { [weak self](apiResponse) in
-            self?.song = apiResponse.toArray([Song.self])
-            MusicPlayer.shared.yourPlayListSong = self?.song
+            self?.playList = apiResponse.toArray([Song.self])
+//            MusicPlayer.shared.yourPlayListSong = self?.song
             self?.reloadDataWhenFinishLoadAPI()
         }, onFailure: { (apiError) in
             self.reloadDataWhenFinishLoadAPI()
@@ -117,7 +117,8 @@ class AlbumViewController: BaseViewController {
             } else {
                 make.top.equalTo(topLayoutGuide.snp.bottom)
             }
-            make.left.right.bottom.equalToSuperview()
+            make.left.right.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-Dimension.shared.largeMargin_50)
         }
     }
     
@@ -161,14 +162,12 @@ extension AlbumViewController: UICollectionViewDelegateFlowLayout {
 
 extension AlbumViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let songTrack = song[indexPath.row]
-        self.viewPlaySong.setData(song: songTrack)
-        MusicPlayer.shared.play(newSong: songTrack) {
-            self.detailViewPlaySong.setData()
-            self.detailViewPlaySong.setViewPlaySong(viewPlay: viewPlaySong)
-        } onError: {
+        let songTrack = playList[indexPath.row]
         
-        }
+        MusicPlayer.shared.addToPlayList(playList)
+        MusicPlayer.shared.play(song: songTrack)
+        
+        self.detailViewPlaySong.setViewPlaySong(viewPlay: viewPlaySong)
         self.animationScrollUpPlaySongView()
     }
 }
@@ -177,18 +176,21 @@ extension AlbumViewController: UICollectionViewDelegate {
 
 extension AlbumViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return song.count
+        return playList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: SongCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.configCell(song: song[indexPath.row])
+        cell.configCell(song: playList[indexPath.row])
+        cell.isExclusiveTouch = false
+        cell.delegate = self
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView,viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header: HeaderViewCollectionReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath)
         header.configCell(album: album)
+        header.delegate = self
         return header
     }
     
@@ -204,4 +206,36 @@ extension AlbumViewController: DetailViewPlaySongDelegate {
     }
 }
 
+extension AlbumViewController: SongAddFavoriteDelegate {
+    func addSongFavorite(idSong: String) {
+        let params = ["songID": idSong]
+        let endPoint = LibrarySong.addSongFavorite(param: params)
+        self.showLoading()
+        APIService.request(endPoint: endPoint) { [self] (apiResponse) in
+            if apiResponse.flag == true {
+                self.hideLoading()
+                AlertManager.shared.showToast(message: "Đã thêm vào danh sách yêu thích")
+                if let i = self.playList.firstIndex(where: { $0.id == self.idAlbum }) {
+                    let obj =  self.playList[i]
+                    obj.selectedFavorite = true
+                }
+                self.albumCollectionView.reloadData()
+            }
+        } onFailure: { (serviceError) in
+            
+        } onRequestFail: {
+            
+        }
 
+    }
+   
+}
+
+
+extension AlbumViewController: HeaderViewCollectionReusableViewDelegate {
+    func playRandom() {
+        MusicPlayer.shared.play(with: playList)
+        self.detailViewPlaySong.setViewPlaySong(viewPlay: viewPlaySong)
+        self.animationScrollUpPlaySongView()
+    }
+}

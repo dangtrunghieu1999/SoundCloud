@@ -9,6 +9,16 @@
 import UIKit
 import AVFoundation
 
+enum MusicPlayerType: Int {
+    case linear            = 0
+    case repeatType        = 1
+    case random            = 2
+}
+
+protocol MusicPlayerDelegate : NSObject {
+    func musicPlayerOnPlaySong(_ sender: MusicPlayer, _ song: Song)
+}
+
 /*
  This class manage play song. Include:
  - List song save
@@ -23,146 +33,65 @@ class MusicPlayer {
     }
     
     private init() {
-        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(playerDidFinishPlaying),
+                                               name: .AVPlayerItemDidPlayToEndTime,
+                                               object: nil)
     }
     
-    var curentSong: Song?
-    var playListSong: [Song]?
-    var yourPlayListSong: [Song]?
-    var player: AVPlayer?
-    var isPlaying: Bool = false
-    var isRepeat: Bool = false
+    private(set) var currentSong: Song?
+    private(set) var playListSong: [Song] = []
+    private(set) var isPlaying: Bool = false
+    private(set) var playType: MusicPlayerType = .linear
     
-    //Feature Method
-    func play(newSong: Song, onSuccess: ()->Void, onError: ()->Void) {
-        self.isPlaying = true
-        
-        let checkNewPost = self.playListSong?.contains(where: { (song) -> Bool in
-            return song.id == newSong.id
-        })
-        
-        self.curentSong = newSong
-        if !(checkNewPost ?? false) {
-            if self.playListSong == nil {
-                self.playListSong = [Song]()
-            }
-            
-            self.playListSong?.append(newSong)
-        }
-        
-        self.play(song: newSong) {
-            onError()
-        }
-        
-        onSuccess()
-    }
+    var delegates: [MusicPlayerDelegate] = []
     
-    func addToPlayList(song: Song) {
-        let checkNewPost = self.playListSong?.contains(where: { (songTemp) -> Bool in
-            return songTemp.id == song.id
-        })
-        
-        if !(checkNewPost ?? false) {
-            if self.playListSong == nil {
-                self.playListSong = [Song]()
-            }
-             self.playListSong?.append(song)
-            
-        }
-    }
+    private var player: AVPlayer?
     
-    private func play(song: Song, onerror: ()->Void) {
-        guard let url: URL = URL(string: song.path) else {
-            onerror()
+    // MARK: - Setter
+    
+    func setPlayType(_ type: MusicPlayerType) {
+        if (type == playType) {
+            playType = .linear
             return
         }
         
+        playType = type;
+    }
+    
+    // MARK: - Play EntryPoint
+    
+    @discardableResult
+    func play(song: Song) -> Bool {
+        self.isPlaying = true
+        self.currentSong = song
+        
+        guard let url: URL = URL(string: song.path) else {
+            return false
+        }
+    
         self.player = AVPlayer(url: url)
         self.player?.play()
         
+        for delegate in delegates {
+            delegate.musicPlayerOnPlaySong(self, song)
+        }
+        
+        return true;
     }
     
-    @objc func repeatSong() {
-        self.isRepeat = true
-        self.player?.seek(to: CMTime.zero)
-        self.player?.play()
-    }
-    
-    @objc func nextPlay() {
+    func play(with playList: [Song]) {
+        if (playList.isEmpty) {
+            return
+        }
+        
         self.isPlaying = true
-        
-        let index = self.playListSong?.firstIndex(where: { (song) -> Bool in
-            return song.id == self.curentSong?.id
-        })
-        
-        guard let count = self.playListSong?.count else {
-            self.stop()
-            return
-        }
-        
-        if index == nil {
-            self.stop()
-            return
-        }
-        
-        if index == count - 1 {
-            self.curentSong = self.playListSong?[0]
-            guard let song = self.curentSong else { return }
-            
-            self.play(song: song, onerror: {
-                //error
-            })
-        } else {
-            self.curentSong = self.playListSong?[index!  + 1]
-            guard let song = self.curentSong else { return }
-            
-            self.play(song: song, onerror: {
-                //error
-            })
-        }
-        
-        //TO DO: add notification to change view play song
+        addToPlayList(playList)
+        play(song: self.playListSong.first!)
     }
     
-    func backPlay() {
-        self.isPlaying = true
-        
-        let index = self.playListSong?.firstIndex(where: { (song) -> Bool in
-            return song.id == self.curentSong?.id
-        })
-        
-        guard let count = self.playListSong?.count else {
-            self.stop()
-            return
-        }
-        
-        guard let indexConfig = index else {
-            self.stop()
-            return
-        }
-        
-        if indexConfig == 0 {
-            self.curentSong = self.playListSong?[count - 1]
-            guard let song = self.curentSong else { return }
-            
-            self.play(song: song, onerror: {
-                //error
-            })
-        } else {
-            self.curentSong = self.playListSong?[indexConfig - 1]
-            guard let song = self.curentSong else { return }
-            
-            self.play(song: song, onerror: {
-                //error
-            })
-        }
-        
-
-    }
-
-    
-    func playRandom() {
-        
+    func addToPlayList(_ playList: [Song]) {
+        self.playListSong = playList
     }
     
     func pause() {
@@ -173,16 +102,81 @@ class MusicPlayer {
         } else {
             self.player?.play()
             self.isPlaying = true
-
         }
     }
     
     func stop() {
         self.isPlaying = false
-        self.curentSong = nil
+        self.currentSong = nil
         self.player = nil
+    }
+    
+    @discardableResult
+    func addToPlayList(_ song: Song) -> Bool {
+        if (existSongInPlaylist(song) ) {
+            return false
+        }
         
-        //Stop Animation rotate dish
+        self.playListSong.append(song)
+        return true
+    }
+    
+    @discardableResult
+    func playNext() -> Bool {
+        guard !playListSong.isEmpty else {
+            return false
+        }
+        
+        var nextIndex = 0;
+        if let song = self.currentSong {
+            let index = indexOfSongInPlayList(song)
+            
+            if let currIndex = index, currIndex < playListSong.count - 1 {
+                nextIndex = currIndex
+                nextIndex += 1
+            }
+        }
+        
+        print("count: \(playListSong.count) play next index: \(nextIndex)")
+        
+        let nextSong = playListSong[nextIndex]
+        play(song: nextSong)
+        
+        return true
+    }
+    
+    @discardableResult
+    func playBack() -> Bool {
+        guard !playListSong.isEmpty else {
+            return false
+        }
+        
+        var preIndex = 0;
+        if let song = self.currentSong {
+            let index = indexOfSongInPlayList(song)
+            
+            if let currIndex = index, currIndex > 0 {
+                preIndex = currIndex
+                preIndex -= 1
+            }
+        }
+        
+        print("count: \(playListSong.count) play pre index: \(preIndex)")
+        
+        let nextSong = playListSong[preIndex]
+        play(song: nextSong)
+        
+        return true
+    }
+    
+    func playRandom() {
+        guard !self.playListSong.isEmpty else {
+            return
+        }
+        
+        let index = Int.random(in: 0..<self.playListSong.count)
+        let song = self.playListSong[index]
+        self.play(song: song)
     }
     
     func seekToTime(_ time: Float) {
@@ -190,11 +184,7 @@ class MusicPlayer {
         self.player?.seek(to: newTime)
     }
     
-    func addNewSong(song: Song) {
-        self.playListSong?.append(song)
-    }
-    
-    func getCurrentTime()->CMTime? {
+    func getCurrentTime() -> CMTime? {
         return self.player?.currentItem?.currentTime()
     }
     
@@ -208,7 +198,33 @@ class MusicPlayer {
                 completion(time)
             }
         }
+    }
+    
+    // MARK: - Common Helper
+    
+    @objc private func playerDidFinishPlaying() {
+        guard let song = currentSong else {
+            return
+        }
         
+        switch self.playType {
+        case .linear:
+            playNext()
+        case .random:
+            playRandom()
+        case .repeatType:
+            play(song: song)
+        }
+    }
+    
+    private func existSongInPlaylist(_ song: Song) -> Bool {
+        return indexOfSongInPlayList(song) != nil
+    }
+    
+    private func indexOfSongInPlayList(_ song: Song) -> Int? {
+        return self.playListSong.firstIndex(where: { (song) -> Bool in
+            return song.id == self.currentSong?.id
+        })
     }
 }
 

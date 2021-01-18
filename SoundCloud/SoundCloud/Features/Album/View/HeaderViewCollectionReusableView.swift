@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol HeaderViewCollectionReusableViewDelegate : class {
+    func playRandom()
+}
+
 class HeaderViewCollectionReusableView: BaseCollectionViewHeaderFooterCell {
     
     // MARK: - Variables
+    
+    weak var delegate: HeaderViewCollectionReusableViewDelegate?
 
     // MARK: - UI Elements
     
@@ -43,10 +49,11 @@ class HeaderViewCollectionReusableView: BaseCollectionViewHeaderFooterCell {
         return button
     }()
     
-    private let songPlayAllButton: UIButton = {
+    private lazy var songPlayAllButton: UIButton = {
         let button = UIButton()
         button.setImage(ImageManager.playAll, for: .normal)
         button.layer.masksToBounds = true
+        button.addTarget(self, action: #selector(playRandom), for: .touchUpInside)
         return button
     }()
     
@@ -59,6 +66,10 @@ class HeaderViewCollectionReusableView: BaseCollectionViewHeaderFooterCell {
         layoutSavePlayListButton()
         layoutSeeMoreButton()
         layoutSongPlayAllButton()
+    }
+    
+    @objc func playRandom() {
+        delegate?.playRandom()
     }
     
     func configCell(album: PlayList?) {

@@ -70,6 +70,7 @@
 		CFA11DBB259F3DE700AE3843 /* AppRouters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA11DBA259F3DE700AE3843 /* AppRouters.swift */; };
 		CFA11DBE259F3E5E00AE3843 /* UIViewController+Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA11DBD259F3E5E00AE3843 /* UIViewController+Extenstion.swift */; };
 		CFA11DC4259F43BB00AE3843 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA11DC3259F43BB00AE3843 /* SettingViewController.swift */; };
+		CFA7B2F325B5C05800F3F5FE /* LibrarySong.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA7B2F225B5C05800F3F5FE /* LibrarySong.swift */; };
 		CFB07A39259188E6008FD3AB /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB07A38259188E6008FD3AB /* AlbumViewController.swift */; };
 		CFB07A3D25918925008FD3AB /* HeaderViewCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB07A3C25918925008FD3AB /* HeaderViewCollectionReusableView.swift */; };
 		CFB07A542591A48C008FD3AB /* SongCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB07A532591A48C008FD3AB /* SongCollectionViewCell.swift */; };
@@ -165,6 +166,7 @@
 		CFA11DBA259F3DE700AE3843 /* AppRouters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouters.swift; sourceTree = "<group>"; };
 		CFA11DBD259F3E5E00AE3843 /* UIViewController+Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extenstion.swift"; sourceTree = "<group>"; };
 		CFA11DC3259F43BB00AE3843 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		CFA7B2F225B5C05800F3F5FE /* LibrarySong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrarySong.swift; sourceTree = "<group>"; };
 		CFB07A38259188E6008FD3AB /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		CFB07A3C25918925008FD3AB /* HeaderViewCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewCollectionReusableView.swift; sourceTree = "<group>"; };
 		CFB07A532591A48C008FD3AB /* SongCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 			children = (
 				CF0B0CB225A4B2B6007689B6 /* SongEndPoint.swift */,
 				CFD66E4925AAD65400C14E6B /* UserEndPoint.swift */,
+				CFA7B2F225B5C05800F3F5FE /* LibrarySong.swift */,
 			);
 			path = EndPoint;
 			sourceTree = "<group>";
@@ -840,6 +843,7 @@
 				CF85478E25AD3C1C000595A3 /* ForgotPasswordViewController.swift in Sources */,
 				CF646089251B90DE00C03F2D /* HomeViewController.swift in Sources */,
 				CF646059251B905D00C03F2D /* AppDelegate.swift in Sources */,
+				CFA7B2F325B5C05800F3F5FE /* LibrarySong.swift in Sources */,
 				CF3BC71225B55E8600E3408A /* FavoriteViewController.swift in Sources */,
 				CF459654251B9CD60062158D /* BaseTableViewCell.swift in Sources */,
 				CF64609D251B974B00C03F2D /* TextManager.swift in Sources */,

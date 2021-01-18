@@ -47,7 +47,7 @@ class DishSongCellCollectionViewCell: BaseCollectionViewCell {
             return
         }
         
-        guard let songConfig = MusicPlayer.shared.curentSong else { return }
+        guard let songConfig = MusicPlayer.shared.currentSong else { return }
         self.song = songConfig
         
         guard let url = URL(string: songConfig.image) else {

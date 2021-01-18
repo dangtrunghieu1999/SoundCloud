@@ -8,8 +8,16 @@
 
 import UIKit
 
+protocol SongAddFavoriteDelegate: class {
+    func addSongFavorite(idSong: String)
+}
+
 class SongCollectionViewCell: BaseCollectionViewCell {
-            
+    
+    weak var delegate: SongAddFavoriteDelegate?
+    var idCurrentSong = ""
+    var isSelectedLike = false
+    
     fileprivate lazy var songImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -42,6 +50,7 @@ class SongCollectionViewCell: BaseCollectionViewCell {
         button.setImage(ImageManager.like, for: .normal)
         button.layer.masksToBounds = true
         button.contentMode = .scaleAspectFit
+        button.addTarget(self, action: #selector(addSongFavorite), for: .touchUpInside)
         return button
     }()
     
@@ -68,6 +77,15 @@ class SongCollectionViewCell: BaseCollectionViewCell {
         layoutMoreButton()
         layoutLikeButton()
     }
+    
+    @objc private func addSongFavorite() {
+        delegate?.addSongFavorite(idSong: idCurrentSong)
+        if isSelectedLike {
+            likeButton.setImage(ImageManager.likeFocus, for: .normal)
+        } else {
+            likeButton.setImage(ImageManager.like, for: .normal)
+        }
+    }
         
     public func configCell(song: Song?) {
         guard let song = song else { return }
@@ -76,6 +94,8 @@ class SongCollectionViewCell: BaseCollectionViewCell {
         songTitleLabel.text  = song.title.capitalizingFirstLetter()
         let artist = CommonMethod.convertArrayToStringText(data: song.listArtists)
         artistTitleLabel.text = artist.capitalizingFirstLetter()
+        self.idCurrentSong = song.id
+        self.isSelected = song.selectedFavorite
     }
     
     private func layoutSongImageView() {

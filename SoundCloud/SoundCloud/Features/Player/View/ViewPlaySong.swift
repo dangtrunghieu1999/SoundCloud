@@ -44,6 +44,7 @@ class ViewPlaySong: BaseView {
     //MARK: Initialize function
     override func initialize() {
         super.initialize()
+        MusicPlayer.shared.delegates.append(self)
         self.backgroundColor = UIColor.mainBackground
         self.layoutViewImageSong()
         self.layoutNameLabel()
@@ -142,7 +143,12 @@ extension ViewPlaySong {
     }
 }
 
-
+// MARK: - MusicPlayerDelegate
+extension ViewPlaySong: MusicPlayerDelegate {
+    func musicPlayerOnPlaySong(_ sender: MusicPlayer, _ song: Song) {
+        setData(song: song)
+    }
+}
 
 
 

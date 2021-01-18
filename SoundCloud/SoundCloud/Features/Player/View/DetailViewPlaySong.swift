@@ -17,14 +17,11 @@ class DetailViewPlaySong: BaseView {
    
     // MARK: - Variables
     
-    fileprivate var currentSong: Song?
     fileprivate var isSelctSlider: Bool = false
     fileprivate var viewPlaySong = ViewPlaySong()
     fileprivate var dishSongCell = DishSongCellCollectionViewCell()
-    fileprivate var repeatSelected: Bool = true
-    fileprivate var shuffleSelected: Bool = true
-
     weak var delegate: DetailViewPlaySongDelegate?
+    
     // MARK: - UI Elements
     
     private let backGroundImage: UIImageView = {
@@ -128,15 +125,17 @@ class DetailViewPlaySong: BaseView {
         return button
     }()
     
-    private let nextButton: UIButton = {
+    private lazy var nextButton: UIButton = {
         let button = UIButton()
         button.setImage(ImageManager.nextIcon, for: .normal)
+        button.addTarget(self, action: #selector(onTouchPlayNext), for: .touchUpInside)
         return button
     }()
     
-    private let backButton: UIButton = {
+    private lazy var backButton: UIButton = {
         let button = UIButton()
         button.setImage(ImageManager.backIcon, for: .normal)
+        button.addTarget(self, action: #selector(onTouchPlayNext), for: .touchUpInside)
         return button
     }()
     
@@ -158,6 +157,8 @@ class DetailViewPlaySong: BaseView {
     
     override func initialize() {
         super.initialize()
+        MusicPlayer.shared.delegates.append(self)
+        
         layoutBackgroundImage()
         layoutCollectionViewPlaySong()
         layoutViewBackgroundView()
@@ -173,9 +174,34 @@ class DetailViewPlaySong: BaseView {
         layoutBackButton()
         layoutDeviceButton()
         layoutShareButton()
+        
+        updatePlayTypeUI()
+    }
+    
+    func updatePlayTypeUI() {
+        let type = MusicPlayer.shared.playType
+        
+        if (type == .linear) {
+            repeatButton.setImage(ImageManager.repeatIcon, for: .normal)
+            shuffleButton.setImage(ImageManager.shuffleIcon, for: .normal)
+        } else if (type == .random) {
+            shuffleButton.setImage(ImageManager.shuffleFocus, for: .normal)
+            repeatButton.setImage(ImageManager.repeatIcon, for: .normal)
+        } else if (type == .repeatType) {
+            repeatButton.setImage(ImageManager.repeatFocus, for: .normal)
+            shuffleButton.setImage(ImageManager.shuffleIcon, for: .normal)
+        }
     }
     
     //MARK: - UI Action
+    
+    @objc func onTouchPlayNext() {
+        MusicPlayer.shared.playNext()
+    }
+    
+    @objc func onTouchPlayBack() {
+        MusicPlayer.shared.playBack()
+    }
     
     @objc func playButtonPressed() {
         MusicPlayer.shared.pause()
@@ -183,28 +209,15 @@ class DetailViewPlaySong: BaseView {
     }
     
     @objc func tapOnRepeat() {
-        if repeatSelected{
-            repeatButton.setImage(ImageManager.repeatFocus, for: .normal)
-            repeatSelected = false
-        } else {
-            repeatButton.setImage(ImageManager.repeatIcon, for: .normal)
-            repeatSelected = true
-        }
+        MusicPlayer.shared.setPlayType(.repeatType)
+        updatePlayTypeUI()
     }
     
     @objc func tapOnShuffle() {
-        if repeatSelected{
-            repeatButton.setImage(ImageManager.shuffleFocus, for: .normal)
-            repeatSelected = false
-        } else {
-            repeatButton.setImage(ImageManager.shuffleIcon, for: .normal)
-            repeatSelected = true
-        }
+        MusicPlayer.shared.setPlayType(.random)
+        updatePlayTypeUI()
     }
 
-    
-    
-    
     @objc func tapShareFile() {
         delegate?.tapOnShareFile()
     }
@@ -234,18 +247,13 @@ class DetailViewPlaySong: BaseView {
         
     }
         
-    public func setData() {
+    public func setData(with song: Song) {
         self.collectionViewPlaySong.reloadData()
-        self.currentSong = MusicPlayer.shared.curentSong
         
-        if let song = self.currentSong {
-            guard let url = URL(string: song.image) else {
-                return
-            }
-            
+        if let url = URL(string: song.image) {
             self.backGroundImage.sd_setImage(with: url)
         }
-        guard let song = self.currentSong else { return }
+        
         self.songTrackLabel.text = song.title.capitalizingFirstLetter()
         let artist = CommonMethod.convertArrayToStringText(data: song.listArtists)
         self.artistTrackLabel.text = artist
@@ -448,5 +456,14 @@ extension DetailViewPlaySong: DishSongCellDelegate {
         if !self.isSelctSlider {
             self.timeSlider.value = Float(currentTime.seconds)
         }
+    }
+}
+
+// MARK: - MusicPlayerDelegate
+
+extension DetailViewPlaySong: MusicPlayerDelegate {
+    func musicPlayerOnPlaySong(_ sender: MusicPlayer, _ song: Song) {
+        print("play song with name: \(song.title)")
+        setData(with: song)
     }
 }
