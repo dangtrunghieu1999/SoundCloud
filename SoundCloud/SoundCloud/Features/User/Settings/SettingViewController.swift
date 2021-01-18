@@ -68,6 +68,11 @@ extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 70
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = EnterNewPasswordViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 // MARK:- UITableViewDataSource

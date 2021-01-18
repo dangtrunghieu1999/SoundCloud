@@ -50,6 +50,7 @@ final class ImageManager {
     static let promotion4                        = UIImage(named: "promotion4")
     static let promotion5                        = UIImage(named: "promotion5")
     static let promotion6                        = UIImage(named: "promotion6")
-
+    static let lock                              = UIImage(named: "lock")
+    static let unLock                            = UIImage(named: "unlock")
 
 }

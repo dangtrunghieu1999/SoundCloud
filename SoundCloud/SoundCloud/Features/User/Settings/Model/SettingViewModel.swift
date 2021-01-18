@@ -22,7 +22,8 @@ class SettingViewModel {
                                 TextManager.notification,
                                 TextManager.promotion,
                                 TextManager.fileDeivce,
-                                TextManager.intro
+                                TextManager.intro,
+                                TextManager.changePassword
     ]
     
 }

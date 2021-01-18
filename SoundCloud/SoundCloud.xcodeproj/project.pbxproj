@@ -60,6 +60,7 @@
 		CF64609B251B972D00C03F2D /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64609A251B972D00C03F2D /* ImageManager.swift */; };
 		CF64609D251B974B00C03F2D /* TextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64609C251B974B00C03F2D /* TextManager.swift */; };
 		CF7222E8251B9E7D00F22E0F /* Dimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7222E7251B9E7D00F22E0F /* Dimensions.swift */; };
+		CF77FB0225B58205002F7150 /* EnterNewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF77FB0125B58205002F7150 /* EnterNewPasswordViewController.swift */; };
 		CF7E496325AF320D004C97CD /* CreateYourPlayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7E496225AF320D004C97CD /* CreateYourPlayListViewController.swift */; };
 		CF85478E25AD3C1C000595A3 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF85478D25AD3C1C000595A3 /* ForgotPasswordViewController.swift */; };
 		CF894A9525B2782D009EBE50 /* PlayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF894A9425B2782D009EBE50 /* PlayListViewController.swift */; };
@@ -154,6 +155,7 @@
 		CF64609A251B972D00C03F2D /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		CF64609C251B974B00C03F2D /* TextManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextManager.swift; sourceTree = "<group>"; };
 		CF7222E7251B9E7D00F22E0F /* Dimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimensions.swift; sourceTree = "<group>"; };
+		CF77FB0125B58205002F7150 /* EnterNewPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNewPasswordViewController.swift; sourceTree = "<group>"; };
 		CF7E496225AF320D004C97CD /* CreateYourPlayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateYourPlayListViewController.swift; sourceTree = "<group>"; };
 		CF85478D25AD3C1C000595A3 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		CF894A9425B2782D009EBE50 /* PlayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayListViewController.swift; path = SoundCloud/Features/Library/listsong/PlayListViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -488,6 +490,14 @@
 			path = Commons;
 			sourceTree = "<group>";
 		};
+		CF77FB0025B581DB002F7150 /* ChangePW */ = {
+			isa = PBXGroup;
+			children = (
+				CF77FB0125B58205002F7150 /* EnterNewPasswordViewController.swift */,
+			);
+			path = ChangePW;
+			sourceTree = "<group>";
+		};
 		CFA11DC2259F439E00AE3843 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -563,6 +573,7 @@
 		CFC49AA5259021D00020B68B /* User */ = {
 			isa = PBXGroup;
 			children = (
+				CF77FB0025B581DB002F7150 /* ChangePW */,
 				CF048BE925ACABD100914BD6 /* Verify */,
 				CFA11DC2259F439E00AE3843 /* Settings */,
 				CFC49AA7259021F50020B68B /* SignUp */,
@@ -812,6 +823,7 @@
 				CFC8E546251D81380080FC15 /* SearchViewController.swift in Sources */,
 				CFD66E4A25AAD65400C14E6B /* UserEndPoint.swift in Sources */,
 				CFA11DC4259F43BB00AE3843 /* SettingViewController.swift in Sources */,
+				CF77FB0225B58205002F7150 /* EnterNewPasswordViewController.swift in Sources */,
 				CFD66E4E25AAD6F100C14E6B /* User.swift in Sources */,
 				CFD9B58825789FDC009DABBD /* TabCollectionViewCell.swift in Sources */,
 				CF45964E251B9C590062158D /* BaseViewController.swift in Sources */,

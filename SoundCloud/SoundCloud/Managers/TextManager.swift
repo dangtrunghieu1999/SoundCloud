@@ -37,6 +37,7 @@ final class TextManager {
     static let addSong                              = "THÊM BÀI HÁT"
     static let password                             = "Mật khẩu"
     static let email                                = "Email hoặc tên người dùng"
+    static let forgot                               = "Quên mật khẩu"
     
     // MARK: - Alert
     
@@ -48,8 +49,10 @@ final class TextManager {
     static let invalidEmail                 = "Email không hợp lệ. Bạn vui lòng kiểm tra lại!"
     static let existEmail                   = "Email đã đăng kí. Vui lòng quay Đăng nhập hoặc Quên mật khẩu"
     static let existPhoneNumber             = "Số điện thoại đã đăng kí. Vui lòng quay Đăng nhập hoặc Quên mật khẩu"
-    static let statusLogOut                         = "Bạn có chắc chắn muốn đăng xuất?"
-
+    static let statusLogOut                  = "Bạn có chắc chắn muốn đăng xuất?"
+    
+    static let changePassword               = "Đổi mật khẩu"
+    static let confirmPW                    = "Nhập lại mật khẩu"
 
     // MARK: - Common
     
@@ -86,6 +89,12 @@ final class TextManager {
     static let favorites                        = "Bài hát ưa thích"
     static let song                             = "Bài hát"
     static let pwNotEnoughLength                = "Mật khẩu phải dài hơn \(AppConfig.minPasswordLenght) kí tự"
+    static let resetPWTitle                     = "Khôi phục tài khoản"
+    static let youNotHaveAccount                = "BẠN KHÔNG CÓ TÀI KHOẢN?"
+    static let weWillSendCodeToEmail            = "Bạn quên tài khoản ư! \n Vui lòng nhập email hoặc số điện thoại để tìm kiếm tài khoản"
+    static let oneStepToResetPW                 = "Vui lòng nhập mật khẩu mới của bạn tại đây"
+    static let oldPassword                      = "Nhập khẩu cũ"
+    static let newPassword                      = "Nhập mật khẩu mới tại đây"
 
 }
 

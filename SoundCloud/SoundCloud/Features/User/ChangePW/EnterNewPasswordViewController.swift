@@ -1,27 +1,30 @@
 //
-//  VerifyViewController.swift
+//  ChangePasswordViewController.swift
 //  SoundCloud
 //
-//  Created by Dang Trung Hieu on 1/12/21.
+//  Created by Dang Trung Hieu on 1/18/21.
 //  Copyright © 2021 Dang Trung Hieu. All rights reserved.
 //
 
 import UIKit
 
-class ForgotPasswordViewController: BaseViewController {
+class EnterNewPasswordViewController: BaseViewController {
+    // MARK: - Variables
+    
+    var code: String = ""
     
     // MARK: - UI Elements
     
     fileprivate let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = ImageManager.lock
+        imageView.image = ImageManager.unLock
         return imageView
     }()
     
-    fileprivate let enterUserNameTitleLabel: UILabel = {
+    fileprivate let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = TextManager.weWillSendCodeToEmail
+        label.text = TextManager.oneStepToResetPW
         label.textColor = UIColor.white
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -29,16 +32,30 @@ class ForgotPasswordViewController: BaseViewController {
         return label
     }()
     
-    fileprivate lazy var userNameTextField: PaddingTextField = {
+    fileprivate lazy var newPWTextField: PaddingTextField = {
         let textField = PaddingTextField()
-        textField.attributedPlaceholder = NSAttributedString(string:TextManager.emailPlaceHolder,
+        textField.attributedPlaceholder = NSAttributedString(string:TextManager.oldPassword,
                                                              attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         textField.layer.cornerRadius = Dimension.shared.largeHeightButton / 2
-        textField.backgroundColor = UIColor.spotifyBrown
         textField.layer.masksToBounds = true
-        textField.keyboardType = .emailAddress
+        textField.isSecureTextEntry = true
+        textField.textColor = UIColor.white
         textField.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
-        textField.backgroundColor = UIColor.white
+        textField.backgroundColor = UIColor.spotifyBrown
+        textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
+        return textField
+    }()
+    
+    fileprivate lazy var confimNewPWTextField: PaddingTextField = {
+        let textField = PaddingTextField()
+        textField.attributedPlaceholder = NSAttributedString(string:TextManager.newPassword,
+                                                             attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        textField.layer.cornerRadius = Dimension.shared.largeHeightButton / 2
+        textField.layer.masksToBounds = true
+        textField.isSecureTextEntry = true
+        textField.backgroundColor = UIColor.spotifyBrown
+        textField.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
+        textField.textColor = UIColor.white
         textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
         return textField
     }()
@@ -56,58 +73,37 @@ class ForgotPasswordViewController: BaseViewController {
         return button
     }()
     
-    fileprivate let youDontHaveAccountLabel: UILabel = {
-       let label = UILabel()
-        label.text = TextManager.youNotHaveAccount
-        label.textColor = UIColor.white
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: FontSize.h3.rawValue)
-        return label
-    }()
-    
-    fileprivate lazy var signUpButton: UIButton = {
-        let button = UIButton()
-        button.setTitle(TextManager.signUp, for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.addTarget(self, action: #selector(tapOnSignUp), for: .touchUpInside)
-        return button
-    }()
-    
     // MARK: - LifeCycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = TextManager.resetPWTitle.uppercased()
+        navigationItem.title = TextManager.changePassword
         
         layoutImageView()
-        layoutEnterUserNameLabel()
-        layoutUserNameTextField()
+        layoutMessageLabel()
+        layoutNewPWTextField()
+        layoutConfimNewPWTextField()
         layoutNextButton()
-        layoutSignUPButton()
-        layoutYouDontHaveAccountLabel()
     }
     
     // MARK: - UI Actions
     
     @objc private func textFieldValueChange(_ textField: UITextField) {
-        let userName = textField.text ?? ""
-        if userName.isUserName {
-            nextButton.backgroundColor = UIColor.accentColor
+        let passWord = newPWTextField.text ?? ""
+        let confirmPassWord = confimNewPWTextField.text ?? ""
+        if passWord != "" && confirmPassWord != "" {
+            nextButton.backgroundColor = UIColor.white
             nextButton.isUserInteractionEnabled = true
         } else {
-            nextButton.backgroundColor = UIColor.disable
+            nextButton.backgroundColor = UIColor.spotifyBrown
             nextButton.isUserInteractionEnabled = false
         }
     }
     
-    @objc private func tapOnSignUp() {
-        let viewController = SignUpViewController()
-        navigationController?.pushViewController(viewController, animated: true)
-    }
-    
     @objc private func tapOnNextButton() {
-        guard let userName = userNameTextField.text else { return }
+        
+    
     }
     
     // MARK: - Setup Layouts
@@ -125,9 +121,9 @@ class ForgotPasswordViewController: BaseViewController {
         }
     }
     
-    private func layoutEnterUserNameLabel() {
-        view.addSubview(enterUserNameTitleLabel)
-        enterUserNameTitleLabel.snp.makeConstraints { (make) in
+    private func layoutMessageLabel() {
+        view.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.top.equalTo(imageView.snp.bottom).offset(Dimension.shared.normalMargin)
             make.left.equalToSuperview().offset(Dimension.shared.largeMargin_30)
@@ -135,13 +131,21 @@ class ForgotPasswordViewController: BaseViewController {
         }
     }
     
-    private func layoutUserNameTextField() {
-        view.addSubview(userNameTextField)
-        userNameTextField.snp.makeConstraints { (make) in
+    private func layoutNewPWTextField() {
+        view.addSubview(newPWTextField)
+        newPWTextField.snp.makeConstraints { (make) in
             make.left.equalTo(view).offset(Dimension.shared.largeMargin_30)
             make.right.equalTo(view).offset(-Dimension.shared.largeMargin_30)
             make.height.equalTo(Dimension.shared.largeHeightButton)
-            make.top.equalTo(enterUserNameTitleLabel.snp.bottom).offset(Dimension.shared.largeMargin)
+            make.top.equalTo(titleLabel.snp.bottom).offset(Dimension.shared.largeMargin)
+        }
+    }
+    
+    private func layoutConfimNewPWTextField() {
+        view.addSubview(confimNewPWTextField)
+        confimNewPWTextField.snp.makeConstraints { (make) in
+            make.width.height.centerX.equalTo(newPWTextField)
+            make.top.equalTo(newPWTextField.snp.bottom).offset(Dimension.shared.normalMargin)
         }
     }
     
@@ -150,28 +154,9 @@ class ForgotPasswordViewController: BaseViewController {
         nextButton.snp.makeConstraints { (make) in
             make.width.equalTo(Dimension.shared.largeWidthButton)
             make.height.equalTo(Dimension.shared.largeHeightButton)
-            make.top.equalTo(userNameTextField.snp.bottom).offset(Dimension.shared.largeMargin_30)
             make.centerX.equalToSuperview()
+            make.top.equalTo(confimNewPWTextField.snp.bottom).offset(Dimension.shared.largeMargin_30)
         }
     }
-    
-    private func layoutSignUPButton() {
-        view.addSubview(signUpButton)
-        signUpButton.snp.makeConstraints { (make) in
-            make.width.equalTo(Dimension.shared.mediumWidthButton)
-            make.height.equalTo(Dimension.shared.defaultHeightButton)
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-Dimension.shared.largeMargin_30)
-        }
-    }
-    
-    private func layoutYouDontHaveAccountLabel() {
-        view.addSubview(youDontHaveAccountLabel)
-        youDontHaveAccountLabel.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(signUpButton.snp.top)
-        }
-    }
-    
-    
+
 }

@@ -70,8 +70,17 @@ class LoginViewController: BaseViewController {
         button.addTarget(self,action: #selector(tapOnSignIn), for: .touchUpInside)
         return button
     }()
-
     
+    private let fortgotPassword: UIButton = {
+        let button = UIButton()
+        button.setTitle(TextManager.forgot, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: FontSize.h3.rawValue, weight: .semibold)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.contentHorizontalAlignment = .center
+        button.layer.cornerRadius = Dimension.shared.mediumHeightButton / 2
+        button.addTarget(self,action: #selector(tapOnForgotPassword), for: .touchUpInside)
+        return button
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = TextManager.signIn
@@ -80,6 +89,7 @@ class LoginViewController: BaseViewController {
         layoutPasswordTitleLabel()
         layoutPasswordTextField()
         layoutSignInButton()
+        layoutForgotPasswordButton()
     }
     
     // MARK: - UI Action
@@ -95,6 +105,11 @@ class LoginViewController: BaseViewController {
             signInButton.isUserInteractionEnabled = false
             signInButton.backgroundColor = UIColor.spotifyBrown
         }
+    }
+    
+    @objc private func tapOnForgotPassword() {
+        let vc = ForgotPasswordViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     @objc private func tapOnSignIn() {
@@ -159,6 +174,16 @@ class LoginViewController: BaseViewController {
             make.width.equalTo(Dimension.shared.largeWidthButton)
             make.height.equalTo(Dimension.shared.largeHeightButton)
             make.centerX.equalToSuperview()
+        }
+    }
+    
+    private func layoutForgotPasswordButton() {
+        view.addSubview(fortgotPassword)
+        fortgotPassword.snp.makeConstraints { (make) in
+            make.top.equalTo(signInButton.snp.bottom).offset(Dimension.shared.normalMargin)
+            make.width.equalTo(Dimension.shared.mediumWidthButton)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(Dimension.shared.mediumHeightButton)
         }
     }
 

@@ -21,7 +21,7 @@ class SettingHeaderView: BaseTableViewHeaderFooter {
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = Dimension.shared.widthAvatarDefault / 2
-        imageView.image = UIImage(named: "1")
+        imageView.image = UIImage(named: "profile")
         return imageView
     }()
     

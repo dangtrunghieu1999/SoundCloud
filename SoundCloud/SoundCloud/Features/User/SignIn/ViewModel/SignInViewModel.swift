@@ -46,9 +46,9 @@ class SignInViewModel: BaseViewModel {
             }
         }, onFailure: { (apiError) in
             if userName.isValidEmail {
-                onError(TextManager.existEmail)
-            } else {
                 onError(TextManager.loginFailMessage)
+            } else {
+                onError(TextManager.invalidEmail)
             }
         }) {
             onError(TextManager.loginFailMessage)
