@@ -11,7 +11,6 @@
 		CF048BE325AC9CD300914BD6 /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF048BE225AC9CD300914BD6 /* SettingHeaderView.swift */; };
 		CF048BE625AC9CDC00914BD6 /* SettingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF048BE525AC9CDC00914BD6 /* SettingFooterView.swift */; };
 		CF0A576D25AEB162008050F1 /* LibraryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A576C25AEB162008050F1 /* LibraryTableViewCell.swift */; };
-		CF0A577025AEB193008050F1 /* CreateYourLibraryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A576F25AEB193008050F1 /* CreateYourLibraryTableView.swift */; };
 		CF0A577625AEB48F008050F1 /* YourPlayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A577525AEB48F008050F1 /* YourPlayList.swift */; };
 		CF0B0CAB25A4B28B007689B6 /* APIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0B0CA625A4B28B007689B6 /* APIConfig.swift */; };
 		CF0B0CAC25A4B28B007689B6 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0B0CA725A4B28B007689B6 /* APIResponse.swift */; };
@@ -27,6 +26,7 @@
 		CF3912AF259B377300979DA4 /* ViewPlaySong.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3912AE259B377300979DA4 /* ViewPlaySong.swift */; };
 		CF3912B2259B38B900979DA4 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3912B1259B38B900979DA4 /* MusicPlayer.swift */; };
 		CF3912B5259B38FA00979DA4 /* BaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3912B4259B38FA00979DA4 /* BaseConfig.swift */; };
+		CF3BC6F025B5283400E3408A /* EmptyPlayListSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3BC6EF25B5283400E3408A /* EmptyPlayListSong.swift */; };
 		CF40F45A25996F18009BFF6C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF40F45925996F18009BFF6C /* LoginViewController.swift */; };
 		CF40F45D25996FCB009BFF6C /* TitleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF40F45C25996FCB009BFF6C /* TitleTextField.swift */; };
 		CF40F46025996FFD009BFF6C /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF40F45F25996FFD009BFF6C /* BaseView.swift */; };
@@ -103,7 +103,6 @@
 		CF048BE225AC9CD300914BD6 /* SettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
 		CF048BE525AC9CDC00914BD6 /* SettingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFooterView.swift; sourceTree = "<group>"; };
 		CF0A576C25AEB162008050F1 /* LibraryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTableViewCell.swift; sourceTree = "<group>"; };
-		CF0A576F25AEB193008050F1 /* CreateYourLibraryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateYourLibraryTableView.swift; sourceTree = "<group>"; };
 		CF0A577525AEB48F008050F1 /* YourPlayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourPlayList.swift; sourceTree = "<group>"; };
 		CF0B0CA625A4B28B007689B6 /* APIConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConfig.swift; sourceTree = "<group>"; };
 		CF0B0CA725A4B28B007689B6 /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
@@ -119,6 +118,7 @@
 		CF3912AE259B377300979DA4 /* ViewPlaySong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPlaySong.swift; sourceTree = "<group>"; };
 		CF3912B1259B38B900979DA4 /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
 		CF3912B4259B38FA00979DA4 /* BaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseConfig.swift; sourceTree = "<group>"; };
+		CF3BC6EF25B5283400E3408A /* EmptyPlayListSong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyPlayListSong.swift; sourceTree = "<group>"; };
 		CF40F45925996F18009BFF6C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CF40F45C25996FCB009BFF6C /* TitleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextField.swift; sourceTree = "<group>"; };
 		CF40F45F25996FFD009BFF6C /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
@@ -491,7 +491,7 @@
 		CF894A9225B2777C009EBE50 /* CreateList */ = {
 			isa = PBXGroup;
 			children = (
-				CF0A576F25AEB193008050F1 /* CreateYourLibraryTableView.swift */,
+				CF3BC6EF25B5283400E3408A /* EmptyPlayListSong.swift */,
 			);
 			path = CreateList;
 			sourceTree = "<group>";
@@ -764,7 +764,6 @@
 				CFBED1822589B63500F19CD7 /* PaddingTextField.swift in Sources */,
 				CF0A576D25AEB162008050F1 /* LibraryTableViewCell.swift in Sources */,
 				CF50FB0725B46D0E00DD5EDC /* ImageCollectionViewCell.swift in Sources */,
-				CF0A577025AEB193008050F1 /* CreateYourLibraryTableView.swift in Sources */,
 				CF4942AD25A03265008436C0 /* UILabel+Extension.swift in Sources */,
 				CF048BE325AC9CD300914BD6 /* SettingHeaderView.swift in Sources */,
 				CFBB192A259B289100CA58A1 /* AppConfig.swift in Sources */,
@@ -798,6 +797,7 @@
 				CFA11DBB259F3DE700AE3843 /* AppRouters.swift in Sources */,
 				CF459650251B9C7E0062158D /* BaseCollectionViewHeaderFooterCell.swift in Sources */,
 				CFBB192D259B28CA00CA58A1 /* String+Extension.swift in Sources */,
+				CF3BC6F025B5283400E3408A /* EmptyPlayListSong.swift in Sources */,
 				CF894A9525B2782D009EBE50 /* PlayListViewController.swift in Sources */,
 				CFB07A542591A48C008FD3AB /* SongCollectionViewCell.swift in Sources */,
 				CFC49AB22590242F0020B68B /* SignInViewController.swift in Sources */,

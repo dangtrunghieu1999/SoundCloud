@@ -41,15 +41,17 @@ class LibraryTableViewCell: BaseTableViewCell {
         layoutDescriptionLabel()
     }
     
-    public func configLikeSong(image: UIImage?, title: String, description: String) {
-        songImageView.image = image
-        titleLabel.text = title
-        descriptionLabel.text = description
-    }
-    
-    public func configCell(song: Song) {
-        
-    }
+//    public func configLikeSong(image: UIImage?, title: String, description: String) {
+//        songImageView.image = image
+//        titleLabel.text = title
+//        descriptionLabel.text = description
+//    }
+//    
+//    public func configCell(playlist: YourPlayList) {
+//        songImageView.image = UIImage(named: "1")
+//        titleLabel.text = playlist.title
+//        descriptionLabel.text = "Trung Hieu"
+//    }
     
     private func layoutSongImageView() {
         addSubview(songImageView)

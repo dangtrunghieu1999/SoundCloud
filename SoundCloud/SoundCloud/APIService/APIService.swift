@@ -41,16 +41,16 @@ public final class APIService<EndPoint: EndPointType> {
         
         dataRequest.responseData { (dataResponse) in
 
-            if dataResponse.response?.isSuccess ?? false {
+//            if dataResponse.response?.isSuccess ?? false{
                 let apiResponse = APIResponse(response: dataResponse)
-                if apiResponse.data != nil {
+            if apiResponse.data != nil || apiResponse.flag == true {
                     onSuccess(apiResponse)
                 } else {
                     onFailure(apiResponse.error)
                 }
-            } else {
-                onRequestFail()
-            }
+//            } else {
+//                onRequestFail()
+//            }
         }
     }
     

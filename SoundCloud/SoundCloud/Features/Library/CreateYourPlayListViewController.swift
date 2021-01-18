@@ -42,7 +42,8 @@ class CreateYourPlayListViewController: BaseViewController {
         button.contentHorizontalAlignment = .center
         button.layer.cornerRadius = 25
         button.backgroundColor = UIColor.white
-        button.isUserInteractionEnabled = false
+        button.isUserInteractionEnabled = true
+        button.addTarget(self, action: #selector(getAPICreatePlayListMe), for: .touchUpInside)
         return button
     }()
     
@@ -56,6 +57,30 @@ class CreateYourPlayListViewController: BaseViewController {
         layoutNamePlayListTextField()
         layoutCreateButton()
     }
+    
+    @objc private func getAPICreatePlayListMe() {
+        guard let newPlayList = namePlayListTextField.text else { return }
+        let params = ["playlistName": newPlayList]
+        let endPoint = SongEndPoint.createPlayList(bodyParams: params)
+        showLoading()
+        APIService.request(endPoint: endPoint) { (apiResponse) in
+            if apiResponse.flag == true {
+                AlertManager.shared.showToast(message: "Khởi tạo thành công")
+                self.hideLoading()
+                self.dismiss(animated: true, completion: nil)
+            }
+        } onFailure: { (serviceError) in
+            self.hideLoading()
+        } onRequestFail: {
+            self.hideLoading()
+        }
+    }
+    
+    private func reloadDataWhenFinishLoadAPI() {
+        self.hideLoading()
+        self.isRequestingAPI = false
+    }
+
     
     override func touchUpInRightBarButtonItem() {
         self.dismiss(animated: true, completion: nil)

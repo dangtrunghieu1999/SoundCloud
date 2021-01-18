@@ -15,6 +15,7 @@ enum SongEndPoint {
     case getSearchSong(param: Parameters)
     case getFavoriteSong
     case getPlayListSong
+    case createPlayList(bodyParams: Parameters)
 }
 
 extension SongEndPoint: EndPointType {
@@ -29,6 +30,8 @@ extension SongEndPoint: EndPointType {
         case .getFavoriteSong:
             return "/me/favorite"
         case .getPlayListSong:
+            return "/me/playlist"
+        case .createPlayList:
             return "/me/playlist"
         }
     }
@@ -45,6 +48,8 @@ extension SongEndPoint: EndPointType {
             return .get
         case .getPlayListSong:
             return .get
+        case .createPlayList:
+            return .post
         }
         
     }
@@ -61,6 +66,8 @@ extension SongEndPoint: EndPointType {
             return nil
         case .getPlayListSong:
             return nil
+        case .createPlayList(let bodyParams):
+            return bodyParams
         }
     }
 }

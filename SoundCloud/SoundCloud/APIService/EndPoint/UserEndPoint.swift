@@ -25,7 +25,7 @@ extension UserEndPoint: EndPointType {
         case .signIn:
             return "/auth/login"
         case .signUp:
-            return "/User/Create"
+            return "/auth/signup"
         case .forgotPW:
             return "/User/ForgotPassword"
         case .checkValidCode:

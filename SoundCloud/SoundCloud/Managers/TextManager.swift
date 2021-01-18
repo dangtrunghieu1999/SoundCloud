@@ -85,5 +85,7 @@ final class TextManager {
     static let createPlay                       = "Tạo playlist"
     static let favorites                        = "Bài hát ưa thích"
     static let song                             = "Bài hát"
+    static let pwNotEnoughLength                = "Mật khẩu phải dài hơn \(AppConfig.minPasswordLenght) kí tự"
+
 }
 

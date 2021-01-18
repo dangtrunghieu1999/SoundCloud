@@ -146,17 +146,30 @@ class SignUpViewController: BaseViewController {
     }
     
     @objc private func tapOnSignUp() {
-        //        guard let email = emailTextField.text,
-        //              let userName = usernameTextField.text,
-        //              let password = passwordTextField.text
-        //        else {
-        //            return
-        //        }
+                guard let email = emailTextField.text,
+                      let userName = usernameTextField.text,
+                      let password = passwordTextField.text
+                else {
+                    return
+                }
+
+        guard password.count >= AppConfig.minPasswordLenght else {
+                AlertManager.shared.show(message: TextManager.pwNotEnoughLength)
+                return
+        }
+
+        showLoading()
         
-        //        showLoading()
-        let vc = ForgotPasswordViewController()
-        navigationController?.pushViewController(vc, animated: true)
-        
+        if viewModel.canSignUp(email: email, password: password, userName: userName, gender: selectedGender) {
+            viewModel.requestSignUp(email: email, userName: userName, password: password, gender: selectedGender) {
+                self.hideLoading()
+                guard let window = UIApplication.shared.keyWindow else { return }
+                window.rootViewController = ZTabBarViewController()
+            } onError: { (message) in
+                self.hideLoading()
+                AlertManager.shared.show(TextManager.alertTitle, message: message)
+            }
+        }
     }
     
     

@@ -21,7 +21,7 @@ class SignUpViewModel: BaseViewModel {
                    password: String?,
                    userName: String?,
                    gender: Bool?) -> Bool {
-        if (email != nil && email != ""  && (email?.isPhoneNumber ?? false || email?.isValidEmail ?? false)
+        if (email != nil && email != ""  && (email?.isValidEmail ?? false)
             && userName != nil && userName != ""
             && password != nil && password != ""
             && gender != nil) {
@@ -35,29 +35,29 @@ class SignUpViewModel: BaseViewModel {
     func requestSignUp(email: String,
                        userName: String,
                        password: String,
-                       dob: Date,
+                       gender: Bool,
                        onSuccess: @escaping () -> Void,
                        onError: @escaping (String) -> Void) {
         
-        var params = ["UserType": "KH",
-                      "Email": email,
-                      "UserName": userName,
-                      "Password": password,
-                      "Birthday": dob.desciption(by: DateFormat.fullDateServerFormat)]
-        if userName.isValidEmail {
-            params["Email"] = userName
-        } else if userName.isPhoneNumber {
-            params["Email"] = "\(userName)@gmail.com"
-            params["PhoneNumber"] = userName
-        }
+        let params: [String: Any] = ["email": email,
+                                     "fullname": userName,
+                                     "password": password,
+                                     "gender": gender]
         
         let endPoint = UserEndPoint.signUp(bodyParams: params)
         
         APIService.request(endPoint: endPoint, onSuccess: { (apiResponse) in
-            if let userId = apiResponse.data?.dictionaryValue["UserId"]?.stringValue {
-                UserSessionManager.shared.saveUserId(userId)
+            guard apiResponse.data != nil else {
+                onError(TextManager.accNotActive)
+                return
             }
-            onSuccess()
+            if let user = apiResponse.toObject(User.self) {
+                UserManager.saveCurrentUser(user)
+                UserManager.getUserProfile()
+                onSuccess()
+            } else {
+                onError(TextManager.errorMessage)
+            }
         }, onFailure: { (apiError) in
             if userName.isValidEmail {
                 onError(TextManager.existEmail)
