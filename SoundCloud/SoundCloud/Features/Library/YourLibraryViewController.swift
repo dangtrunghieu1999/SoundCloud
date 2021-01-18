@@ -16,7 +16,8 @@ class YourLibraryViewController: BaseViewController {
     fileprivate lazy var playList = [YourPlayList]()
     fileprivate lazy var likeSong = [Song]()
 
-    
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 }
 

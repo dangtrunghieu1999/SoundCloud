@@ -10,7 +10,6 @@
 		8EC805BBEF5316A9FD1E7FD5 /* Pods_SoundCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63F110FA1BCA958983F5DADA /* Pods_SoundCloud.framework */; };
 		CF048BE325AC9CD300914BD6 /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF048BE225AC9CD300914BD6 /* SettingHeaderView.swift */; };
 		CF048BE625AC9CDC00914BD6 /* SettingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF048BE525AC9CDC00914BD6 /* SettingFooterView.swift */; };
-		CF0A576D25AEB162008050F1 /* LibraryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A576C25AEB162008050F1 /* LibraryTableViewCell.swift */; };
 		CF0A577625AEB48F008050F1 /* YourPlayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A577525AEB48F008050F1 /* YourPlayList.swift */; };
 		CF0B0CAB25A4B28B007689B6 /* APIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0B0CA625A4B28B007689B6 /* APIConfig.swift */; };
 		CF0B0CAC25A4B28B007689B6 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0B0CA725A4B28B007689B6 /* APIResponse.swift */; };
@@ -27,10 +26,12 @@
 		CF3912B2259B38B900979DA4 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3912B1259B38B900979DA4 /* MusicPlayer.swift */; };
 		CF3912B5259B38FA00979DA4 /* BaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3912B4259B38FA00979DA4 /* BaseConfig.swift */; };
 		CF3BC6F025B5283400E3408A /* EmptyPlayListSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3BC6EF25B5283400E3408A /* EmptyPlayListSong.swift */; };
+		CF3BC71225B55E8600E3408A /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3BC70F25B55E8600E3408A /* FavoriteViewController.swift */; };
+		CF3BC71325B55E8600E3408A /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3BC71025B55E8600E3408A /* FavoriteCollectionViewCell.swift */; };
+		CF3BC71425B55E8600E3408A /* FavoriteHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3BC71125B55E8600E3408A /* FavoriteHeaderCollectionReusableView.swift */; };
 		CF40F45A25996F18009BFF6C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF40F45925996F18009BFF6C /* LoginViewController.swift */; };
 		CF40F45D25996FCB009BFF6C /* TitleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF40F45C25996FCB009BFF6C /* TitleTextField.swift */; };
 		CF40F46025996FFD009BFF6C /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF40F45F25996FFD009BFF6C /* BaseView.swift */; };
-		CF418C6F25B09704002299F6 /* LikeSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF418C6E25B09704002299F6 /* LikeSongViewController.swift */; };
 		CF45964E251B9C590062158D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45964D251B9C590062158D /* BaseViewController.swift */; };
 		CF459650251B9C7E0062158D /* BaseCollectionViewHeaderFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45964F251B9C7E0062158D /* BaseCollectionViewHeaderFooterCell.swift */; };
 		CF459652251B9CAD0062158D /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF459651251B9CAD0062158D /* BaseCollectionViewCell.swift */; };
@@ -38,8 +39,6 @@
 		CF459656251B9CF00062158D /* BaseTableViewHeaderFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF459655251B9CF00062158D /* BaseTableViewHeaderFooter.swift */; };
 		CF4942A725A021F1008436C0 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4942A625A021F1008436C0 /* UIImageView+Extension.swift */; };
 		CF4942AD25A03265008436C0 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4942AC25A03265008436C0 /* UILabel+Extension.swift */; };
-		CF50FAF225B4623300DD5EDC /* FavoriteHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF50FAF125B4623300DD5EDC /* FavoriteHeaderCollectionReusableView.swift */; };
-		CF50FAF525B4628000DD5EDC /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF50FAF425B4628000DD5EDC /* FavoriteCollectionViewCell.swift */; };
 		CF50FB0125B46BB200DD5EDC /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF50FB0025B46BB200DD5EDC /* BannerCollectionViewCell.swift */; };
 		CF50FB0425B46C6A00DD5EDC /* BannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF50FB0325B46C6A00DD5EDC /* BannerViewModel.swift */; };
 		CF50FB0725B46D0E00DD5EDC /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF50FB0625B46D0E00DD5EDC /* ImageCollectionViewCell.swift */; };
@@ -102,7 +101,6 @@
 		9D5D5A1992C2EB6C34E75A12 /* Pods-SoundCloud.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundCloud.debug.xcconfig"; path = "Target Support Files/Pods-SoundCloud/Pods-SoundCloud.debug.xcconfig"; sourceTree = "<group>"; };
 		CF048BE225AC9CD300914BD6 /* SettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
 		CF048BE525AC9CDC00914BD6 /* SettingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFooterView.swift; sourceTree = "<group>"; };
-		CF0A576C25AEB162008050F1 /* LibraryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTableViewCell.swift; sourceTree = "<group>"; };
 		CF0A577525AEB48F008050F1 /* YourPlayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourPlayList.swift; sourceTree = "<group>"; };
 		CF0B0CA625A4B28B007689B6 /* APIConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConfig.swift; sourceTree = "<group>"; };
 		CF0B0CA725A4B28B007689B6 /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
@@ -119,10 +117,12 @@
 		CF3912B1259B38B900979DA4 /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
 		CF3912B4259B38FA00979DA4 /* BaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseConfig.swift; sourceTree = "<group>"; };
 		CF3BC6EF25B5283400E3408A /* EmptyPlayListSong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyPlayListSong.swift; sourceTree = "<group>"; };
+		CF3BC70F25B55E8600E3408A /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		CF3BC71025B55E8600E3408A /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
+		CF3BC71125B55E8600E3408A /* FavoriteHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		CF40F45925996F18009BFF6C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CF40F45C25996FCB009BFF6C /* TitleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextField.swift; sourceTree = "<group>"; };
 		CF40F45F25996FFD009BFF6C /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
-		CF418C6E25B09704002299F6 /* LikeSongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeSongViewController.swift; sourceTree = "<group>"; };
 		CF45964D251B9C590062158D /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CF45964F251B9C7E0062158D /* BaseCollectionViewHeaderFooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewHeaderFooterCell.swift; sourceTree = "<group>"; };
 		CF459651251B9CAD0062158D /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -130,8 +130,6 @@
 		CF459655251B9CF00062158D /* BaseTableViewHeaderFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewHeaderFooter.swift; sourceTree = "<group>"; };
 		CF4942A625A021F1008436C0 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		CF4942AC25A03265008436C0 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
-		CF50FAF125B4623300DD5EDC /* FavoriteHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
-		CF50FAF425B4628000DD5EDC /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF50FB0025B46BB200DD5EDC /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF50FB0325B46C6A00DD5EDC /* BannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerViewModel.swift; sourceTree = "<group>"; };
 		CF50FB0625B46D0E00DD5EDC /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -276,14 +274,21 @@
 			path = Player;
 			sourceTree = "<group>";
 		};
-		CF418C6D25B096F4002299F6 /* favorite */ = {
+		CF3BC70125B55DFC00E3408A /* CreateList */ = {
 			isa = PBXGroup;
 			children = (
-				CF418C6E25B09704002299F6 /* LikeSongViewController.swift */,
-				CF50FAF125B4623300DD5EDC /* FavoriteHeaderCollectionReusableView.swift */,
-				CF50FAF425B4628000DD5EDC /* FavoriteCollectionViewCell.swift */,
 			);
-			path = favorite;
+			path = CreateList;
+			sourceTree = "<group>";
+		};
+		CF3BC70725B55E4600E3408A /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				CF3BC71025B55E8600E3408A /* FavoriteCollectionViewCell.swift */,
+				CF3BC71125B55E8600E3408A /* FavoriteHeaderCollectionReusableView.swift */,
+				CF3BC70F25B55E8600E3408A /* FavoriteViewController.swift */,
+			);
+			path = Favorite;
 			sourceTree = "<group>";
 		};
 		CF45964B251B9C320062158D /* Bases */ = {
@@ -311,12 +316,12 @@
 			path = UIView;
 			sourceTree = "<group>";
 		};
-		CF50FAE325B460FF00DD5EDC /* listsong */ = {
+		CF50FAE325B460FF00DD5EDC /* Listsong */ = {
 			isa = PBXGroup;
 			children = (
 				CF894A9425B2782D009EBE50 /* PlayListViewController.swift */,
 			);
-			path = listsong;
+			path = Listsong;
 			sourceTree = "<group>";
 		};
 		CF50FAFF25B46B9C00DD5EDC /* banner */ = {
@@ -456,12 +461,12 @@
 		CF6460A1251B979900C03F2D /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				CF894A9125B27767009EBE50 /* view */,
-				CF50FAE325B460FF00DD5EDC /* listsong */,
-				CF418C6D25B096F4002299F6 /* favorite */,
+				CF3BC70125B55DFC00E3408A /* CreateList */,
+				CF3BC70725B55E4600E3408A /* Favorite */,
+				CF50FAE325B460FF00DD5EDC /* Listsong */,
 				CF26D8912590BBB5004B2EF9 /* YourLibraryViewController.swift */,
 				CF7E496225AF320D004C97CD /* CreateYourPlayListViewController.swift */,
-				CF0A576C25AEB162008050F1 /* LibraryTableViewCell.swift */,
+				CF3BC6EF25B5283400E3408A /* EmptyPlayListSong.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -478,22 +483,6 @@
 				CFEE2FA725B4165200C32CE3 /* MethodCommon.swift */,
 			);
 			path = Commons;
-			sourceTree = "<group>";
-		};
-		CF894A9125B27767009EBE50 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				CF894A9225B2777C009EBE50 /* CreateList */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		CF894A9225B2777C009EBE50 /* CreateList */ = {
-			isa = PBXGroup;
-			children = (
-				CF3BC6EF25B5283400E3408A /* EmptyPlayListSong.swift */,
-			);
-			path = CreateList;
 			sourceTree = "<group>";
 		};
 		CFA11DC2259F439E00AE3843 /* Settings */ = {
@@ -759,10 +748,8 @@
 			files = (
 				CF4942A725A021F1008436C0 /* UIImageView+Extension.swift in Sources */,
 				CF646096251B95C100C03F2D /* UIFont+Extension.swift in Sources */,
-				CF418C6F25B09704002299F6 /* LikeSongViewController.swift in Sources */,
 				CFA11DBE259F3E5E00AE3843 /* UIViewController+Extenstion.swift in Sources */,
 				CFBED1822589B63500F19CD7 /* PaddingTextField.swift in Sources */,
-				CF0A576D25AEB162008050F1 /* LibraryTableViewCell.swift in Sources */,
 				CF50FB0725B46D0E00DD5EDC /* ImageCollectionViewCell.swift in Sources */,
 				CF4942AD25A03265008436C0 /* UILabel+Extension.swift in Sources */,
 				CF048BE325AC9CD300914BD6 /* SettingHeaderView.swift in Sources */,
@@ -813,10 +800,10 @@
 				CF551ED2259F6748004D2C3B /* BaseDetailSongMusic.swift in Sources */,
 				CFBB1930259B297E00CA58A1 /* Date+Extension.swift in Sources */,
 				CFC8E542251D80F50080FC15 /* ZTabBarViewController.swift in Sources */,
+				CF3BC71325B55E8600E3408A /* FavoriteCollectionViewCell.swift in Sources */,
 				CF1E99E525AB3A5B005E8DE1 /* SettingViewModel.swift in Sources */,
 				CF40F46025996FFD009BFF6C /* BaseView.swift in Sources */,
 				CFD66E5E25AAD74100C14E6B /* UserSessionManager.swift in Sources */,
-				CF50FAF525B4628000DD5EDC /* FavoriteCollectionViewCell.swift in Sources */,
 				CF0B0CAF25A4B28B007689B6 /* APIService.swift in Sources */,
 				CFC8E546251D81380080FC15 /* SearchViewController.swift in Sources */,
 				CFD66E4A25AAD65400C14E6B /* UserEndPoint.swift in Sources */,
@@ -825,8 +812,8 @@
 				CFD9B58825789FDC009DABBD /* TabCollectionViewCell.swift in Sources */,
 				CF45964E251B9C590062158D /* BaseViewController.swift in Sources */,
 				CF50FB0125B46BB200DD5EDC /* BannerCollectionViewCell.swift in Sources */,
+				CF3BC71425B55E8600E3408A /* FavoriteHeaderCollectionReusableView.swift in Sources */,
 				CFD66E3F25AAD46A00C14E6B /* AlertManager.swift in Sources */,
-				CF50FAF225B4623300DD5EDC /* FavoriteHeaderCollectionReusableView.swift in Sources */,
 				CF459656251B9CF00062158D /* BaseTableViewHeaderFooter.swift in Sources */,
 				CF40F45D25996FCB009BFF6C /* TitleTextField.swift in Sources */,
 				CF0E9586259B219A0077AB65 /* SignUpViewController.swift in Sources */,
@@ -837,6 +824,7 @@
 				CF85478E25AD3C1C000595A3 /* ForgotPasswordViewController.swift in Sources */,
 				CF646089251B90DE00C03F2D /* HomeViewController.swift in Sources */,
 				CF646059251B905D00C03F2D /* AppDelegate.swift in Sources */,
+				CF3BC71225B55E8600E3408A /* FavoriteViewController.swift in Sources */,
 				CF459654251B9CD60062158D /* BaseTableViewCell.swift in Sources */,
 				CF64609D251B974B00C03F2D /* TextManager.swift in Sources */,
 				CF6165B725B030380024AEE5 /* SettingProfileViewController.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LikeSongViewController: BaseViewController {
+class FavoriteViewController: BaseViewController {
 
     fileprivate lazy var likeSong = [Song]()
     
@@ -53,13 +53,13 @@ class LikeSongViewController: BaseViewController {
 
 // MARK: - UICollectionViewDelegate
 
-extension LikeSongViewController: UICollectionViewDelegate {
+extension FavoriteViewController: UICollectionViewDelegate {
     
 }
 
 // MARK: - UICollectionViewDataSource
 
-extension LikeSongViewController: UICollectionViewDataSource {
+extension FavoriteViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return likeSong.count
     }
@@ -79,7 +79,7 @@ extension LikeSongViewController: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension LikeSongViewController: UICollectionViewDelegateFlowLayout {
+extension FavoriteViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 200)
     }
