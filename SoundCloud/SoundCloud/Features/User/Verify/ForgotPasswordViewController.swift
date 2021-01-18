@@ -38,7 +38,7 @@ class ForgotPasswordViewController: BaseViewController {
         textField.layer.masksToBounds = true
         textField.keyboardType = .emailAddress
         textField.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
-        textField.backgroundColor = UIColor.white
+        textField.textColor = UIColor.white
         textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
         return textField
     }()
@@ -93,10 +93,10 @@ class ForgotPasswordViewController: BaseViewController {
     @objc private func textFieldValueChange(_ textField: UITextField) {
         let userName = textField.text ?? ""
         if userName.isUserName {
-            nextButton.backgroundColor = UIColor.accentColor
+            nextButton.backgroundColor = UIColor.white
             nextButton.isUserInteractionEnabled = true
         } else {
-            nextButton.backgroundColor = UIColor.disable
+            nextButton.backgroundColor = UIColor.spotifyBrown
             nextButton.isUserInteractionEnabled = false
         }
     }
@@ -108,6 +108,21 @@ class ForgotPasswordViewController: BaseViewController {
     
     @objc private func tapOnNextButton() {
         guard let userName = userNameTextField.text else { return }
+        let params = ["email": userName]
+        let endPoint = UserEndPoint.forgotPW(bodyParams: params)
+        self.showLoading()
+        APIService.request(endPoint: endPoint) { (apiResponse) in
+            if apiResponse.flag == true {
+                self.hideLoading()
+                AlertManager.shared.show(message: "Đã reset thành công mật khẩu mới!")
+                UIViewController.setRootVCBySinInVC()
+            }
+        } onFailure: { (serviceError) in
+            
+        } onRequestFail: {
+            
+        }
+
     }
     
     // MARK: - Setup Layouts

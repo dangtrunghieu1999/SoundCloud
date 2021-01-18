@@ -14,7 +14,7 @@ class EnterNewPasswordViewController: BaseViewController {
     var code: String = ""
     
     // MARK: - UI Elements
-    
+        
     fileprivate let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -102,8 +102,23 @@ class EnterNewPasswordViewController: BaseViewController {
     }
     
     @objc private func tapOnNextButton() {
-        
-    
+        guard let odlPW = newPWTextField.text else { return }
+        guard let newPW = confimNewPWTextField.text else { return }
+        let params = ["oldPass": odlPW, "newPass": newPW]
+        let endPoint = UserEndPoint.createNewPW(bodyParams: params)
+        self.showLoading()
+        APIService.request(endPoint: endPoint) { (apiResponse) in
+            if apiResponse.flag == true {
+                self.hideLoading()
+                AlertManager.shared.show(message: "Đã thay đổi mật khẩu thành công")
+            }
+            
+        } onFailure: { (serviceError) in
+            
+        } onRequestFail: {
+            
+        }
+
     }
     
     // MARK: - Setup Layouts

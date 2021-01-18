@@ -91,7 +91,7 @@ final class TextManager {
     static let pwNotEnoughLength                = "Mật khẩu phải dài hơn \(AppConfig.minPasswordLenght) kí tự"
     static let resetPWTitle                     = "Khôi phục tài khoản"
     static let youNotHaveAccount                = "BẠN KHÔNG CÓ TÀI KHOẢN?"
-    static let weWillSendCodeToEmail            = "Bạn quên tài khoản ư! \n Vui lòng nhập email hoặc số điện thoại để tìm kiếm tài khoản"
+    static let weWillSendCodeToEmail            = "Vui lòng nhập email để lấy lại mật khẩu"
     static let oneStepToResetPW                 = "Vui lòng nhập mật khẩu mới của bạn tại đây"
     static let oldPassword                      = "Nhập khẩu cũ"
     static let newPassword                      = "Nhập mật khẩu mới tại đây"
