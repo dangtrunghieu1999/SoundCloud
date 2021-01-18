@@ -29,6 +29,7 @@
 		CF3BC71225B55E8600E3408A /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3BC70F25B55E8600E3408A /* FavoriteViewController.swift */; };
 		CF3BC71325B55E8600E3408A /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3BC71025B55E8600E3408A /* FavoriteCollectionViewCell.swift */; };
 		CF3BC71425B55E8600E3408A /* FavoriteHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3BC71125B55E8600E3408A /* FavoriteHeaderCollectionReusableView.swift */; };
+		CF3BC71725B55FB100E3408A /* LibraryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3BC71625B55FB100E3408A /* LibraryCollectionViewCell.swift */; };
 		CF40F45A25996F18009BFF6C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF40F45925996F18009BFF6C /* LoginViewController.swift */; };
 		CF40F45D25996FCB009BFF6C /* TitleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF40F45C25996FCB009BFF6C /* TitleTextField.swift */; };
 		CF40F46025996FFD009BFF6C /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF40F45F25996FFD009BFF6C /* BaseView.swift */; };
@@ -120,6 +121,7 @@
 		CF3BC70F25B55E8600E3408A /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		CF3BC71025B55E8600E3408A /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF3BC71125B55E8600E3408A /* FavoriteHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		CF3BC71625B55FB100E3408A /* LibraryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF40F45925996F18009BFF6C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CF40F45C25996FCB009BFF6C /* TitleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextField.swift; sourceTree = "<group>"; };
 		CF40F45F25996FFD009BFF6C /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
@@ -467,6 +469,7 @@
 				CF26D8912590BBB5004B2EF9 /* YourLibraryViewController.swift */,
 				CF7E496225AF320D004C97CD /* CreateYourPlayListViewController.swift */,
 				CF3BC6EF25B5283400E3408A /* EmptyPlayListSong.swift */,
+				CF3BC71625B55FB100E3408A /* LibraryCollectionViewCell.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -768,6 +771,7 @@
 				CFB1AA1925ADF0D800356B26 /* SearchSongViewController.swift in Sources */,
 				CFD66E6525AAD9DE00C14E6B /* SignUpViewModel.swift in Sources */,
 				CF9A36B72590F170005323CE /* StackView+Extension.swift in Sources */,
+				CF3BC71725B55FB100E3408A /* LibraryCollectionViewCell.swift in Sources */,
 				CF3912AF259B377300979DA4 /* ViewPlaySong.swift in Sources */,
 				CF048BE625AC9CDC00914BD6 /* SettingFooterView.swift in Sources */,
 				CF894AB025B28A53009EBE50 /* SectionHome.swift in Sources */,

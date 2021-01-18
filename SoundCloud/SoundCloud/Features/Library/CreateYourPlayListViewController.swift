@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol CreateYourPlayListViewDelegate: class {
+    func createSuccessReloadData()
+}
+
 class CreateYourPlayListViewController: BaseViewController {
 
     // MARK: - UI Elements
+    
+    weak var delegate: CreateYourPlayListViewDelegate?
     
     fileprivate lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -67,7 +73,9 @@ class CreateYourPlayListViewController: BaseViewController {
             if apiResponse.flag == true {
                 AlertManager.shared.showToast(message: "Khởi tạo thành công")
                 self.hideLoading()
-                self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true) {
+                    self.delegate?.createSuccessReloadData()
+                }
             }
         } onFailure: { (serviceError) in
             self.hideLoading()
