@@ -19,7 +19,6 @@ class Song: NSObject, JSONParsable {
     var image               = ""
     var id                  = ""
     var listArtists: [Any]  = []
-    var selectedFavorite: Bool = false
     required override init() {}
     
     

@@ -50,7 +50,7 @@ class LibraryCollectionViewCell: BaseCollectionViewCell {
     public func configCell(playList: YourPlayList) {
         songImageView.image = UIImage(named: "turnes")
         titleLabel.text = playList.title
-        descriptionLabel.text = "Trunghieu"
+        descriptionLabel.text = "Đặng Trung Hiếu"
     }
     
     private func layoutSongImageView() {
@@ -66,8 +66,8 @@ class LibraryCollectionViewCell: BaseCollectionViewCell {
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
             make.left.equalTo(songImageView.snp.right).offset(Dimension.shared.normalMargin)
-            make.centerY.equalTo(songImageView)
             make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
+            make.top.equalTo(songImageView).offset(Dimension.shared.mediumMargin)
         }
     }
     

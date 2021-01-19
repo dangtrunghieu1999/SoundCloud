@@ -22,6 +22,8 @@ class DetailViewPlaySong: BaseView {
     fileprivate var dishSongCell = DishSongCellCollectionViewCell()
     weak var delegate: DetailViewPlaySongDelegate?
     
+    fileprivate var isSelectedLike: Bool = true
+    
     // MARK: - UI Elements
     
     private let backGroundImage: UIImageView = {
@@ -76,6 +78,7 @@ class DetailViewPlaySong: BaseView {
         let button = UIButton()
         button.setImage(ImageManager.like?.withRenderingMode(.alwaysOriginal), for: .normal)
         button.layer.masksToBounds = true
+        button.addTarget(self, action: #selector(tapOnSaveSong), for: .touchUpInside)
         return button
     }()
 
@@ -220,6 +223,18 @@ class DetailViewPlaySong: BaseView {
 
     @objc func tapShareFile() {
         delegate?.tapOnShareFile()
+    }
+    
+    @objc func tapOnSaveSong() {
+        if isSelectedLike {
+            isSelectedLike = false
+            saveSongButton.setImage(ImageManager.likeFocus, for: .normal)
+            AlertManager.shared.showToast(message: "Đã thêm vào danh sách yêu thích")
+        } else {
+            saveSongButton.setImage(ImageManager.like, for: .normal)
+            AlertManager.shared.showToast(message: "Đã xoá khỏi danh sách yêu thích")
+            isSelectedLike = true
+        }
     }
     
     fileprivate func checkShowImagePlayIcon() {

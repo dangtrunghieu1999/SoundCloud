@@ -19,7 +19,6 @@ class User: NSObject, JSONParsable, NSCoding {
     var listPlaylists: [Song] = []
     var listFavoriteSongs: [Song] = []
     
-    
     required override init() {}
 
     required init(json: JSON) {
@@ -30,14 +29,7 @@ class User: NSObject, JSONParsable, NSCoding {
         self.gender            = json["gender"].boolValue
         self.listPlaylists     = json["listPlaylists"].arrayValue.map{Song(json: $0)}
         self.listFavoriteSongs = json["listFavoriteSongs"].arrayValue.map{Song(json: $0)}
-        
-        if id == "" {
-            id              = json["Id"].stringValue
-        }
-        if id == "" {
-            id              = json["UserId"].stringValue
-        }
-        
+
     }
     
     required init?(coder aDecoder: NSCoder) {

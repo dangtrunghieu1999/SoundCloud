@@ -95,6 +95,8 @@ final class TextManager {
     static let oneStepToResetPW                 = "Vui lòng nhập mật khẩu mới của bạn tại đây"
     static let oldPassword                      = "Nhập khẩu cũ"
     static let newPassword                      = "Nhập mật khẩu mới tại đây"
+    static let setImage                         = "Thay đổi ảnh"
+    static let descriptionProfile               = "Đó có thể là tên hoặc biệt danh của bạn. \n Đây là cách bạn sẽ xuất hiện trên Spotify"
 
 }
 

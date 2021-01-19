@@ -21,7 +21,7 @@ class SettingHeaderView: BaseTableViewHeaderFooter {
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = Dimension.shared.widthAvatarDefault / 2
-        imageView.image = UIImage(named: "profile")
+        imageView.image = UIImage(named: "1")
         return imageView
     }()
     
@@ -30,7 +30,7 @@ class SettingHeaderView: BaseTableViewHeaderFooter {
         label.font = UIFont.systemFont(ofSize: FontSize.headline.rawValue, weight: .bold)
         label.textColor = .white
         label.textAlignment = .center
-        label.text = "Trung Hieu"
+        label.text = "Đặng Trung Hiếu"
         return label
     }()
     

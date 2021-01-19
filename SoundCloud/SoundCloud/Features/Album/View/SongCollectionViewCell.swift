@@ -81,9 +81,11 @@ class SongCollectionViewCell: BaseCollectionViewCell {
     @objc private func addSongFavorite() {
         delegate?.addSongFavorite(idSong: idCurrentSong)
         if isSelectedLike {
+            isSelectedLike = false
             likeButton.setImage(ImageManager.likeFocus, for: .normal)
         } else {
             likeButton.setImage(ImageManager.like, for: .normal)
+            isSelectedLike = true
         }
     }
         
@@ -95,7 +97,6 @@ class SongCollectionViewCell: BaseCollectionViewCell {
         let artist = CommonMethod.convertArrayToStringText(data: song.listArtists)
         artistTitleLabel.text = artist.capitalizingFirstLetter()
         self.idCurrentSong = song.id
-        self.isSelected = song.selectedFavorite
     }
     
     private func layoutSongImageView() {

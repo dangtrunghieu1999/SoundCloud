@@ -11,6 +11,7 @@ import UIKit
 class FavoriteHeaderCollectionReusableView: BaseCollectionViewHeaderFooterCell {
  
     // MARK: - UI Elemenets
+    weak var delegate: HeaderViewCollectionReusableViewDelegate?
     
     fileprivate lazy var favoriteTitleLabel: UILabel = {
         let label = UILabel()
@@ -29,6 +30,7 @@ class FavoriteHeaderCollectionReusableView: BaseCollectionViewHeaderFooterCell {
         button.contentHorizontalAlignment = .center
         button.layer.cornerRadius = 25
         button.backgroundColor = UIColor.spotifyGreen
+        button.addTarget(self, action: #selector(tapOnShufflePlay), for: .touchUpInside)
         return button
     }()
     
@@ -48,6 +50,10 @@ class FavoriteHeaderCollectionReusableView: BaseCollectionViewHeaderFooterCell {
         layoutFavoriteTitleLabel()
         layoutShuffleSongButton()
         layoutAddSongButton()
+    }
+    
+    @objc private func tapOnShufflePlay() {
+        delegate?.playRandom()
     }
     
     private func layoutFavoriteTitleLabel() {

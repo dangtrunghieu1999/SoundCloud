@@ -81,6 +81,7 @@ class LoginViewController: BaseViewController {
         button.addTarget(self,action: #selector(tapOnForgotPassword), for: .touchUpInside)
         return button
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = TextManager.signIn

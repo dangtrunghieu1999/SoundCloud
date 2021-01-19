@@ -64,7 +64,6 @@ class AlbumViewController: BaseViewController {
         self.showLoading()
         APIService.request(endPoint: endPoint, onSuccess: { [weak self](apiResponse) in
             self?.playList = apiResponse.toArray([Song.self])
-//            MusicPlayer.shared.yourPlayListSong = self?.song
             self?.reloadDataWhenFinishLoadAPI()
         }, onFailure: { (apiError) in
             self.reloadDataWhenFinishLoadAPI()
@@ -215,10 +214,6 @@ extension AlbumViewController: SongAddFavoriteDelegate {
             if apiResponse.flag == true {
                 self.hideLoading()
                 AlertManager.shared.showToast(message: "Đã thêm vào danh sách yêu thích")
-                if let i = self.playList.firstIndex(where: { $0.id == self.idAlbum }) {
-                    let obj =  self.playList[i]
-                    obj.selectedFavorite = true
-                }
                 self.albumCollectionView.reloadData()
             }
         } onFailure: { (serviceError) in
